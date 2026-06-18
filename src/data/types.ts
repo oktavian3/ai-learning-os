@@ -11,7 +11,7 @@ export interface CourseModule {
 }
 export interface DirectoryItem {
   slug?: string; title: string; category: string; level: Difficulty; tag: string; description: string;
-  details: string[]; action?: string;
+  details: string[]; action?: string; sections?: Array<{ title: string; content: string | string[] }>;
 }
 export interface RoadmapLevel {
   level: number; title: string; forWho: string; learn: string; tools: string[]; lessons: string; output: string; project: string;

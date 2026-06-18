@@ -1,19 +1,23 @@
 import Link from "next/link";
-import { ArrowLeft,ArrowRight } from "lucide-react";
-import { DirectoryItem } from "@/data/types";
-import { CopyTextButton } from "./LessonTools";
+import {ArrowLeft,ArrowRight} from "lucide-react";
+import {DirectoryItem} from "@/data/types";
+import {CopyTextButton} from "./LessonTools";
 
-const copyByType:Record<string,{intro:string;how:string[];note:string}> = {
-  tools:{intro:"Cocok dipakai kalau kebutuhanmu nyambung dengan fungsi di bawah. Coba versi gratisnya dulu sebelum masuk ke workflow penting.",how:["Tentukan satu tugas kecil untuk diuji","Pakai data contoh, jangan data sensitif","Bandingkan hasil dengan cara kerja lama","Simpan kalau memang menghemat waktu"],note:"Fitur dan paket tool bisa berubah. Cek situs resminya sebelum membuat keputusan."},
-  prompts:{intro:"Template ini adalah titik mulai. Isi bagian dalam tanda kurung, tambahkan contoh, lalu perbaiki dari hasil pertama.",how:["Isi semua variabel yang tersedia","Tambahkan konteks dan contoh nyata","Minta format output yang jelas","Cek fakta sebelum dipakai"],note:"Prompt bagus tetap butuh konteks bagus. Jangan berharap satu kalimat menyelesaikan semua hal."},
-  workflows:{intro:"Workflow ini memecah pekerjaan menjadi langkah yang bisa diulang. Mulai manual dulu, baru otomasi bagian yang stabil.",how:["Tentukan input dan hasil akhir","Jalankan tiap langkah secara manual","Tambahkan checklist kualitas","Otomasi bagian yang berulang","Simpan log dan jalur fallback"],note:"Workflow yang sederhana tetapi jelas biasanya lebih berguna daripada automation rumit yang sulit dirawat."},
-  "use-cases":{intro:"Use case ini dimulai dari masalah nyata, bukan dari tool. Sesuaikan dengan ukuran tim, data, dan risiko pekerjaanmu.",how:["Tulis masalah dalam satu kalimat","Ukur waktu atau biaya saat ini","Buat uji coba kecil","Bandingkan sebelum dan sesudah"],note:"Kalau hasilnya tidak bisa diukur atau diperiksa, use case-nya perlu dipersempit."},
-  projects:{intro:"Project ini dibuat untuk belajar sambil menghasilkan bukti kerja. Tidak perlu langsung sempurna—yang penting selesai dan bisa didemokan.",how:["Tulis tujuan dan batas project","Bangun versi paling kecil","Tes dengan beberapa contoh","Catat apa yang gagal","Buat demo dan case study"],note:"Project selesai lebih berharga daripada prototype besar yang tidak pernah bisa dipakai."},
-  monetize:{intro:"Jalur ini fokus pada masalah klien dan hasil yang bisa dikirim. AI hanya bagian dari cara kerja, bukan barang jualannya.",how:["Pilih target klien yang spesifik","Wawancarai masalah mereka","Buat satu paket dengan scope jelas","Tunjukkan contoh hasil","Mulai dari pilot kecil"],note:"Harga sangat tergantung scope, risiko, dan pasar. Hindari janji hasil yang belum pernah kamu buktikan."},
-  glossary:{intro:"Istilah ini sering muncul saat belajar atau membangun sistem AI. Pahami mental modelnya dulu; detail teknis bisa menyusul.",how:["Baca definisi singkat","Hubungkan dengan analoginya","Cari satu contoh di pekerjaanmu","Jelaskan ulang dengan bahasamu sendiri"],note:"Kalau kamu bisa menjelaskannya tanpa jargon, berarti dasarnya sudah cukup paham."},
-};
+function Section({title,content}:{title:string;content:string|string[]}){
+  const normalized=title.toLowerCase();
+  const numbered=normalized.includes("step")||normalized.includes("workflow");
+  const prompts=normalized.includes("prompt template");
+  if(Array.isArray(content)){
+    if(prompts)return <section><h2>{title}</h2>{content.map((item,index)=><div key={item} style={{marginBottom:18}}><div className="copybox"><span className="blue">Template {index+1}</span><br/><br/>{item}</div><div style={{marginTop:10}}><CopyTextButton text={item} label="Salin template"/></div></div>)}</section>;
+    if(numbered)return <section><h2>{title}</h2><div className="glass card"><ol className="steps">{content.map((item,index)=><li key={item}><span>{index+1}</span><p>{item}</p></li>)}</ol></div></section>;
+    return <section><h2>{title}</h2><div className="glass card"><ul className="list">{content.map(item=><li key={item}>{item}</li>)}</ul></div></section>;
+  }
+  return <section><h2>{title}</h2>{prompts?<><div className="copybox">{content}</div><div style={{marginTop:10}}><CopyTextButton text={content} label="Salin template"/></div></>:<div className="callout">{content}</div>}</section>;
+}
 
-export function ResourceDetail({item,type,basePath}:{item:DirectoryItem,type:string,basePath:string}){
-  const content=copyByType[type]||copyByType["use-cases"];
-  return <><header className="page-hero"><div className="container"><Link href={basePath} className="muted" style={{display:"flex",gap:8,alignItems:"center",fontSize:13}}><ArrowLeft size={14}/> Kembali</Link><div className="eyebrow" style={{marginTop:30}}><span className="dot"/>{item.category} · {item.level}</div><h1>{item.title}</h1><p>{item.description}</p></div></header><section className="section"><div className="container grid grid-2"><div className="prose"><h2>Versi gampangnya</h2><p>{content.intro}</p><h2>Yang perlu kamu tahu</h2><ul className="list">{item.details.map(detail=><li key={detail}>{detail}</li>)}</ul>{item.action&&<><h2>Template siap pakai</h2><div className="copybox">{item.action}</div><div style={{marginTop:12}}><CopyTextButton text={item.action} label="Salin template"/></div></>}</div><aside><div className="glass card"><div className="card-top"><span>CARA MULAI</span><span className="pill">{item.tag}</span></div><ol className="steps">{content.how.map((step,index)=><li key={step}><span>{index+1}</span><p>{step}</p></li>)}</ol></div><div className="callout" style={{marginTop:16}}>{content.note}</div></aside></div><div className="container" style={{marginTop:54}}><Link href={basePath} className="btn">Lihat resource lain <ArrowRight size={14}/></Link></div></section></>;
+export function ResourceDetail({item,type,basePath}:{item:DirectoryItem;type:string;basePath:string}){
+  return <><header className="page-hero"><div className="container"><Link href={basePath} className="muted" style={{display:"flex",gap:8,alignItems:"center",fontSize:13}}><ArrowLeft size={14}/>Kembali</Link><div className="eyebrow" style={{marginTop:30}}><span className="dot"/>{item.category} · {item.level}</div><h1>{item.title}</h1><p>{item.description}</p></div></header>
+  <section className="section"><div className="container detail-layout"><div className="prose">{item.sections?.map(section=><Section key={section.title} {...section}/>)||<><h2>Yang perlu kamu tahu</h2><ul className="list">{item.details.map(detail=><li key={detail}>{detail}</li>)}</ul></>}{item.action&&<Section title="Prompt lengkap" content={item.action}/>}</div>
+  <aside><div className="glass card sticky-card"><div className="card-top"><span>RINGKASAN</span><span className="pill">{item.tag}</span></div><h3>{item.title}</h3><p>{item.description}</p><ul className="list">{item.details.map(detail=><li key={detail}>{detail}</li>)}</ul></div></aside></div>
+  <div className="container" style={{marginTop:54}}><Link href={basePath} className="btn">Lihat resource lain<ArrowRight size={14}/></Link></div></section></>;
 }
