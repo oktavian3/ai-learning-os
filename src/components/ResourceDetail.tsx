@@ -5,8 +5,8 @@ import {CopyTextButton} from "./LessonTools";
 
 function Section({title,content}:{title:string;content:string|string[]}){
   const normalized=title.toLowerCase();
-  const numbered=normalized.includes("step")||normalized.includes("workflow");
-  const prompts=normalized.includes("prompt template");
+  const numbered=normalized.includes("step")||normalized.includes("workflow")||normalized.includes("langkah");
+  const prompts=normalized.includes("prompt");
   if(Array.isArray(content)){
     if(prompts)return <section><h2>{title}</h2>{content.map((item,index)=><div key={item} style={{marginBottom:18}}><div className="copybox"><span className="blue">Template {index+1}</span><br/><br/>{item}</div><div style={{marginTop:10}}><CopyTextButton text={item} label="Salin template"/></div></div>)}</section>;
     if(numbered)return <section><h2>{title}</h2><div className="glass card"><ol className="steps">{content.map((item,index)=><li key={item}><span>{index+1}</span><p>{item}</p></li>)}</ol></div></section>;
