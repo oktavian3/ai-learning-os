@@ -4,16 +4,16 @@ import {useCases as detailedUseCases} from "./useCases";
 import {glossary as detailedGlossary} from "./glossary";
 
 export const roadmap:RoadmapLevel[]=[
-  [0,"AI Literacy","Pemula total","Istilah dasar, kemampuan, batasan, dan cara verifikasi",["ChatGPT","Gemini"],"4 lesson","Punya mental model AI yang sehat","Buat peta konsep AI"],
-  [1,"Basic AI Usage","Pengguna baru","Riset ringan, rangkum, email, dokumen, dan ide",["ChatGPT","NotebookLM"],"6 lesson","Bisa memakai AI untuk kerja harian","Bangun weekly work copilot"],
-  [2,"Prompt Engineering","Pengguna aktif","Prompt reusable, few-shot, constraint, dan debugging",["Claude","ChatGPT"],"6 lesson","Menjadi prompt operator","Buat prompt kit untuk satu profesi"],
-  [3,"AI Tools Mastery","Creator dan operator","Memilih tool berdasarkan fungsi, privasi, integrasi, biaya",["Canva","Notion","Cursor"],"5 lesson","Punya AI stack yang ramping","Audit dan susun personal AI stack"],
-  [4,"Workflow Design","Freelancer dan tim","Memetakan input, proses, output, review, dan fallback",["Notion","Sheets"],"6 lesson","Menjadi workflow builder","Content workflow end-to-end"],
-  [5,"Automation & API","No-code builder","Trigger, action, condition, API, webhook, JSON",["n8n","Make","Postman"],"7 lesson","Membangun automation terkontrol","Lead intake automation"],
-  [6,"RAG & Knowledge Base","Builder","Embedding, retrieval, chunking, metadata, citation",["Supabase","NotebookLM"],"5 lesson","Membangun jawaban berbasis sumber","RAG chatbot dari dokumen"],
-  [7,"AI Agents","Advanced builder","Goal, tools, memory, planning, permissions",["OpenAI API","LangGraph"],"6 lesson","Mendesain agent yang berguna","Research agent dengan approval"],
-  [8,"Agent Orchestration","Agentic builder","Router, supervisor, handoff, tracing, eval",["LangGraph","Tracing"],"5 lesson","Mengelola sistem multi-agent","Multi-agent production pipeline"],
-  [9,"Monetization & Portfolio","Freelancer dan founder","Offer, scope, pricing, delivery, case study",["Notion","Loom","GitHub"],"6 lesson","Menjual hasil, bukan hype","Productized service + case study"]
+  [0,"AI Literacy","Pemula total","Kenalan sama istilah penting, batas AI, dan cara tahu kapan jawabannya ngawur",["ChatGPT","Gemini"],"4 lesson","Gak gampang ketipu jawaban yang terdengar yakin","Bikin peta konsep AI"],
+  [1,"Basic AI Usage","Baru mulai pakai AI","Pakai AI buat riset ringan, rangkum, email, dokumen, dan ide",["ChatGPT","NotebookLM"],"6 lesson","Bisa pakai AI buat kerjaan harian","Bangun weekly work copilot"],
+  [2,"Prompt Engineering","Sudah sering pakai chat AI","Bikin prompt reusable, kasih contoh, pasang batas, dan debug hasil yang jelek",["Claude","ChatGPT"],"6 lesson","Bisa bikin brief yang dimengerti AI","Buat prompt kit untuk satu profesi"],
+  [3,"AI Tools Mastery","Creator dan operator","Pilih tool dari fungsi dan risiko, bukan karena timeline lagi ramai",["Canva","Notion","Cursor"],"5 lesson","Punya AI stack yang gak berantakan","Audit personal AI stack"],
+  [4,"Workflow Design","Freelancer dan tim","Rangkai input, proses, output, review, dan fallback jadi alur yang bisa diulang",["Notion","Sheets"],"6 lesson","Bisa bikin workflow yang masuk akal","Content workflow end-to-end"],
+  [5,"Automation & API","No-code builder","Masuk ke trigger, action, API, webhook, JSON, dan error handling",["n8n","Make","Postman"],"7 lesson","Bisa bikin automation tanpa melepas kontrol","Lead intake automation"],
+  [6,"RAG & Knowledge Base","Builder","Bikin AI cari sumber dulu sebelum jawab dari dokumenmu",["Supabase","NotebookLM"],"5 lesson","Bisa bikin jawaban yang punya sumber","RAG chatbot dari dokumen"],
+  [7,"AI Agents","Advanced builder","Kasih AI tujuan, tools, memory, dan batas wewenang yang jelas",["OpenAI API","LangGraph"],"6 lesson","Bisa desain agent yang berguna","Research agent dengan approval"],
+  [8,"Agent Orchestration","Agentic builder","Atur router, supervisor, handoff, tracing, dan eval tanpa bikin sirkus agent",["LangGraph","Tracing"],"5 lesson","Bisa ngatur sistem multi-agent","Multi-agent production pipeline"],
+  [9,"Monetization & Portfolio","Freelancer dan founder","Paketkan skill jadi offer, delivery, dan case study yang bisa dicek",["Notion","Loom","GitHub"],"6 lesson","Bisa jual hasil, bukan jargon","Productized service + case study"]
 ].map(([level,title,forWho,learn,tools,lessons,output,project])=>({level,title,forWho,learn,tools,lessons,output,project} as RoadmapLevel));
 
 export const tools=expandedTools;

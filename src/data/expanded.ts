@@ -93,10 +93,10 @@ export const expandedPrompts:DirectoryItem[]=Object.entries(promptGroups).flatMa
   description:useCase,details:[`Use case: ${useCase}`,`Variabel: ${variables}`,`Output: ${output}`],
   action:`Kamu adalah partner kerja yang teliti. ${instruction}\n\nSebelum mulai, tanyakan jika ada konteks penting yang belum tersedia. Pisahkan fakta, asumsi, dan bagian yang perlu diverifikasi. Gunakan Bahasa Indonesia yang natural dan jangan membuat data baru.`,
   sections:[
-    {title:"Use case",content:useCase},{title:"Variabel yang perlu diisi",content:variables.split(", ")},
+    {title:"Dipakai buat apa",content:useCase},{title:"Yang perlu kamu isi",content:variables.split(", ")},
     {title:"Cara memakai",content:["Ganti semua teks dalam tanda kurung siku","Tambahkan contoh output jika punya","Jalankan satu kali lalu koreksi bagian yang kurang","Simpan versi yang sudah bekerja"]},
     {title:"Contoh input",content:`Topik/konteks: contoh nyata dari pekerjaanmu. Target pembaca: orang yang akan memakai hasilnya. Batasan: waktu, panjang, data, dan tone.`},
-    {title:"Expected output",content:output},{title:"Prompt template",content:instruction}
+    {title:"Hasil yang diharapkan",content:output},{title:"Template prompt",content:instruction}
   ]
 })));
 
@@ -114,9 +114,9 @@ const workflowSpecs:WorkflowSpec[]=[
   {title:"Client Delivery System",category:"Freelancer",problem:"Project klien berantakan dari brief sampai handover dan revisi sulit dikendalikan.",bestFor:"Freelancer, studio, consultant, dan agency kecil.",tools:["Form intake","Project workspace","AI writing assistant","Loom","Cloud storage"],steps:["Ubah brief menjadi pertanyaan discovery","Kunci scope dan acceptance criteria","Buat workflow dan milestone","Produksi draft pertama","Lakukan internal QA","Kelola feedback dan revisi","Final delivery dan handover","Minta testimoni lalu buat case study"],output:"Sistem delivery lengkap dari intake sampai case study.",checklist:["Scope disetujui","Input klien lengkap","Revisi tercatat","QA sebelum kirim","Handover bisa dipahami"],monetization:"Gunakan untuk productized service atau jual setup workspace ke freelancer lain."}
 ];
 export const expandedWorkflows:DirectoryItem[]=workflowSpecs.map(w=>({title:w.title,category:w.category,level:"Menengah",tag:`${w.steps.length} langkah`,description:w.problem,details:[`Cocok untuk: ${w.bestFor}`,`Tools: ${w.tools.join(", ")}`,`Output: ${w.output}`],sections:[
-  {title:"Problem",content:w.problem},{title:"Best for",content:w.bestFor},{title:"Tools needed",content:w.tools},{title:"Step-by-step workflow",content:w.steps},
-  {title:"Prompt templates",content:[`Bantu saya menjalankan workflow ${w.title}. Konteks saya: [KONTEKS]. Mulai dari langkah pertama, tanyakan data yang kurang, dan jangan lanjut sebelum output lolos checklist.`,`Review output workflow ${w.title} berikut: [OUTPUT]. Nilai berdasarkan tujuan, akurasi, kelengkapan, risiko, dan checklist. Beri revisi prioritas.`]},
-  {title:"Expected output",content:w.output},{title:"Quality checklist",content:w.checklist},{title:"Monetization angle",content:w.monetization}
+  {title:"Masalah yang dibereskan",content:w.problem},{title:"Pas buat siapa",content:w.bestFor},{title:"Tools yang dibutuhkan",content:w.tools},{title:"Workflow langkah demi langkah",content:w.steps},
+  {title:"Template prompt",content:[`Bantu saya menjalankan workflow ${w.title}. Konteks saya: [KONTEKS]. Mulai dari langkah pertama, tanyakan data yang kurang, dan jangan lanjut sebelum output lolos checklist.`,`Review output workflow ${w.title} berikut: [OUTPUT]. Nilai berdasarkan tujuan, akurasi, kelengkapan, risiko, dan checklist. Beri revisi prioritas.`]},
+  {title:"Hasil akhirnya",content:w.output},{title:"Checklist kualitas",content:w.checklist},{title:"Bisa dijual jadi apa",content:w.monetization}
 ]}));
 
 type ProjectSpec={title:string;difficulty:Difficulty;time:string;goal:string;tools:string[];steps:string[];output:string;upgrades:string[];portfolio:string};
@@ -135,7 +135,7 @@ const projectSpecs:ProjectSpec[]=[
   {title:"AI Microtool MVP",difficulty:"Lanjutan",time:"3–4 minggu",goal:"Membangun microtool untuk satu pekerjaan yang sangat spesifik.",tools:["Next.js/no-code builder","LLM API","Database","Analytics"],steps:["Validasi problem","Tulis PRD kecil","Buat user flow","Bangun MVP","Tambah guardrails","Tes 5 pengguna","Ukur penggunaan"],output:"MVP aktif dengan onboarding dan feedback pengguna.",upgrades:["Auth dan billing","Usage limits","Team workspace"],portfolio:"Tampilkan problem validation, product demo, metrics, dan roadmap."}
 ];
 export const expandedProjects:DirectoryItem[]=projectSpecs.map(p=>({title:p.title,category:p.difficulty,level:p.difficulty,tag:p.time,description:p.goal,details:[`Estimasi: ${p.time}`,`Tools: ${p.tools.join(", ")}`,`Output: ${p.output}`],sections:[
-  {title:"Difficulty",content:p.difficulty},{title:"Estimated time",content:p.time},{title:"Goal",content:p.goal},{title:"Tools",content:p.tools},{title:"Steps",content:p.steps},{title:"Expected output",content:p.output},{title:"Upgrade ideas",content:p.upgrades},{title:"Portfolio angle",content:p.portfolio}
+  {title:"Tingkat kesulitan",content:p.difficulty},{title:"Estimasi waktu",content:p.time},{title:"Tujuan project",content:p.goal},{title:"Tools",content:p.tools},{title:"Langkah kerja",content:p.steps},{title:"Hasil akhirnya",content:p.output},{title:"Kalau mau dinaikkan levelnya",content:p.upgrades},{title:"Cara masukin ke portfolio",content:p.portfolio}
 ]}));
 
 type ToolSpec={title:string;category:string;level:Difficulty;pricing:"Free"|"Freemium"|"Paid";bestFor:string;when:string[];not:string[];mistakes:string[];workflow:string[];alternatives:string[]};
@@ -158,7 +158,7 @@ const toolSpecs:ToolSpec[]=[
   {title:"Dune",category:"Web3 / Crypto Research",level:"Menengah",pricing:"Freemium",bestFor:"Query dan visualisasi data blockchain publik.",when:["Menganalisis aktivitas on-chain","Membuat dashboard protocol","Memverifikasi narrative dengan data"],not:["Data off-chain","Mengambil kesimpulan tanpa memahami schema"],mistakes:["Query tidak divalidasi","Alamat kontrak salah","Metrik tanpa tanggal"],workflow:["Tentukan pertanyaan","Cari schema","Tulis atau fork query","Validasi sample","Buat dashboard dan caveat"],alternatives:["Flipside","Token Terminal","DefiLlama"]}
 ];
 export const expandedTools:DirectoryItem[]=toolSpecs.map(t=>({title:t.title,category:t.category,level:t.level,tag:t.pricing,description:t.bestFor,details:[`Best for: ${t.bestFor}`,`Pricing: ${t.pricing}`,`Alternatives: ${t.alternatives.join(", ")}`],sections:[
-  {title:"Best for",content:t.bestFor},{title:"When to use",content:t.when},{title:"When not to use",content:t.not},{title:"Common mistakes",content:t.mistakes},{title:"Example workflow",content:t.workflow},{title:"Alternatives",content:t.alternatives},{title:"Official website",content:"[Tambahkan URL website resmi]"},{title:"Pricing",content:t.pricing}
+  {title:"Paling kepakai buat",content:t.bestFor},{title:"Pakai kalau",content:t.when},{title:"Jangan dipakai kalau",content:t.not},{title:"Kesalahan yang sering kejadian",content:t.mistakes},{title:"Contoh workflow",content:t.workflow},{title:"Alternatif",content:t.alternatives},{title:"Website resmi",content:"[Tambahkan URL website resmi]"},{title:"Label harga",content:t.pricing}
 ]}));
 
 type MonetizeSpec={title:string;level:Difficulty;sell:string;client:string;deliverables:string[];starter:string[];premium:string[];tools:string[];outreach:string;portfolio:string;mistakes:string[]};
@@ -173,5 +173,5 @@ const monetizationSpecs:MonetizeSpec[]=[
   {title:"AI + Web3 Niche",level:"Menengah",sell:"Research, governance summary, community knowledge, dan content operations.",client:"Protocol, DAO, research community, dan Web3 media.",deliverables:["Research memo","On-chain dashboard","Docs-to-content","Community FAQ","Governance brief"],starter:["Satu protocol brief","Satu dashboard","Satu content pack"],premium:["Monthly intelligence","Community knowledge bot","Governance monitoring","Content retainer"],tools:["Dune","Protocol docs","AI assistant","Community platform"],outreach:"Publikasikan satu research sample yang netral dan kirim ke tim dengan tiga pertanyaan substantif.",portfolio:"Buat protocol research pack dengan sumber, dashboard, dan risk section.",mistakes:["Ikut hype","Tidak mengungkap konflik kepentingan","Memberi rekomendasi finansial"]}
 ];
 export const expandedMonetization:DirectoryItem[]=monetizationSpecs.map(m=>({title:m.title,category:m.client.split(",")[0],level:m.level,tag:m.level,description:m.sell,details:[`Target: ${m.client}`,`Deliverables: ${m.deliverables.slice(0,3).join(", ")}`,`Portfolio: ${m.portfolio}`],sections:[
-  {title:"What to sell",content:m.sell},{title:"Target client",content:m.client},{title:"Deliverables",content:m.deliverables},{title:"Starter package",content:m.starter},{title:"Premium package",content:m.premium},{title:"Tools needed",content:m.tools},{title:"Outreach angle",content:m.outreach},{title:"Portfolio project",content:m.portfolio},{title:"Common mistakes",content:m.mistakes}
+  {title:"Yang dijual",content:m.sell},{title:"Target klien",content:m.client},{title:"Yang diterima klien",content:m.deliverables},{title:"Paket starter",content:m.starter},{title:"Paket premium",content:m.premium},{title:"Tools yang dibutuhkan",content:m.tools},{title:"Cara mulai ngobrol",content:m.outreach},{title:"Project buat portfolio",content:m.portfolio},{title:"Kesalahan yang sering kejadian",content:m.mistakes}
 ]}));

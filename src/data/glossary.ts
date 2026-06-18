@@ -57,7 +57,7 @@ const groups:Record<string,GlossaryGroup>={
     ["Document QA","Sistem tanya-jawab yang menggunakan dokumen sebagai sumber utama.",["RAG","Knowledge Base","Citation"]]
   ]},
   "AI Agent":{context:"Istilah ini menjelaskan sistem AI yang merencanakan langkah, memakai tools, dan mengelola state.",analogy:"Seperti operator dengan tujuan, SOP, alat kerja, catatan, dan batas wewenang",example:"digunakan untuk riset bertahap, triage support, atau workflow yang membutuhkan beberapa keputusan",why:"membantu membedakan agent yang berguna dari chatbot dengan label baru",mistake:"memberi agent terlalu banyak akses tanpa approval, logging, dan batas biaya",terms:[
-    ["AI Agent","Sistem AI yang mengejar tujuan melalui beberapa langkah dan dapat memakai tools.",["Tool Calling","Memory","Agentic Workflow"]],
+    ["AI Agent","AI yang gak cuma jawab, tapi bisa menjalankan tugas lewat beberapa langkah dan memakai tools.",["Tool Calling","Memory","Agentic Workflow"]],
     ["Agentic Workflow","Workflow yang memberi model ruang untuk memilih langkah berikutnya dalam batas tertentu.",["AI Agent","Human-in-the-loop","Agent Orchestration"]],
     ["Tool Calling","Kemampuan model memilih dan meminta penggunaan tool eksternal.",["Function Calling","MCP","AI Agent"]],
     ["Function Calling","Cara model mengisi nama fungsi dan argumen sesuai schema terstruktur.",["Tool Calling","Structured Output","API"]],
@@ -140,10 +140,10 @@ const groups:Record<string,GlossaryGroup>={
 
 export const glossary:DirectoryItem[]=Object.entries(groups).flatMap(([category,group])=>group.terms.map(([term,definition,related],index)=>({
   title:term,category,level:category==="Dasar AI"||category==="GenAI & LLM"?"Pemula":"Menengah",tag:"Istilah AI",description:definition,
-  details:[`Terkait: ${related.join(", ")}`,`${group.context} ${group.why}.`],sections:[
-    {title:"Definisi sederhana",content:definition},{title:"Penjelasan tanpa jargon",content:`${group.context} Untuk ${term}, intinya: ${definition.charAt(0).toLowerCase()+definition.slice(1)}`},
-    {title:"Analogi",content:`${group.analogy}. Dalam analogi ini, ${term} adalah bagian yang ${index%2===0?"mengatur bagaimana proses berjalan":"menentukan bagaimana informasi dipakai"}.`},
-    {title:"Contoh penggunaan",content:`${term} ${group.example}.`},{title:"Kenapa penting",content:`Memahami ${term} ${group.why}.`},
-    {title:"Istilah terkait",content:related},{title:"Kesalahan pemula",content:`Kesalahan yang sering terjadi adalah ${group.mistake}, terutama ketika orang belum membedakan ${term} dari ${related[0]}.`}
+  details:[`Nyambung ke: ${related.join(", ")}`],sections:[
+    {title:"Definisi sederhana",content:definition},{title:"Penjelasan tanpa jargon",content:`${definition} Biasanya istilah ini ${group.example}.`},
+    {title:"Analogi",content:`${group.analogy}. ${term} kurang lebih bekerja di bagian yang ${index%2===0?"ngatur alurnya":"ngolah informasinya"}.`},
+    {title:"Contoh penggunaan",content:`Contoh paling gampang: ${term} ${group.example}.`},{title:"Kenapa penting",content:`Kalau paham ${term}, kamu ${group.why}.`},
+    {title:"Istilah terkait",content:related},{title:"Kesalahan pemula",content:`Yang sering bikin keliru: ${group.mistake}. ${term} juga beda dengan ${related[0]}.`}
   ]
 })));
