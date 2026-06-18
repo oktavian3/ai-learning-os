@@ -1,0 +1,2 @@
+import { PageHero } from "@/components/Primitives";import { SkillCheck } from "@/components/SkillCheck";
+export const metadata={title:"Skill Check"};export default function Page(){return <><PageHero label="10 pertanyaan · ±3 menit" title="Cari titik mulai yang pas." description="Tidak ada nilai jelek. Jawabanmu dipakai untuk memilih level, modul, dan project pertama yang masuk akal."/><section className="section"><div className="container" style={{maxWidth:820}}><SkillCheck/></div></section></>}

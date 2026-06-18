@@ -1,0 +1,2 @@
+import { PageHero } from "@/components/Primitives";import { ResourceExplorer } from "@/components/ResourceExplorer";import { glossary } from "@/data/library";
+export const metadata={title:"Glossary"};export default function Page(){return <><PageHero label="Glosarium AI" title="Istilah AI, tanpa bahasa ribet." description="Baca arti singkatnya, lihat analogi dan contoh, lalu pahami kenapa istilah itu penting."/><section className="section"><div className="container"><ResourceExplorer items={glossary} basePath="/glossary"/></div></section></>}

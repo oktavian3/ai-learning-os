@@ -1,0 +1,2 @@
+import { PageHero } from "@/components/Primitives";import { ResourceExplorer } from "@/components/ResourceExplorer";import { useCases } from "@/data/library";
+export const metadata={title:"Use Cases"};export default function Page(){return <><PageHero label="Use case map" title="Punya masalah apa? Mulai dari situ." description="Lihat contoh penggunaan AI untuk belajar, kerja, content, bisnis, coding, komunitas, Web3, dan UMKM."/><section className="section"><div className="container"><ResourceExplorer items={useCases} basePath="/use-cases"/></div></section></>}

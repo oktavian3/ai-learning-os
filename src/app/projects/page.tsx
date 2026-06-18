@@ -1,0 +1,2 @@
+import { PageHero } from "@/components/Primitives";import { ResourceExplorer } from "@/components/ResourceExplorer";import { projects } from "@/data/library";
+export const metadata={title:"Project Bank"};export default function Page(){return <><PageHero label="Project-based learning" title="Belajar sambil bikin sesuatu yang nyata." description="Pilih project sesuai level, selesaikan versi kecilnya, lalu jadikan demo atau portfolio."/><section className="section"><div className="container"><ResourceExplorer items={projects} basePath="/projects"/></div></section></>}

@@ -1,0 +1,2 @@
+import { PageHero } from "@/components/Primitives";import { ResourceExplorer } from "@/components/ResourceExplorer";import { workflows } from "@/data/library";
+export const metadata={title:"Workflow Library"};export default function Page(){return <><PageHero label="Workflow recipes" title="Ubah tugas berulang jadi alur yang rapi." description="Ikuti langkahnya, tes secara manual, lalu otomasi bagian yang sudah stabil."/><section className="section"><div className="container"><ResourceExplorer items={workflows} basePath="/workflows"/></div></section></>}

@@ -1,0 +1,2 @@
+import { PageHero } from "@/components/Primitives";import { ResourceExplorer } from "@/components/ResourceExplorer";import { tools } from "@/data/library";
+export const metadata={title:"Tools Directory"};export default function Page(){return <><PageHero label="Tools directory" title="Cari tool yang benar-benar kamu butuhkan." description="Lihat fungsi, kelebihan, dan batasannya. Tidak perlu memakai semuanya—pilih yang cocok dengan pekerjaanmu."/><section className="section"><div className="container"><ResourceExplorer items={tools} basePath="/tools"/></div></section></>}
