@@ -4,7 +4,7 @@ import {useCases as detailedUseCases} from "./useCases";
 import {glossary as detailedGlossary} from "./glossary";
 
 export const roadmap:RoadmapLevel[]=[
-  [0,"AI Literacy","Pemula total","Kenalan sama istilah penting, batas AI, dan cara tahu kapan jawabannya ngawur",["ChatGPT","Gemini"],"4 lesson","Gak gampang ketipu jawaban yang terdengar yakin","Bikin peta konsep AI"],
+  [0,"AI Literacy","Baru mulai","Kenalan sama istilah penting, batas AI, dan cara tahu kapan jawabannya ngawur",["ChatGPT","Gemini"],"4 lesson","Gak gampang ketipu jawaban yang terdengar yakin","Bikin peta konsep AI"],
   [1,"Basic AI Usage","Baru mulai pakai AI","Pakai AI buat riset ringan, rangkum, email, dokumen, dan ide",["ChatGPT","NotebookLM"],"6 lesson","Bisa pakai AI buat kerjaan harian","Bangun weekly work copilot"],
   [2,"Prompt Engineering","Sudah sering pakai chat AI","Bikin prompt reusable, kasih contoh, pasang batas, dan debug hasil yang jelek",["Claude","ChatGPT"],"6 lesson","Bisa bikin brief yang dimengerti AI","Buat prompt kit untuk satu profesi"],
   [3,"AI Tools Mastery","Creator dan operator","Pilih tool dari fungsi dan risiko, bukan karena timeline lagi ramai",["Canva","Notion","Cursor"],"5 lesson","Punya AI stack yang gak berantakan","Audit personal AI stack"],

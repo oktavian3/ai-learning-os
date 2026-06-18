@@ -14,6 +14,7 @@ export default function Home(){return <>
       <h1>Belajar AI dari nol. <span>Langsung praktek, gak cuma teori.</span></h1>
       <p className="hero-copy">Mulai dari GenAI, LLM, prompting, tools, workflow, automation, RAG, sampai AI agent. Fokusnya simpel: paham konsepnya, tahu cara pakainya, lalu bisa bikin sistem kerja sendiri.</p>
       <div className="hero-actions"><Link href="/roadmap" className="btn btn-primary">Mulai dari Roadmap <ArrowRight size={16}/></Link><Link href="/course" className="btn">Lihat Course <ArrowDown size={16}/></Link></div>
+      <div className="mobile-stats"><span className="pill">Prompt itu brief yang jelas</span><span className="pill">Workflow &gt; trial-and-error</span><span className="pill">Agent kerja sendiri</span><span className="pill">Hasil belajar = penghasilan</span></div>
       <div className="eyebrow" style={{marginTop:34,textTransform:"none",letterSpacing:0}}>{sourceLessonCount} lesson <ArrowRight size={12}/> {prompts.length} prompt <ArrowRight size={12}/> {useCases.length} use case <ArrowRight size={12}/> {projects.length} project</div>
     </div>
   </section>
