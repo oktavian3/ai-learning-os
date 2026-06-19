@@ -32,7 +32,7 @@ const groups:Record<string,GlossaryGroup>={
   ]},
   "Prompting":{context:"Istilah ini menjelaskan cara memberi instruksi dan konteks agar output model lebih terarah.",analogy:"Prompt mirip brief kerja: hasilnya membaik saat tujuan, bahan, batas, dan contoh jelas",example:"digunakan saat meminta model menulis, menganalisis, mengubah format, atau memakai tool",why:"membuat penggunaan AI lebih konsisten dan mudah diuji",mistake:"mencari satu kalimat ajaib tanpa memperbaiki konteks dan contoh",terms:[
     ["Prompt","Instruksi atau input yang diberikan kepada model untuk menghasilkan respons.",["System Prompt","User Prompt","Prompt Template"]],
-    ["System Prompt","Instruksi tingkat sistem yang mengatur peran, aturan, dan batas perilaku model.",["User Prompt","Guardrails","Prompt Injection"]],
+    ["System Prompt","Instruksi tingkat sistem yang memengatur peran, aturan, dan batas perilaku model.",["User Prompt","Guardrails","Prompt Injection"]],
     ["User Prompt","Permintaan langsung dari pengguna dalam sebuah percakapan dengan model.",["System Prompt","Prompt","Context Window"]],
     ["Few-shot Prompting","Teknik memberi beberapa contoh input dan output agar model mengikuti pola.",["Zero-shot Prompting","Prompt Template","Structured Output"]],
     ["Zero-shot Prompting","Meminta model mengerjakan tugas tanpa memberikan contoh output.",["Few-shot Prompting","Prompt","LLM"]],
@@ -57,7 +57,7 @@ const groups:Record<string,GlossaryGroup>={
     ["Document QA","Sistem tanya-jawab yang menggunakan dokumen sebagai sumber utama.",["RAG","Knowledge Base","Citation"]]
   ]},
   "AI Agent":{context:"Istilah ini menjelaskan sistem AI yang merencanakan langkah, memakai tools, dan mengelola state.",analogy:"Seperti operator dengan tujuan, SOP, alat kerja, catatan, dan batas wewenang",example:"digunakan untuk riset bertahap, triage support, atau workflow yang membutuhkan beberapa keputusan",why:"membantu membedakan agent yang berguna dari chatbot dengan label baru",mistake:"memberi agent terlalu banyak akses tanpa approval, logging, dan batas biaya",terms:[
-    ["AI Agent","AI yang gak cuma jawab, tapi bisa menjalankan tugas lewat beberapa langkah dan memakai tools.",["Tool Calling","Memory","Agentic Workflow"]],
+    ["AI Agent","AI yang tidak hanya menjawab, tapi bisa menjalankan tugas lewat beberapa langkah dan memakai tools.",["Tool Calling","Memory","Agentic Workflow"]],
     ["Agentic Workflow","Workflow yang memberi model ruang untuk memilih langkah berikutnya dalam batas tertentu.",["AI Agent","Human-in-the-loop","Agent Orchestration"]],
     ["Tool Calling","Kemampuan model memilih dan meminta penggunaan tool eksternal.",["Function Calling","MCP","AI Agent"]],
     ["Function Calling","Cara model mengisi nama fungsi dan argumen sesuai schema terstruktur.",["Tool Calling","Structured Output","API"]],
@@ -65,11 +65,11 @@ const groups:Record<string,GlossaryGroup>={
     ["Planner Agent","Agent yang memecah tujuan menjadi rencana atau sub-tugas.",["Executor Agent","Chain-of-Thought","Agent Orchestration"]],
     ["Executor Agent","Agent yang menjalankan langkah atau tool berdasarkan rencana yang tersedia.",["Planner Agent","Tool Calling","AI Agent"]],
     ["Multi-Agent System","Sistem yang mengoordinasikan beberapa agent dengan peran berbeda.",["Agent Orchestration","Planner Agent","Executor Agent"]],
-    ["Agent Orchestration","Pengaturan alur, state, handoff, dan evaluasi antar-agent atau tools.",["Multi-Agent System","LangGraph","Human-in-the-loop"]],
+    ["Agent Orchestration","Pemengaturan alur, state, handoff, dan evaluasi antar-agent atau tools.",["Multi-Agent System","LangGraph","Human-in-the-loop"]],
     ["Human-in-the-loop","Titik kontrol yang meminta manusia meninjau atau menyetujui keputusan AI.",["Guardrails","AI Agent","Output Validation"]],
     ["MCP","Model Context Protocol, standar untuk menghubungkan aplikasi AI dengan tools dan sumber konteks.",["Tool Calling","API","AI Agent"]],
     ["LangGraph","Framework untuk membuat workflow agent berbasis graph dan state.",["Agent Orchestration","AI Agent","CrewAI"]],
-    ["CrewAI","Framework untuk mengatur beberapa agent berbasis peran dan tugas.",["Multi-Agent System","LangGraph","Agent Orchestration"]]
+    ["CrewAI","Framework untuk memengatur beberapa agent berbasis peran dan tugas.",["Multi-Agent System","LangGraph","Agent Orchestration"]]
   ]},
   "Automation & API":{context:"Istilah ini menjelaskan bagaimana aplikasi saling bertukar data dan menjalankan proses otomatis.",analogy:"Seperti jalur kerja digital: ada pemicu, aturan, tindakan, dan catatan hasil",example:"dipakai untuk memindahkan data form ke CRM, mengirim notifikasi, atau menjalankan jadwal",why:"membantu membangun integrasi yang dapat dipantau dan dirawat",mistake:"mengotomasi proses yang belum jelas tanpa error handling dan fallback",terms:[
     ["API","Antarmuka terstruktur yang memungkinkan dua aplikasi meminta data atau tindakan.",["Webhook","Function Calling","Rate Limit"]],
@@ -77,7 +77,7 @@ const groups:Record<string,GlossaryGroup>={
     ["Trigger","Peristiwa yang memulai sebuah workflow otomatis.",["Action","Webhook","Scheduler"]],
     ["Action","Langkah yang dijalankan setelah trigger atau kondisi terpenuhi.",["Trigger","Workflow Automation","API"]],
     ["Scheduler","Komponen yang menjalankan proses pada waktu atau interval tertentu.",["Trigger","Workflow Automation","Cron"]],
-    ["Workflow Automation","Rangkaian langkah otomatis yang memindahkan atau mengolah data antar-sistem.",["Trigger","Action","n8n"]],
+    ["Workflow Automation","Rangkaian langkah otomatis yang memindahkan atau mememroses data antar-sistem.",["Trigger","Action","n8n"]],
     ["n8n","Platform workflow automation visual dengan opsi self-host dan logic fleksibel.",["Make","Zapier","Webhook"]],
     ["Zapier","Platform automation untuk menghubungkan aplikasi melalui trigger dan action.",["Make","n8n","Workflow Automation"]],
     ["Make","Platform automation visual untuk membangun scenario dan memetakan aliran data.",["n8n","Zapier","API"]],
@@ -85,7 +85,7 @@ const groups:Record<string,GlossaryGroup>={
     ["CRM","Sistem untuk menyimpan dan mengelola hubungan, aktivitas, serta data pelanggan.",["Database","Workflow Automation","Lead Scoring"]],
     ["Google Sheets Automation","Penggunaan script atau workflow untuk membaca dan memperbarui spreadsheet secara otomatis.",["Workflow Automation","API","Database"]]
   ]},
-  "Model & Infrastructure":{context:"Istilah ini berhubungan dengan cara model dilatih, dijalankan, di-host, dan diukur biayanya.",analogy:"Seperti memilih mesin, tempat menjalankannya, jalur traffic, dan biaya bahan bakar",example:"muncul saat memilih deployment, mengatur kapasitas, atau menekan biaya aplikasi AI",why:"membantu builder mengambil keputusan teknis yang sesuai skala dan risiko",mistake:"memilih model hanya dari benchmark tanpa menguji latency, biaya, dan data sendiri",terms:[
+  "Model & Infrastructure":{context:"Istilah ini berhubungan dengan cara model dilatih, dijalankan, di-host, dan diukur biayanya.",analogy:"Seperti memilih mesin, tempat menjalankannya, jalur traffic, dan biaya bahan bakar",example:"muncul saat memilih deployment, memengatur kapasitas, atau menekan biaya aplikasi AI",why:"membantu builder mengambil keputusan teknis yang sesuai skala dan risiko",mistake:"memilih model hanya dari benchmark tanpa menguji latency, biaya, dan data sendiri",terms:[
     ["Fine-tuning","Pelatihan lanjutan untuk menyesuaikan perilaku model dengan contoh khusus.",["LoRA","Training Data","Foundation Model"]],
     ["LoRA","Teknik fine-tuning ringan yang melatih sebagian kecil parameter tambahan.",["Fine-tuning","Parameter","Open-source Model"]],
     ["Open-source Model","Model dengan bobot atau kode yang tersedia sesuai lisensi tertentu.",["Closed-source Model","Local Model","Fine-tuning"]],
@@ -142,8 +142,8 @@ export const glossary:DirectoryItem[]=Object.entries(groups).flatMap(([category,
   title:term,category,level:category==="Dasar AI"||category==="GenAI & LLM"?"Pemula":"Menengah",tag:"Istilah AI",description:definition,
   details:[`Nyambung ke: ${related.join(", ")}`],sections:[
     {title:"Definisi sederhana",content:definition},{title:"Penjelasan tanpa jargon",content:`${definition} Biasanya istilah ini ${group.example}.`},
-    {title:"Analogi",content:`${group.analogy}. ${term} kurang lebih bekerja di bagian yang ${index%2===0?"ngatur alurnya":"ngolah informasinya"}.`},
+    {title:"Analogi",content:`${group.analogy}. ${term} kurang lebih bekerja di bagian yang ${index%2===0?"mengatur alurnya":"memroses informasinya"}.`},
     {title:"Contoh penggunaan",content:`Contoh paling gampang: ${term} ${group.example}.`},{title:"Kenapa penting",content:`Kalau paham ${term}, kamu ${group.why}.`},
-    {title:"Istilah terkait",content:related},{title:"Kesalahan pemula",content:`Yang sering bikin keliru: ${group.mistake}. ${term} juga beda dengan ${related[0]}.`}
+    {title:"Istilah terkait",content:related},{title:"Kesalahan pemula",content:`Yang sering membuat keliru: ${group.mistake}. ${term} juga beda dengan ${related[0]}.`}
   ]
 })));
