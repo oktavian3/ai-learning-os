@@ -11,7 +11,7 @@ export default function Home(){return <>
     <div className="stat-float glass sf3"><strong style={{fontSize:18}}>Agent itu asisten yang kerja sendiri</strong><span>Bukan cuma chat biasa.</span></div>
     <div className="stat-float glass sf4"><strong style={{fontSize:18}}>Hasil belajar = penghasilan</strong><span>Bukan sekadar teori.</span></div>
     <div className="container hero-content"><span className="eyebrow"><span className="dot"/>AI Learning OS Indonesia</span>
-      <h1>Belajar AI dari nol. <span>Langsung praktek, tidak cuma teori.</span></h1>
+      <h1>Belajar AI dari nol sampai bisa praktek sendiri.</h1>
       <p className="hero-copy">Mulai dari GenAI, LLM, prompting, tools, workflow, automation, RAG, sampai AI agent. Fokusnya simpel: paham konsepnya, tahu cara pakainya, lalu bisa membuat sistem kerja sendiri.</p>
       <div className="hero-actions"><Link href="/roadmap" className="btn btn-primary">Mulai dari Roadmap <ArrowRight size={16}/></Link><Link href="/course" className="btn">Lihat Course <ArrowDown size={16}/></Link></div>
       <div className="mobile-stats"><span className="pill">Prompt itu brief yang jelas</span><span className="pill">Workflow &gt; trial-and-error</span><span className="pill">Agent kerja sendiri</span><span className="pill">Hasil belajar = penghasilan</span></div>
