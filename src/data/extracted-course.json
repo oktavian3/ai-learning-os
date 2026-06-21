@@ -1034,6 +1034,91 @@
           "notes": [
             "Tambahkan simulator webhook dengan contoh JSON."
           ]
+        },
+        {
+          "code": "M08.L03",
+          "title": "Testing API dengan Postman",
+          "slug": "testing-api-dengan-postman",
+          "concepts": [
+            "Postman sebagai API testing tool",
+            "Request builder: method, URL, headers, body",
+            "Response analysis: status code, body, headers",
+            "Environment variables dan collection",
+            "Menyimpan dan membagikan test result"
+          ],
+          "content": [
+            "Postman adalah aplikasi untuk mengirim request ke API dan melihat hasilnya. Sebelum mengotomasi sesuatu dengan API, penting untuk test manual dulu agar tahu apakah endpoint-nya benar, response-nya sesuai期望, dan error-nya bisa ditangani.",
+            "Setiap request punya komponen: method (GET, POST, PUT, DELETE), URL endpoint, headers (termasuk API key atau token), dan body (data yang dikirim). Response berisi status code (200 OK, 401 Unauthorized, 404 Not Found, 500 Server Error), body (hasil dari server), dan headers (metadata).",
+            "Postman memungkinkan menyimpan request dalam collection, menggunakan environment variables agar tidak hardcode API key, dan membuat test script sederhana untuk memverifikasi response. Ini memudahkan reproduksi dan berbagi hasil test dengan tim."
+          ],
+          "examples": [
+            "Contoh testing: Buka Postman, buat request GET ke https://api.example.com/users dengan header Authorization: Bearer [API_KEY]. Cek status code 200, pastikan response body berisi array user. Lalu buat request POST dengan body JSON untuk menambah data, cek status 201 Created."
+          ],
+          "exercises": [
+            "1. Install Postman atau pakai web version.",
+            "2. Cari API publik (misal JSONPlaceholder) dan buat request GET.",
+            "3. Analisis response: status code, headers, dan body.",
+            "4. Buat environment variable untuk base URL.",
+            "5. Buat collection dengan 3 request berbeda."
+          ],
+          "prompts": [
+            "Saya ingin mengecek apakah API saya berfungsi. Endpoint: [URL]. Method: [GET/POST]. Headers: [headers]. Body: [body]. Bantu saya membuat test plan di Postman yang mencakup: happy path, error cases, dan edge cases."
+          ],
+          "quiz": [
+            "Apa beda status code 200, 401, 404, dan 500?",
+            "Kenapa penting test API manual sebelum mengotomasi?",
+            "Apa gunanya environment variables di Postman?"
+          ],
+          "assignments": [
+            "Buat Postman collection untuk 3 endpoint berbeda dari satu API. Sertakan environment variables dan dokumentasikan response untuk masing-masing."
+          ],
+          "notes": [
+            "Postman available gratis untuk personal use.",
+            "Alternatif: Insomnia, HTTPie, atau curl di terminal."
+          ]
+        },
+        {
+          "code": "M08.L04",
+          "title": "Membangun Integrasi API Pertama",
+          "slug": "membangun-integrasi-api-pertama",
+          "concepts": [
+            "API integration pattern",
+            "Authentication methods: API key, OAuth, Bearer token",
+            "Error handling dan retry logic",
+            "Rate limiting dan backoff",
+            "Data mapping antar aplikasi"
+          ],
+          "content": [
+            "Integrasi API adalah menghubungkan dua atau lebih aplikasi agar data dan proses bisa mengalir otomatis. Pola dasarnya: aplikasi A mengirim request ke API aplikasi B, menerima response, lalu memproses data sesuai kebutuhan.",
+            "Setiap API punya cara autentikasi berbeda. API key paling sederhana: cukup tambahkan di header atau query parameter. OAuth lebih kompleks tapi lebih aman untuk akses data user. Bearer token biasanya didapat setelah login. Selalu simpan credential di tempat aman, jangan hardcode di kode.",
+            "Error handling penting dalam integrasi. Status code 429 artinya rate limit terlampaui — tunggu sebentar lalu coba lagi dengan exponential backoff. Status 500 artinya server error — coba lagi nanti. Status 400 artinya request salah — cek input. Selalu log error untuk debugging.",
+            "Data mapping adalah menghubungkan field dari satu aplikasi ke aplikasi lain. Misal: field 'name' di form → field 'full_name' di CRM. Pastikan format data sesuai (tanggal, angka, string) dan handle kasus kosong atau null."
+          ],
+          "examples": [
+            "Contoh integrasi: Form submission di website → webhook ke n8n → validate data → simpan ke Google Sheets → kirim notifikasi ke Slack. Setiap langkah menangani error: jika Sheets gagal, retry 3x; jika tetap gagal, log ke error spreadsheet."
+          ],
+          "exercises": [
+            "1. Pilih dua aplikasi yang ingin dihubungkan (misal form dan spreadsheet).",
+            "2. Dokumentasikan: endpoint, method, auth, request format, response format.",
+            "3. Buat flow diagram integrasi.",
+            "4. Test setiap endpoint manual.",
+            "5. Identifikasi semua kemungkinan error dan tentukan handling-nya."
+          ],
+          "prompts": [
+            "Saya ingin mengintegrasikan [APLIKASI A] dengan [APLIKASI B]. Tujuan: [TUJUAN]. Data yang perlu ditransfer: [DATA]. Bantu saya buat: 1) Daftar endpoint yang dibutuhkan, 2) Auth method, 3) Data mapping, 4) Error handling plan, 5) Test cases."
+          ],
+          "quiz": [
+            "Apa beda API key dan OAuth?",
+            "Kapan harus menggunakan retry dengan backoff?",
+            "Kenapa penting log error dalam integrasi?"
+          ],
+          "assignments": [
+            "Rancang integrasi sederhana antara dua aplikasi. Dokumentasikan: endpoint, auth, data mapping, error handling, dan test plan. Minimal 3 test cases."
+          ],
+          "notes": [
+            "Mulai dari integrasi paling sederhana dulu.",
+            "Gunakan n8n atau Make untuk prototipe sebelum coding manual."
+          ]
         }
       ]
     },
@@ -1255,6 +1340,96 @@
           ],
           "notes": [
             "Bagian ini adalah level pro. Hindari menjanjikan agent sebagai magic money printer."
+          ]
+        },
+        {
+          "code": "M10.L04",
+          "title": "Evaluasi dan Monitoring Agent",
+          "slug": "evaluasi-dan-monitoring-agent",
+          "concepts": [
+            "Agent evaluation metrics",
+            "Task completion rate",
+            "Token cost tracking",
+            "Latency measurement",
+            "Quality scoring",
+            "A/B testing agent",
+            "Logging dan observability"
+          ],
+          "content": [
+            "Agent yang sudah dibangun perlu dievaluasi secara berkala. Tanpa evaluasi, kita tidak tahu apakah agent benar-benar membantu atau justru menambah pekerjaan. Evaluasi bukan sekadar 'bisa jalan', tapi seberapa baik, seberapa cepat, dan seberapa murah.",
+            "Metrik utama: Task completion rate (berapa persen task selesai tanpa intervensi manusia), Token cost (berapa biaya LLM per task), Latency (berapa lama dari input sampai output final), dan Quality score (seberapa akurat dan berguna output-nya).",
+            "Observability adalah kemampuan melihat apa yang terjadi di dalam agent. Setiap step, decision, tool call, dan error harus dicatat. Ini penting untuk debugging ketika agent gagal, dan untuk mengidentifikasi pola yang bisa dioptimasi.",
+            "A/B testing agent melibatkan menjalankan dua versi agent dengan task yang sama, lalu membandingkan hasilnya. Ini membantu menentukan apakah perubahan prompt, tool, atau model benar-benar meningkatkan kualitas."
+          ],
+          "examples": [
+            "Contoh eval: Research agent menghasilkan 10 laporan. Dari 10, 7 akurat (70% completion rate). Biaya rata-rata $0.15 per laporan. Rata-rata waktu 45 detik. 3 laporan punya error: 1 timeout, 1 source tidak ditemukan, 1 output format salah.改进: tambah retry untuk timeout, perluas source coverage, perketat output format prompt."
+          ],
+          "exercises": [
+            "1. Jalankan agent dengan 10 task berbeda.",
+            "2. Catat: completion, cost, latency, error type.",
+            "3. Hitung metrik utama.",
+            "4. Identifikasi 3 perbaikan prioritas.",
+            "5. Implementasi perbaikan dan jalankan ulang."
+          ],
+          "prompts": [
+            "Saya punya agent [NAMA AGENT]. Saya ingin mengevaluasi performanya. Task yang dijalankan: [CONTOH TASK]. Bantu saya buat: 1) Evaluation rubric, 2) Metrik yang perlu diukur, 3) Test cases, 4) Cara scoring, 5) Threshold untuk pass/fail."
+          ],
+          "quiz": [
+            "Apa metrik paling penting untuk menilai agent?",
+            "Kapan agent dianggap 'cukup bagus' untuk production?",
+            "Apa beda latency dan throughput dalam konteks agent?"
+          ],
+          "assignments": [
+            "Buat evaluation framework untuk agent yang sudah ada. Tentukan minimal 4 metrik, 10 test cases, scoring rubric, dan threshold. Jalankan eval dan tulis laporan hasilnya."
+          ],
+          "notes": [
+            "Mulai dari metrik paling sederhana: completion rate dan cost.",
+            "Gunakan LangSmith, Langfuse, atau tracing built-in untuk observability."
+          ]
+        },
+        {
+          "code": "M10.L05",
+          "title": "Agent di Production: Safety dan Deployment",
+          "slug": "agent-di-production-safety-dan-deployment",
+          "concepts": [
+            "Production readiness checklist",
+            "Guardrails dan safety layers",
+            "Rate limiting dan cost control",
+            "Graceful degradation",
+            "Human-in-the-loop design",
+            "Rollback strategy",
+            "Monitoring alert"
+          ],
+          "content": [
+            "Agent yang bekerja di lab belum tentu siap production. Production意味着 agent harus bisa menangani error tanpa crash, tidak menghabiskan budget tak terbatas, tidak menghasilkan output berbahaya, dan bisa dipulihkan jika gagal.",
+            "Guardrails adalah batasan yang mencegah agent melakukan hal yang tidak diinginkan. Contoh: membatasi akses hanya ke tool tertentu, memblokir output yang mengandung data sensitif, membatasi jumlah tool call per task, dan memerlukan approval manusia untuk aksi berisiko tinggi.",
+            "Graceful degradation adalah kemampuan agent tetap berfungsi meski beberapa komponen gagal. Jika LLM utama down, fallback ke LLM cadangan. Jika tool tertentu error, beri tahu user dan skip langkah itu. Jangan biarkan seluruh agent mati karena satu kegagalan.",
+            "Human-in-the-loop berarti agent meminta persetujuan manusia di titik-titik kritis. Contoh: sebelum mengirim email ke klien, sebelum menghapus data, sebelum melakukan pembayaran. Ini menambah sedikit latency tapi mencegah kerusakan besar."
+          ],
+          "examples": [
+            "Contoh production agent: Lead qualification agent menerima form submission → validate data → score lead → jika skor > 80, kirim ke CRM dan notifikasi sales via Slack → jika skor < 40, archive → jika 40-80, queue untuk review manusia. Guardrails: max 100 leads/hari, blocked jika data mengandung PII tanpa consent, retry 3x jika API gagal."
+          ],
+          "exercises": [
+            "1. Buat production readiness checklist untuk agent kamu.",
+            "2. Identifikasi semua kemungkinan failure mode.",
+            "3. Tentukan guardrails: akses, output, rate limit.",
+            "4. Desain graceful degradation untuk 3 skenario.",
+            "5. Tentukan titik-titik human-in-the-loop."
+          ],
+          "prompts": [
+            "Saya ingin deploy agent ke production. Agent ini: [DESKRIPSI]. Bantu saya buat: 1) Readiness checklist, 2) Failure mode analysis, 3) Guardrails design, 4) Degradation plan, 5) Human approval points, 6) Rollback strategy."
+          ],
+          "quiz": [
+            "Apa itu graceful degradation dan kenapa penting?",
+            "Kapan human-in-the-loop wajib dibutuhkan?",
+            "Bagaimana cara mencegah agent menghabiskan budget tak terbatas?"
+          ],
+          "assignments": [
+            "Buat production deployment plan untuk agent. Sertakan: readiness checklist, failure modes, guardrails, degradation plan, monitoring setup, dan rollback procedure."
+          ],
+          "notes": [
+            "Jangan deploy agent tanpa minimal: error handling, rate limiting, dan logging.",
+            "Mulai dengan shadow mode (agent jalan tapi output tidak dipakai production) sebelum fully live."
           ]
         }
       ]

@@ -24,7 +24,7 @@ export default function Home(){return <>
   </div></section>
 
   <section className="section"><div className="container"><SectionHead no="02" title="Ada urutannya. Tidak perlu terburu-buru." lead="Kalau baru kenal prompt, tidak perlu langsung membuat multi-agent. Mulai dari posisi sekarang, selesaikan satu project, baru lanjut."/>
-    <div className="grid grid-3">{roadmap.slice(0,6).map(r=><div className="glass card" key={r.level}><div className="card-top"><span>LEVEL 0{r.level}</span><span>{r.lessons}</span></div><h3>{r.title}</h3><p>{r.learn}</p><ul className="list"><li>{r.output}</li><li>{r.project}</li></ul></div>)}</div>
+    <div className="grid grid-3">{roadmap.map(r=><div className="glass card" key={r.level}><div className="card-top"><span>LEVEL 0{r.level}</span><span>{r.lessons}</span></div><h3>{r.title}</h3><p>{r.learn}</p><ul className="list"><li>{r.output}</li><li>{r.project}</li></ul></div>)}</div>
     <Link href="/roadmap" className="btn" style={{marginTop:24}}>Buka roadmap <ArrowRight size={15}/></Link>
   </div></section>
 
@@ -33,7 +33,7 @@ export default function Home(){return <>
   </div></section>
 
   <section className="section"><div className="container"><SectionHead no="04" title="Mulai dari basic. Nanti ke advanced juga jalan sendiri." lead="Setiap modul punya penjelasan, contoh, latihan, prompt, cek pemahaman, dan tugas kecil. Sehingga tidak cuma dibaca lalu dilupakan."/>
-    <div className="grid grid-3">{courseModules.slice(0,6).map(m=><Link className="glass card" href={`/course/${m.slug}`} key={m.slug}><div className="card-top"><span>MODUL {String(m.number).padStart(2,"0")}</span><span className="pill">{m.difficulty}</span></div><h3>{m.title}</h3><p>{m.description}</p><div style={{marginTop:18,fontSize:12,color:"#75aaff"}}>{m.lessons.length} lesson · {m.duration}</div></Link>)}</div>
+    <div className="grid grid-3">{courseModules.map(m=><Link className="glass card" href={`/course/${m.slug}`} key={m.slug}><div className="card-top"><span>MODUL {String(m.number).padStart(2,"0")}</span><span className="pill">{m.difficulty}</span></div><h3>{m.title}</h3><p>{m.description}</p><div style={{marginTop:18,fontSize:12,color:"#75aaff"}}>{m.lessons.length} lesson · {m.duration}</div></Link>)}</div>
   </div></section>
 
   <section className="section section-dark"><div className="container"><SectionHead no="05" title="Tidak perlu mulai dari nol. Pakai template, pelajari, modif." lead="Cari tool yang pas, copy template, lihat workflow, lalu pelajari cara kerjanya."/>
