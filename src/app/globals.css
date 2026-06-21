@@ -15,6 +15,14 @@ button,input { font:inherit; }
 .brand-mark { width:29px; height:29px; display:grid; place-items:center; border:1px solid rgba(122,184,255,.45); border-radius:9px; background:linear-gradient(135deg,rgba(47,123,255,.25),rgba(0,194,255,.05)); box-shadow:0 0 30px rgba(47,123,255,.25); }
 .nav-links { display:flex; gap:22px; align-items:center; color:#aeb9c8; font-size:13px; }
 .nav-links a:hover,.nav-links a.active { color:white; }
+.nav-links-main { display:flex; gap:22px; align-items:center; }
+.nav-links-more { position:relative; }
+.nav-more-btn { background:none; border:none; color:#aeb9c8; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:4px; padding:0; }
+.nav-more-btn:hover { color:white; }
+.nav-dropdown { display:none; position:absolute; top:calc(100% + 12px); right:0; background:#0d1525; border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:8px 0; min-width:160px; z-index:100; }
+.nav-links-more:hover .nav-dropdown { display:block; }
+.nav-dropdown a { display:block; padding:8px 16px; color:#aeb9c8; font-size:13px; text-decoration:none; }
+.nav-dropdown a:hover { color:white; background:rgba(255,255,255,.05); }
 .menu-toggle { display:none; width:42px; height:42px; border-radius:13px; border:1px solid rgba(255,255,255,.12); background:#0b111d; color:white; align-items:center; justify-content:center; cursor:pointer; }
 .mobile-menu { display:none; border-top:1px solid rgba(255,255,255,.07); background:rgba(3,6,13,.97); }
 .mobile-menu-grid { padding-top:14px; padding-bottom:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
@@ -76,6 +84,6 @@ h1,h2,h3,p { margin-top:0; }
 .steps { list-style:none; padding:0; margin:24px 0 0; display:grid; gap:15px; }.steps li { display:grid; grid-template-columns:30px 1fr; gap:12px; align-items:start; }.steps li>span { width:30px; height:30px; display:grid; place-items:center; border-radius:10px; color:#b9d8ff; background:rgba(47,123,255,.13); border:1px solid rgba(122,184,255,.18); font-size:12px; }.steps p { margin:5px 0 0; color:#c2cbd7; line-height:1.5; font-size:14px; }
 .detail-layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:70px; align-items:start; }.sticky-card { position:sticky; top:100px; }
 .progress { height:5px; border-radius:999px; background:#172033; overflow:hidden; }.progress span { display:block; height:100%; background:linear-gradient(90deg,#2f7bff,#00c2ff); }
-@media (max-width:900px){ .nav-links{display:none}.menu-toggle{display:flex}.mobile-menu{display:block}.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}.timeline-card{grid-template-columns:65px 1fr}.timeline-meta{grid-column:2}.stat-float{display:none}.hero{min-height:650px}.hero-content{padding:100px 0 60px}.ribbon{width:800px}.footer-grid{grid-template-columns:1fr}.detail-layout{grid-template-columns:1fr;gap:28px}.sticky-card{position:static}.mobile-stats{display:flex!important;flex-wrap:wrap;gap:10px;margin-top:28px;justify-content:center} }
+@media (max-width:900px){ .nav-links{display:none}.nav-links-more{display:none}.menu-toggle{display:flex}.mobile-menu{display:block}.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}.timeline-card{grid-template-columns:65px 1fr}.timeline-meta{grid-column:2}.stat-float{display:none}.hero{min-height:650px}.hero-content{padding:100px 0 60px}.ribbon{width:800px}.footer-grid{grid-template-columns:1fr}.detail-layout{grid-template-columns:1fr;gap:28px}.sticky-card{position:static}.mobile-stats{display:flex!important;flex-wrap:wrap;gap:10px;margin-top:28px;justify-content:center} }
 @media (prefers-reduced-motion: reduce){ .ribbon{animation:none!important;filter:none}.card{transition:none}.btn{transition:none} }
 @media (max-width:620px){ .container{width:min(100% - 28px,1180px)}.launch-btn{display:none}.hero h1{font-size:48px}.hero-copy{font-size:16px}.section{padding:78px 0}.section-head{grid-template-columns:1fr;gap:8px}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.timeline-card{grid-template-columns:52px 1fr;padding:18px;gap:14px}.level-num{width:46px;height:46px}.footer-links{grid-template-columns:repeat(2,1fr)} }
