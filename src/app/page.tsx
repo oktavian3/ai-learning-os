@@ -24,8 +24,11 @@ export default function Home(){return <>
   </div></section>
 
   <section className="section"><div className="container"><SectionHead no="02" title="Ada urutannya. Tidak perlu terburu-buru." lead="Kalau baru kenal prompt, tidak perlu langsung membuat multi-agent. Mulai dari posisi sekarang, selesaikan satu project, baru lanjut."/>
-    <div className="grid grid-3">{roadmap.map(r=><div className="glass card" key={r.level}><div className="card-top"><span>LEVEL 0{r.level}</span><span>{r.lessons}</span></div><h3>{r.title}</h3><p>{r.learn}</p><ul className="list"><li>{r.output}</li><li>{r.project}</li></ul></div>)}</div>
-    <Link href="/roadmap" className="btn" style={{marginTop:24}}>Buka roadmap <ArrowRight size={15}/></Link>
+    <Link href="/roadmap" className="glass card roadmap-summary" style={{textDecoration:"none",display:"block"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}><span style={{fontSize:13,color:"#75aaff"}}>{roadmap.length} level tersedia</span><span className="pill">{roadmap[0].lessons} — {roadmap[roadmap.length-1].lessons}</span></div>
+      <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:20}}>{roadmap.map(r=><div key={r.level} style={{padding:"8px 14px",borderRadius:8,background:"rgba(117,170,255,.08)",border:"1px solid rgba(117,170,255,.15)",fontSize:13,color:"#aeb9c8"}}><strong style={{color:"white"}}>0{r.level}</strong> {r.title}</div>)}</div>
+      <span className="pill">Lihat roadmap lengkap <ArrowRight size={11}/></span>
+    </Link>
   </div></section>
 
   <section className="section section-dark"><div className="container"><SectionHead no="03" title="Pilih jalur sesuai profesi kamu." lead="Tidak semua orang harus jadi developer. Yang penting tahu AI mau dipakai buat bantu bagian mana."/>
@@ -33,7 +36,11 @@ export default function Home(){return <>
   </div></section>
 
   <section className="section"><div className="container"><SectionHead no="04" title="Mulai dari basic. Nanti ke advanced juga jalan sendiri." lead="Setiap modul punya penjelasan, contoh, latihan, prompt, cek pemahaman, dan tugas kecil. Sehingga tidak cuma dibaca lalu dilupakan."/>
-    <div className="grid grid-3">{courseModules.map(m=><Link className="glass card" href={`/course/${m.slug}`} key={m.slug}><div className="card-top"><span>MODUL {String(m.number).padStart(2,"0")}</span><span className="pill">{m.difficulty}</span></div><h3>{m.title}</h3><p>{m.description}</p><div style={{marginTop:18,fontSize:12,color:"#75aaff"}}>{m.lessons.length} lesson · {m.duration}</div></Link>)}</div>
+    <Link href="/course" className="glass card" style={{textDecoration:"none",display:"block",maxWidth:600}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}><span style={{fontSize:13,color:"#75aaff"}}>{courseModules.length} modul tersedia</span><span className="pill">{sourceLessonCount} lesson</span></div>
+      <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:20}}>{courseModules.map(m=><div key={m.slug} style={{padding:"6px 12px",borderRadius:8,background:m.difficulty==="Pemula"?"rgba(74,222,128,.08)":m.difficulty==="Menengah"?"rgba(251,191,36,.08)":"rgba(239,68,68,.08)",border:"1px solid "+(m.difficulty==="Pemula"?"rgba(74,222,128,.15)":m.difficulty==="Menengah"?"rgba(251,191,36,.15)":"rgba(239,68,68,.15)"),fontSize:12,color:"#aeb9c8"}}><strong style={{color:"white"}}>{String(m.number).padStart(2,"0")}</strong> {m.title}</div>)}</div>
+      <span className="pill">Lihat semua modul <ArrowRight size={11}/></span>
+    </Link>
   </div></section>
 
   <section className="section section-dark"><div className="container"><SectionHead no="05" title="Tidak perlu mulai dari nol. Pakai template, pelajari, modif." lead="Cari tool yang pas, copy template, lihat workflow, lalu pelajari cara kerjanya."/>
