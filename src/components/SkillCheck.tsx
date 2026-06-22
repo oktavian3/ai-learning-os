@@ -17,9 +17,11 @@ function getLevel(score: number) {
   return LEVELS.find(l => score >= l.min && score <= l.max) || LEVELS[0];
 }
 
-function ResultCard({ score, level }: { score: number; level: ReturnType<typeof getLevel> }) {
+function ResultCard({ score, level, username }: { score: number; level: ReturnType<typeof getLevel>; username: string }) {
   const maxScore = skillQuestions.length * 3;
   const pct = Math.round((score / maxScore) * 100);
+  const cleanUsername = username.replace(/^@/, "").trim();
+  const avatarUrl = cleanUsername ? `https://unavatar.io/twitter/${cleanUsername}` : "";
 
   return (
     <div id="skill-result-card" style={{
@@ -35,18 +37,31 @@ function ResultCard({ score, level }: { score: number; level: ReturnType<typeof 
         borderRadius: "50%",
       }} />
 
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+      {/* Header with avatar */}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
         <div style={{
-          width: 36, height: 36, borderRadius: 10,
+          width: 48, height: 48, borderRadius: 14,
           background: "linear-gradient(135deg, #75aaff, #3b82f6)",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 18, fontWeight: 700, color: "#fff",
-        }}>AI</div>
-        <div>
+          overflow: "hidden", flexShrink: 0,
+        }}>
+          {avatarUrl ? (
+            <img src={avatarUrl} alt={cleanUsername} style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+          ) : "AI"}
+        </div>
+        <div style={{ flex: 1 }}>
           <div style={{ fontSize: 14, fontWeight: 600, color: "#75aaff", letterSpacing: "0.05em" }}>AI LEARNING OS</div>
           <div style={{ fontSize: 11, color: "#64748b" }}>Skill Assessment Result</div>
         </div>
+        {cleanUsername && (
+          <div style={{
+            padding: "4px 10px", borderRadius: 8,
+            background: "rgba(117,170,255,0.08)", border: "1px solid rgba(117,170,255,0.15)",
+            fontSize: 12, color: "#75aaff", fontWeight: 500,
+          }}>@{cleanUsername}</div>
+        )}
       </div>
 
       {/* Level */}
@@ -92,6 +107,7 @@ function ResultCard({ score, level }: { score: number; level: ReturnType<typeof 
 export function SkillCheck() {
   const [idx, setIdx] = useState(0);
   const [scores, setScores] = useState<number[]>([]);
+  const [username, setUsername] = useState("");
   const [downloading, setDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -143,9 +159,11 @@ export function SkillCheck() {
   }, [level.name, score]);
 
   const handleTweet = useCallback(() => {
-    const text = encodeURIComponent(`Aku ${level.name} di AI Learning OS! 🧠\n\nSkor: ${score}/${skillQuestions.length * 3}\n\nTes level AI kamu juga:`);
+    const cleanU = username.replace(/^@/, "").trim();
+    const userLine = cleanU ? `\n@${cleanU}` : "";
+    const text = encodeURIComponent(`Aku ${level.name} di AI Learning OS! 🧠\n\nSkor: ${score}/${skillQuestions.length * 3}${userLine}\n\nTes level AI kamu juga:`);
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent("https://ai-learning-os.vercel.app/skill-check")}`, "_blank");
-  }, [level.name, score]);
+  }, [level.name, score, username]);
 
   if (done) {
     return (
@@ -162,9 +180,39 @@ export function SkillCheck() {
         {/* Shareable Card */}
         <div style={{ margin: "28px 0", display: "flex", justifyContent: "center" }}>
           <div ref={cardRef}>
-            <ResultCard score={score} level={level} />
+            <ResultCard score={score} level={level} username={username} />
           </div>
         </div>
+
+        {/* Username input */}
+        {!username && (
+          <div style={{ marginBottom: 20 }}>
+            <label style={{ fontSize: 13, color: "#94a3b8", display: "block", marginBottom: 6 }}>
+              Masukkan X username lo buat personalisasi card:
+            </label>
+            <div style={{ display: "flex", gap: 8 }}>
+              <div style={{ flex: 1, position: "relative" }}>
+                <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#64748b", fontSize: 14 }}>@</span>
+                <input
+                  type="text"
+                  placeholder="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && setUsername(username)}
+                  style={{
+                    width: "100%", paddingLeft: 28, paddingRight: 14, paddingTop: 10, paddingBottom: 10,
+                    borderRadius: 10, border: "1px solid rgba(117,170,255,0.2)",
+                    background: "rgba(117,170,255,0.05)", color: "#e2e8f0", fontSize: 14,
+                    outline: "none",
+                  }}
+                />
+              </div>
+              <button className="btn" onClick={() => setUsername(username)} style={{ padding: "10px 16px" }}>
+                Set
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Action buttons */}
         <div style={{ display: "flex", gap: 10, marginTop: 20, flexWrap: "wrap" }}>
