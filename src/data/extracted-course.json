@@ -429,7 +429,7 @@
             "Golden examples"
           ],
           "content": [
-            "Prompt tidak selalu langsung berhasil. Skill pentingnya bukan membuat prompt sempurna sekali jalan, tapi tahu cara mengevaluasi dan memperbaiki. Ketika output jelek, cari penyebab: task tidak jelas, konteks kurang, format tidak spesifik, contoh tidak ada, constraint bertabrakan, atau model yang dipakai tidak cocok.",
+            "Prompt tidak selalu langsung berhasil. Skill pentingnya bukan membuat prompt sempurna sekali jalan, tapi tau cara mengevaluasi dan memperbaiki. Ketika output jelek, cari penyebab: task tidak jelas, konteks kurang, format tidak spesifik, contoh tidak ada, constraint bertabrakan, atau model yang dipakai tidak cocok.",
             "Gunakan rubric untuk menilai output. Misalnya untuk artikel: akurasi, struktur, kedalaman, tone, contoh, actionable value, dan kebutuhan editing. Untuk customer support: akurasi kebijakan, empati, kejelasan, dan escalation. Untuk coding: correctness, security, maintainability, dan test coverage.",
             "Simpan prompt yang berhasil sebagai template. Simpan juga contoh output yang bagus sebagai golden examples. Ini membuat workflow lebih konsisten."
           ],
@@ -695,7 +695,7 @@
           ],
           "content": [
             "Web3 adalah niche yang sangat cocok dibantu AI karena informasinya padat, cepat berubah, dan sering teknis. AI bisa membantu membaca docs protocol, membuat summary tokenomics, membandingkan ecosystem, membuat thread edukasi, menganalisis governance proposal, dan membuat campaign plan komunitas.",
-            "Risikonya: AI bisa salah membaca istilah teknis, salah angka, atau tidak tahu update terbaru. Karena itu, gunakan sumber primer: docs resmi, governance forum, blog proyek, explorer, dan pengumuman resmi. AI dipakai untuk ekstraksi dan simplifikasi, bukan sumber final.",
+            "Risikonya: AI bisa salah membaca istilah teknis, salah angka, atau tidak tau update terbaru. Karena itu, gunakan sumber primer: docs resmi, governance forum, blog proyek, explorer, dan pengumuman resmi. AI dipakai untuk ekstraksi dan simplifikasi, bukan sumber final.",
             "Workflow Web3 yang kuat: ambil docs -> ekstrak konsep -> cek tokenomics -> cek use case -> cari risk -> buat angle konten -> tulis post -> fact-check. Ini bisa jadi pembeda besar website dibanding course AI generic."
           ],
           "examples": [
@@ -788,7 +788,7 @@
           ],
           "content": [
             "AI visual bukan hanya “generate gambar random”. Workflow yang benar: brief -> moodboard -> prompt visual -> generate -> select -> edit -> layout -> export. Untuk konten, hasil image model sering perlu dibawa ke design tool agar teks, layout, dan brand lebih rapi.",
-            "Untuk video, AI bisa membantu membuat script, storyboard, b-roll idea, avatar, voiceover, subtitle, clipping, dan repurpose. Untuk audio, AI bisa membantu noise removal, voiceover, podcast editing, dan text-to-speech. Skill utamanya tetap art direction: tahu output seperti apa yang diinginkan.",
+            "Untuk video, AI bisa membantu membuat script, storyboard, b-roll idea, avatar, voiceover, subtitle, clipping, dan repurpose. Untuk audio, AI bisa membantu noise removal, voiceover, podcast editing, dan text-to-speech. Skill utamanya tetap art direction: tau output seperti apa yang diinginkan.",
             "Ajarkan batasan: konsistensi karakter, teks dalam gambar, hak cipta style, likeness manusia, dan kualitas render. Untuk penggunaan komersial, selalu cek terms tiap tool."
           ],
           "examples": [
@@ -1047,7 +1047,7 @@
             "Menyimpan dan membagikan test result"
           ],
           "content": [
-            "Postman adalah aplikasi untuk mengirim request ke API dan melihat hasilnya. Sebelum mengotomasi sesuatu dengan API, penting untuk test manual dulu agar tahu apakah endpoint-nya benar, response-nya sesuai期望, dan error-nya bisa ditangani.",
+            "Postman adalah aplikasi untuk mengirim request ke API dan melihat hasilnya. Sebelum mengotomasi sesuatu dengan API, penting untuk test manual dulu tau apakah endpoint-nya benar, response-nya sesuai harapan, dan error-nya bisa ditangani.",
             "Setiap request punya komponen: method (GET, POST, PUT, DELETE), URL endpoint, headers (termasuk API key atau token), dan body (data yang dikirim). Response berisi status code (200 OK, 401 Unauthorized, 404 Not Found, 500 Server Error), body (hasil dari server), dan headers (metadata).",
             "Postman memungkinkan menyimpan request dalam collection, menggunakan environment variables agar tidak hardcode API key, dan membuat test script sederhana untuk memverifikasi response. Ini memudahkan reproduksi dan berbagi hasil test dengan tim."
           ],
@@ -1091,7 +1091,7 @@
           "content": [
             "Integrasi API adalah menghubungkan dua atau lebih aplikasi agar data dan proses bisa mengalir otomatis. Pola dasarnya: aplikasi A mengirim request ke API aplikasi B, menerima response, lalu memproses data sesuai kebutuhan.",
             "Setiap API punya cara autentikasi berbeda. API key paling sederhana: cukup tambahkan di header atau query parameter. OAuth lebih kompleks tapi lebih aman untuk akses data user. Bearer token biasanya didapat setelah login. Selalu simpan credential di tempat aman, jangan hardcode di kode.",
-            "Error handling penting dalam integrasi. Status code 429 artinya rate limit terlampaui — tunggu sebentar lalu coba lagi dengan exponential backoff. Status 500 artinya server error — coba lagi nanti. Status 400 artinya request salah — cek input. Selalu log error untuk debugging.",
+            "Error handling penting dalam integrasi. Status code 429 artinya rate limit terlampaui, tunggu sebentar lalu coba lagi dengan exponential backoff. Status 500 artinya server error, coba lagi nanti. Status 400 artinya request salah, cek input. Selalu log error untuk debugging.",
             "Data mapping adalah menghubungkan field dari satu aplikasi ke aplikasi lain. Misal: field 'name' di form → field 'full_name' di CRM. Pastikan format data sesuai (tanggal, angka, string) dan handle kasus kosong atau null."
           ],
           "examples": [
@@ -1142,7 +1142,7 @@
           ],
           "content": [
             "RAG atau Retrieval-Augmented Generation adalah teknik membuat model menjawab dengan mengambil informasi relevan dari knowledge base eksternal sebelum menghasilkan jawaban. AWS menjelaskan RAG sebagai proses mengoptimalkan output LLM agar merujuk pada basis pengetahuan otoritatif di luar data pelatihan model.",
-            "Masalah yang diselesaikan RAG: model tidak tahu data internal, data terbaru, atau dokumen spesifik. Dengan RAG, dokumen perusahaan, FAQ, policy, course material, atau database komunitas bisa dicari lalu dipakai sebagai konteks jawaban.",
+            "Masalah yang diselesaikan RAG: model tidak tau data internal, data terbaru, atau dokumen spesifik. Dengan RAG, dokumen perusahaan, FAQ, policy, course material, atau database komunitas bisa dicari lalu dipakai sebagai konteks jawaban.",
             "Pipeline dasar RAG: kumpulkan dokumen -> pecah menjadi chunk -> ubah menjadi embedding -> simpan di vector database -> saat user bertanya, cari chunk relevan -> berikan ke LLM -> LLM menjawab dengan sumber. RAG bukan obat semua hallucination, tapi membantu grounding jika data dan retrieval bagus."
           ],
           "examples": [
@@ -1356,7 +1356,7 @@
             "Logging dan observability"
           ],
           "content": [
-            "Agent yang sudah dibangun perlu dievaluasi secara berkala. Tanpa evaluasi, kita tidak tahu apakah agent benar-benar membantu atau justru menambah pekerjaan. Evaluasi bukan sekadar 'bisa jalan', tapi seberapa baik, seberapa cepat, dan seberapa murah.",
+            "Agent yang sudah dibangun perlu dievaluasi secara berkala. Tanpa evaluasi, kita tidak tau apakah agent benar-benar membantu atau justru menambah pekerjaan. Evaluasi bukan sekadar 'bisa jalan', tapi seberapa baik, seberapa cepat, dan seberapa murah.",
             "Metrik utama: Task completion rate (berapa persen task selesai tanpa intervensi manusia), Token cost (berapa biaya LLM per task), Latency (berapa lama dari input sampai output final), dan Quality score (seberapa akurat dan berguna output-nya).",
             "Observability adalah kemampuan melihat apa yang terjadi di dalam agent. Setiap step, decision, tool call, dan error harus dicatat. Ini penting untuk debugging ketika agent gagal, dan untuk mengidentifikasi pola yang bisa dioptimasi.",
             "A/B testing agent melibatkan menjalankan dua versi agent dengan task yang sama, lalu membandingkan hasilnya. Ini membantu menentukan apakah perubahan prompt, tool, atau model benar-benar meningkatkan kualitas."
@@ -1403,7 +1403,7 @@
           "content": [
             "Agent yang bekerja di lab belum tentu siap production. Production意味着 agent harus bisa menangani error tanpa crash, tidak menghabiskan budget tak terbatas, tidak menghasilkan output berbahaya, dan bisa dipulihkan jika gagal.",
             "Guardrails adalah batasan yang mencegah agent melakukan hal yang tidak diinginkan. Contoh: membatasi akses hanya ke tool tertentu, memblokir output yang mengandung data sensitif, membatasi jumlah tool call per task, dan memerlukan approval manusia untuk aksi berisiko tinggi.",
-            "Graceful degradation adalah kemampuan agent tetap berfungsi meski beberapa komponen gagal. Jika LLM utama down, fallback ke LLM cadangan. Jika tool tertentu error, beri tahu user dan skip langkah itu. Jangan biarkan seluruh agent mati karena satu kegagalan.",
+            "Graceful degradation adalah kemampuan agent tetap berfungsi meski beberapa komponen gagal. Jika LLM utama down, fallback ke LLM cadangan. Jika tool tertentu error, beri tau user dan skip langkah itu. Jangan biarkan seluruh agent mati karena satu kegagalan.",
             "Human-in-the-loop berarti agent meminta persetujuan manusia di titik-titik kritis. Contoh: sebelum mengirim email ke klien, sebelum menghapus data, sebelum melakukan pembayaran. Ini menambah sedikit latency tapi mencegah kerusakan besar."
           ],
           "examples": [
@@ -1583,7 +1583,7 @@
           ],
           "content": [
             "Skill AI bisa dimonetize lewat beberapa jalur. Jalur paling cepat biasanya jasa: content service, research service, design asset, automation setup, chatbot FAQ, atau training. Jalur lebih scalable: template, prompt pack, workflow pack, mini course, paid community, atau microtool.",
-            "Untuk pemula, mulai dari problem nyata yang sudah dipahami. Jangan langsung bikin SaaS kalau belum tahu siapa yang mau bayar. Mulai dari service manual-assisted: gunakan AI untuk delivery, manusia untuk quality control. Setelah pattern berulang, ubah menjadi template, automation, atau product.",
+            "Untuk pemula, mulai dari problem nyata yang sudah dipahami. Jangan langsung bikin SaaS kalau belum tau siapa yang mau bayar. Mulai dari service manual-assisted: gunakan AI untuk delivery, manusia untuk quality control. Setelah pattern berulang, ubah menjadi template, automation, atau product.",
             "Market Indonesia butuh solusi praktis: admin WhatsApp, konten jualan, invoice, katalog, laporan, customer support, edukasi, dan workflow UMKM. Untuk Web3/tech, jasa bisa lebih premium: research report, content system, KOL outreach, governance summary, community bot."
           ],
           "examples": [

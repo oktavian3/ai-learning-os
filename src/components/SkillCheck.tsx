@@ -26,12 +26,12 @@ function ResultCard({ score, level, username }: { score: number; level: ReturnTy
       width: 540, position: "relative", overflow: "hidden",
       borderRadius: 20, background: "#080c18",
     }}>
-      {/* Card image — your design, as-is */}
+      {/* Card image, your design, as-is */}
       <img src={level.image} alt={level.name} style={{
         width: "100%", display: "block",
       }} />
 
-      {/* Username + Avatar overlay — top right */}
+      {/* Username + Avatar overlay, top right */}
       {cleanUsername && (
         <div style={{
           position: "absolute", top: 20, right: 20,
@@ -129,7 +129,7 @@ export function SkillCheck() {
       }
     }
 
-    // Open Twitter with text — image is in clipboard for paste
+    // Open Twitter with text, image is in clipboard for paste
     const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(tweetUrl, "_blank", "width=600,height=400");
   }, [level.name, score, username]);
@@ -209,7 +209,7 @@ export function SkillCheck() {
   const q = skillQuestions[idx];
   return (
     <div className="glass card" style={{ padding: 36 }}>
-      {/* Username input — sebelum mulai kuis */}
+      {/* Username input, sebelum mulai kuis */}
       {idx === 0 && !usernameSet && (
         <div style={{ marginBottom: 28, padding: 20, borderRadius: 12, background: "rgba(59,130,246,0.05)", border: "1px solid rgba(59,130,246,0.15)" }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: "#60a5fa", marginBottom: 8 }}>

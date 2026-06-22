@@ -17,7 +17,7 @@ function Section({title,content}:{title:string;content:string|string[]}){
 
 export function ResourceDetail({item,type,basePath}:{item:DirectoryItem;type:string;basePath:string}){
   return <><header className="page-hero"><div className="container"><Link href={basePath} className="muted" style={{display:"flex",gap:8,alignItems:"center",fontSize:13}}><ArrowLeft size={14}/>Kembali</Link><div className="eyebrow" style={{marginTop:30}}><span className="dot"/>{item.category} · {item.level}</div><h1>{item.title}</h1><p>{item.description}</p></div></header>
-  <section className="section"><div className="container detail-layout"><div className="prose">{item.sections?.map(section=><Section key={section.title} {...section}/>)||<><h2>Yang perlu kamu tahu</h2><ul className="list">{item.details.map(detail=><li key={detail}>{detail}</li>)}</ul></>}{item.action&&<Section title="Prompt lengkap" content={item.action}/>}</div>
+  <section className="section"><div className="container detail-layout"><div className="prose">{item.sections?.map(section=><Section key={section.title} {...section}/>)||<><h2>Yang perlu kamu tau</h2><ul className="list">{item.details.map(detail=><li key={detail}>{detail}</li>)}</ul></>}{item.action&&<Section title="Prompt lengkap" content={item.action}/>}</div>
   <aside><div className="glass card sticky-card"><div className="card-top"><span>RINGKASAN</span><span className="pill">{item.tag}</span></div><h3>{item.title}</h3><p>{item.description}</p><ul className="list">{item.details.map(detail=><li key={detail}>{detail}</li>)}</ul></div></aside></div>
   <div className="container" style={{marginTop:54}}><Link href={basePath} className="btn">Lihat resource lain<ArrowRight size={14}/></Link></div></section></>;
 }
