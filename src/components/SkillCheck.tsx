@@ -193,6 +193,36 @@ export function SkillCheck() {
   const q = skillQuestions[idx];
   return (
     <div className="glass card" style={{ padding: 36 }}>
+      {/* Username input — sebelum mulai kuis */}
+      {idx === 0 && !username && (
+        <div style={{ marginBottom: 28, padding: 20, borderRadius: 12, background: "rgba(59,130,246,0.05)", border: "1px solid rgba(59,130,246,0.15)" }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: "#60a5fa", marginBottom: 8 }}>
+            Masukkan X username lo dulu biar card-nya personal 👇
+          </div>
+          <div style={{ display: "flex", gap: 8 }}>
+            <div style={{ flex: 1, position: "relative" }}>
+              <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#64748b", fontSize: 14 }}>@</span>
+              <input
+                type="text"
+                placeholder="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && setUsername(username)}
+                style={{
+                  width: "100%", paddingLeft: 28, paddingRight: 14, paddingTop: 10, paddingBottom: 10,
+                  borderRadius: 10, border: "1px solid rgba(117,170,255,0.2)",
+                  background: "rgba(117,170,255,0.05)", color: "#e2e8f0", fontSize: 14,
+                  outline: "none",
+                }}
+              />
+            </div>
+            <button className="btn" onClick={() => setUsername(username)} style={{ padding: "10px 16px" }}>
+              Set
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="progress"><span style={{ width: `${idx / skillQuestions.length * 100}%` }} /></div>
       <div className="card-top" style={{ marginTop: 24 }}>
         <span>Pertanyaan {idx + 1}/{skillQuestions.length}</span>
