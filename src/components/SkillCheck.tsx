@@ -6,11 +6,11 @@ import { Download, Share2, RotateCcw, ArrowRight } from "lucide-react";
 import { skillQuestions } from "@/data/library";
 
 const LEVELS = [
-  { min: 0, max: 6, name: "Beginner", focus: "Level 0–1", module: "AI Fundamentals", project: "Personal Prompt Library", emoji: "🌱", image: "/images/card-tier-1.jpg" },
-  { min: 7, max: 13, name: "AI Operator", focus: "Level 2–3", module: "Prompting That Actually Works", project: "Weekly Work Copilot", emoji: "⚙️", image: "/images/card-tier-2.jpg" },
-  { min: 14, max: 19, name: "Workflow Builder", focus: "Level 4", module: "Research & Content Workflow", project: "AI Content Creation System", emoji: "🔧", image: "/images/card-tier-3.jpg" },
-  { min: 20, max: 25, name: "Automation Builder", focus: "Level 5–6", module: "API, Webhook & Data Flow", project: "AI Lead Management", emoji: "🤖", image: "/images/card-tier-4.jpg" },
-  { min: 26, max: 30, name: "Agentic Builder", focus: "Level 7–9", module: "AI Agents & Orchestration", project: "Research Agent Terukur", emoji: "🧠", image: "/images/card-tier-5.jpg" },
+  { min: 0, max: 6, name: "Beginner", focus: "Level 0–1", module: "AI Fundamentals", project: "Personal Prompt Library", emoji: "🌱", image: "/images/publicimagescard-tier-1.png.png" },
+  { min: 7, max: 13, name: "AI Operator", focus: "Level 2–3", module: "Prompting That Actually Works", project: "Weekly Work Copilot", emoji: "⚙️", image: "/images/publicimagescard-tier-2.png.png" },
+  { min: 14, max: 19, name: "Workflow Builder", focus: "Level 4", module: "Research & Content Workflow", project: "AI Content Creation System", emoji: "🔧", image: "/images/publicimagescard-tier-3.png" },
+  { min: 20, max: 25, name: "Automation Builder", focus: "Level 5–6", module: "API, Webhook & Data Flow", project: "AI Lead Management", emoji: "🤖", image: "/images/publicimagescard-tier-4.png" },
+  { min: 26, max: 30, name: "Agentic Builder", focus: "Level 7–9", module: "AI Agents & Orchestration", project: "Research Agent Terukur", emoji: "🧠", image: "/images/publicimagescard-tier-5.png" },
 ];
 
 function getLevel(score: number) {
