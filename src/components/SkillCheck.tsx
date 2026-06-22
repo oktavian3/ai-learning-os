@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { toPng } from "html-to-image";
 import { Download, Share2, RotateCcw, ArrowRight } from "lucide-react";
@@ -17,8 +17,9 @@ function getLevel(score: number) {
   return LEVELS.find(l => score >= l.min && score <= l.max) || LEVELS[0];
 }
 
-function ResultCard({ score, level, username, avatarDataUrl }: { score: number; level: ReturnType<typeof getLevel>; username: string; avatarDataUrl: string }) {
+function ResultCard({ score, level, username }: { score: number; level: ReturnType<typeof getLevel>; username: string }) {
   const cleanUsername = username.replace(/^@/, "").trim();
+  const avatarUrl = cleanUsername ? `/api/avatar/${cleanUsername}` : "";
 
   return (
     <div id="skill-result-card" style={{
@@ -44,8 +45,8 @@ function ResultCard({ score, level, username, avatarDataUrl }: { score: number; 
             border: "2px solid rgba(59,130,246,0.5)",
             overflow: "hidden", flexShrink: 0, background: "#1e293b",
           }}>
-            {avatarDataUrl && (
-              <img src={avatarDataUrl} alt={cleanUsername} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            {avatarUrl && (
+              <img src={avatarUrl} alt={cleanUsername} crossOrigin="anonymous" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             )}
           </div>
           <span style={{ fontSize: 13, color: "#e2e8f0", fontWeight: 600 }}>@{cleanUsername}</span>
@@ -60,7 +61,6 @@ export function SkillCheck() {
   const [scores, setScores] = useState<number[]>([]);
   const [username, setUsername] = useState("");
   const [usernameSet, setUsernameSet] = useState(false);
-  const [avatarDataUrl, setAvatarDataUrl] = useState("");
   const [downloading, setDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -68,19 +68,6 @@ export function SkillCheck() {
   const score = scores.reduce((a, b) => a + b, 0);
   const level = getLevel(score);
   const cleanUsername = username.replace(/^@/, "").trim();
-
-  // Fetch avatar as data URL when username is set
-  useEffect(() => {
-    if (!cleanUsername) return;
-    fetch(`/api/avatar/${cleanUsername}`)
-      .then(r => r.ok ? r.blob() : Promise.reject())
-      .then(blob => {
-        const reader = new FileReader();
-        reader.onloadend = () => setAvatarDataUrl(reader.result as string);
-        reader.readAsDataURL(blob);
-      })
-      .catch(() => setAvatarDataUrl(""));
-  }, [cleanUsername]);
 
   const handleDownload = useCallback(async () => {
     if (!cardRef.current) return;
@@ -162,7 +149,7 @@ export function SkillCheck() {
         {/* Shareable Card */}
         <div style={{ margin: "28px 0", display: "flex", justifyContent: "center" }}>
           <div ref={cardRef}>
-            <ResultCard score={score} level={level} username={username} avatarDataUrl={avatarDataUrl} />
+            <ResultCard score={score} level={level} username={username} />
           </div>
         </div>
 
