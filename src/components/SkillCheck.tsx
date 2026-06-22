@@ -72,8 +72,8 @@ export function SkillCheck() {
   // Fetch avatar as data URL when username is set
   useEffect(() => {
     if (!cleanUsername) return;
-    fetch(`https://unavatar.io/twitter/${cleanUsername}`)
-      .then(r => r.blob())
+    fetch(`/api/avatar/${cleanUsername}`)
+      .then(r => r.ok ? r.blob() : Promise.reject())
       .then(blob => {
         const reader = new FileReader();
         reader.onloadend = () => setAvatarDataUrl(reader.result as string);
@@ -125,11 +125,26 @@ export function SkillCheck() {
     setDownloading(false);
   }, [level.name, score]);
 
-  const handleTweet = useCallback(() => {
+  const handleTweet = useCallback(async () => {
     const cleanU = username.replace(/^@/, "").trim();
     const userLine = cleanU ? `\n@${cleanU}` : "";
-    const text = encodeURIComponent(`Aku ${level.name} di AI Learning OS! 🧠\n\nSkor: ${score}/${skillQuestions.length * 3}${userLine}\n\nTes level AI kamu juga:`);
-    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent("https://ai-learning-os.vercel.app/skill-check")}`, "_blank");
+    const text = `Aku ${level.name} di AI Learning OS! 🧠\n\nSkor: ${score}/${skillQuestions.length * 3}${userLine}\n\nTes level AI kamu juga:`;
+
+    // Try to generate image and copy to clipboard for paste
+    if (cardRef.current) {
+      try {
+        const dataUrl = await toPng(cardRef.current, { quality: 1, pixelRatio: 2, backgroundColor: "#0a0e1a" });
+        const res = await fetch(dataUrl);
+        const blob = await res.blob();
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+      } catch (err) {
+        console.error("Failed to copy image:", err);
+      }
+    }
+
+    // Open Twitter with text — image is in clipboard for paste
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    window.open(tweetUrl, "_blank", "width=600,height=400");
   }, [level.name, score, username]);
 
   if (done) {
