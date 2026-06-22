@@ -61,6 +61,7 @@ export function SkillCheck() {
   const [idx, setIdx] = useState(0);
   const [scores, setScores] = useState<number[]>([]);
   const [username, setUsername] = useState("");
+  const [usernameSet, setUsernameSet] = useState(false);
   const [downloading, setDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -182,7 +183,7 @@ export function SkillCheck() {
 
         <div style={{ display: "flex", gap: 10, marginTop: 16, flexWrap: "wrap" }}>
           <Link href="/roadmap" className="btn btn-primary">Buka Roadmap</Link>
-          <button className="btn" onClick={() => { setIdx(0); setScores([]); }}>
+          <button className="btn" onClick={() => { setIdx(0); setScores([]); setUsername(""); setUsernameSet(false); }}>
             <RotateCcw size={14} /> Coba Lagi
           </button>
         </div>
@@ -194,7 +195,7 @@ export function SkillCheck() {
   return (
     <div className="glass card" style={{ padding: 36 }}>
       {/* Username input — sebelum mulai kuis */}
-      {idx === 0 && !username && (
+      {idx === 0 && !usernameSet && (
         <div style={{ marginBottom: 28, padding: 20, borderRadius: 12, background: "rgba(59,130,246,0.05)", border: "1px solid rgba(59,130,246,0.15)" }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: "#60a5fa", marginBottom: 8 }}>
             Masukkan X username lo dulu biar card-nya personal 👇
@@ -207,7 +208,7 @@ export function SkillCheck() {
                 placeholder="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && setUsername(username)}
+                onKeyDown={(e) => e.key === "Enter" && setUsernameSet(true)}
                 style={{
                   width: "100%", paddingLeft: 28, paddingRight: 14, paddingTop: 10, paddingBottom: 10,
                   borderRadius: 10, border: "1px solid rgba(117,170,255,0.2)",
@@ -216,7 +217,7 @@ export function SkillCheck() {
                 }}
               />
             </div>
-            <button className="btn" onClick={() => setUsername(username)} style={{ padding: "10px 16px" }}>
+            <button className="btn" onClick={() => setUsernameSet(true)} style={{ padding: "10px 16px" }}>
               Set
             </button>
           </div>
