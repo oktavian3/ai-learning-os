@@ -6,11 +6,11 @@ import { Download, Share2, RotateCcw, ArrowRight } from "lucide-react";
 import { skillQuestions } from "@/data/library";
 
 const LEVELS = [
-  { min: 0, max: 6, name: "Beginner", focus: "Level 0–1", module: "AI Fundamentals", project: "Personal Prompt Library", emoji: "🌱" },
-  { min: 7, max: 13, name: "AI Operator", focus: "Level 2–3", module: "Prompting That Actually Works", project: "Weekly Work Copilot", emoji: "⚙️" },
-  { min: 14, max: 19, name: "Workflow Builder", focus: "Level 4", module: "Research & Content Workflow", project: "AI Content Creation System", emoji: "🔧" },
-  { min: 20, max: 25, name: "Automation Builder", focus: "Level 5–6", module: "API, Webhook & Data Flow", project: "AI Lead Management", emoji: "🤖" },
-  { min: 26, max: 30, name: "Agentic Builder", focus: "Level 7–9", module: "AI Agents & Orchestration", project: "Research Agent Terukur", emoji: "🧠" },
+  { min: 0, max: 6, name: "Beginner", focus: "Level 0–1", module: "AI Fundamentals", project: "Personal Prompt Library", emoji: "🌱", image: "/images/card-tier-1.jpg" },
+  { min: 7, max: 13, name: "AI Operator", focus: "Level 2–3", module: "Prompting That Actually Works", project: "Weekly Work Copilot", emoji: "⚙️", image: "/images/card-tier-2.jpg" },
+  { min: 14, max: 19, name: "Workflow Builder", focus: "Level 4", module: "Research & Content Workflow", project: "AI Content Creation System", emoji: "🔧", image: "/images/card-tier-3.jpg" },
+  { min: 20, max: 25, name: "Automation Builder", focus: "Level 5–6", module: "API, Webhook & Data Flow", project: "AI Lead Management", emoji: "🤖", image: "/images/card-tier-4.jpg" },
+  { min: 26, max: 30, name: "Agentic Builder", focus: "Level 7–9", module: "AI Agents & Orchestration", project: "Research Agent Terukur", emoji: "🧠", image: "/images/card-tier-5.jpg" },
 ];
 
 function getLevel(score: number) {
@@ -22,83 +22,151 @@ function ResultCard({ score, level, username }: { score: number; level: ReturnTy
   const pct = Math.round((score / maxScore) * 100);
   const cleanUsername = username.replace(/^@/, "").trim();
   const avatarUrl = cleanUsername ? `https://unavatar.io/twitter/${cleanUsername}` : "";
+  const tierNum = String(LEVELS.indexOf(level) + 1).padStart(2, "0");
 
   return (
     <div id="skill-result-card" style={{
-      width: 540, padding: "40px 36px 32px", borderRadius: 20,
-      background: "linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0f172a 100%)",
-      border: "1px solid rgba(117,170,255,0.15)", position: "relative", overflow: "hidden",
+      width: 540, height: 760, borderRadius: 24,
+      position: "relative", overflow: "hidden",
       fontFamily: "'Inter', -apple-system, sans-serif", color: "#e2e8f0",
+      background: "#080c18",
     }}>
-      {/* Glow accent */}
-      <div style={{
-        position: "absolute", top: -60, right: -60, width: 200, height: 200,
-        background: "radial-gradient(circle, rgba(117,170,255,0.15) 0%, transparent 70%)",
-        borderRadius: "50%",
+      {/* Card image background */}
+      <img src={level.image} alt={level.name} style={{
+        position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+        objectFit: "cover", zIndex: 0,
       }} />
 
-      {/* Header with avatar */}
-      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: 14,
-          background: "linear-gradient(135deg, #75aaff, #3b82f6)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 18, fontWeight: 700, color: "#fff",
-          overflow: "hidden", flexShrink: 0,
-        }}>
-          {avatarUrl ? (
-            <img src={avatarUrl} alt={cleanUsername} style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-          ) : "AI"}
-        </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 14, fontWeight: 600, color: "#75aaff", letterSpacing: "0.05em" }}>AI LEARNING OS</div>
-          <div style={{ fontSize: 11, color: "#64748b" }}>Skill Assessment Result</div>
-        </div>
-        {cleanUsername && (
+      {/* Dark overlay for text readability */}
+      <div style={{
+        position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+        background: "linear-gradient(180deg, rgba(8,12,24,0.3) 0%, rgba(8,12,24,0.6) 40%, rgba(8,12,24,0.85) 70%, rgba(8,12,24,0.95) 100%)",
+        zIndex: 1,
+      }} />
+
+      {/* Content */}
+      <div style={{ position: "relative", zIndex: 2, padding: "32px 36px", height: "100%", display: "flex", flexDirection: "column" }}>
+        {/* Top: Badge + Username */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
           <div style={{
-            padding: "4px 10px", borderRadius: 8,
-            background: "rgba(117,170,255,0.08)", border: "1px solid rgba(117,170,255,0.15)",
-            fontSize: 12, color: "#75aaff", fontWeight: 500,
-          }}>@{cleanUsername}</div>
-        )}
-      </div>
+            display: "inline-flex", alignItems: "center", gap: 6,
+            padding: "6px 12px", borderRadius: 8,
+            background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.3)",
+            fontSize: 11, fontWeight: 700, color: "#60a5fa", letterSpacing: "0.1em",
+          }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#3b82f6" }} />
+            AI SKILL CHECK
+          </div>
+          {cleanUsername && (
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{
+                width: 32, height: 32, borderRadius: "50%",
+                border: "2px solid rgba(59,130,246,0.4)",
+                overflow: "hidden", flexShrink: 0,
+              }}>
+                {avatarUrl && (
+                  <img src={avatarUrl} alt={cleanUsername} style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                )}
+              </div>
+              <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 500 }}>@{cleanUsername}</span>
+            </div>
+          )}
+        </div>
 
-      {/* Level */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 13, color: "#64748b", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>Level Kamu</div>
-        <div style={{ fontSize: 38, fontWeight: 800, color: "#fff", lineHeight: 1.1 }}>
-          {level.emoji} {level.name}
-        </div>
-      </div>
+        {/* Title */}
+        <h1 style={{ fontSize: 42, fontWeight: 800, color: "#fff", marginBottom: 16, lineHeight: 1.1 }}>
+          {level.name}
+        </h1>
 
-      {/* Score bar */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-          <span style={{ fontSize: 13, color: "#94a3b8" }}>Skor</span>
-          <span style={{ fontSize: 13, fontWeight: 600, color: "#75aaff" }}>{score}/{maxScore} ({pct}%)</span>
+        {/* Score + Focus */}
+        <div style={{ display: "flex", gap: 16, marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{
+              width: 28, height: 28, borderRadius: 8,
+              background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.2)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            </div>
+            <div>
+              <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>Skor</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0" }}>{score}/{maxScore}</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{
+              width: 28, height: 28, borderRadius: 8,
+              background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.2)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </div>
+            <div>
+              <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>Fokus</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0" }}>{level.focus}</div>
+            </div>
+          </div>
         </div>
-        <div style={{ height: 8, borderRadius: 4, background: "#1e293b", overflow: "hidden" }}>
-          <div style={{ height: "100%", width: `${pct}%`, borderRadius: 4, background: "linear-gradient(90deg, #3b82f6, #75aaff)" }} />
-        </div>
-      </div>
 
-      {/* Info grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 28 }}>
-        <div style={{ padding: "12px 14px", borderRadius: 10, background: "rgba(117,170,255,0.06)", border: "1px solid rgba(117,170,255,0.1)" }}>
-          <div style={{ fontSize: 11, color: "#64748b", marginBottom: 4 }}>Fokus</div>
-          <div style={{ fontSize: 14, fontWeight: 600, color: "#e2e8f0" }}>{level.focus}</div>
-        </div>
-        <div style={{ padding: "12px 14px", borderRadius: 10, background: "rgba(117,170,255,0.06)", border: "1px solid rgba(117,170,255,0.1)" }}>
-          <div style={{ fontSize: 11, color: "#64748b", marginBottom: 4 }}>Module</div>
-          <div style={{ fontSize: 14, fontWeight: 600, color: "#e2e8f0" }}>{level.module}</div>
-        </div>
-      </div>
+        {/* Description */}
+        <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6, marginBottom: 20 }}>
+          {level.name === "Beginner" && "Baru mulai. Fokus dulu ke dasar dan cara pakai AI yang bener."}
+          {level.name === "AI Operator" && "Udah bisa pakai AI buat kerja harian, tinggal dirapihin sistemnya."}
+          {level.name === "Workflow Builder" && "Udah naik level. Sekarang bukan cuma prompt, tapi alur kerja."}
+          {level.name === "Automation Builder" && "Mulai masuk automation, API, dan sistem yang bisa jalan lebih mandiri."}
+          {level.name === "Agentic Builder" && "Udah masuk territory agent, orchestration, dan workflow yang lebih cerdas."}
+        </p>
 
-      {/* Footer */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 16, borderTop: "1px solid rgba(117,170,255,0.1)" }}>
-        <span style={{ fontSize: 12, color: "#475569" }}>ai-learning-os.vercel.app</span>
-        <span style={{ fontSize: 12, color: "#475569" }}>tes level AI kamu juga →</span>
+        {/* Spacer */}
+        <div style={{ flex: 1 }} />
+
+        {/* Tier + Form badges */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginBottom: 24 }}>
+          <div style={{
+            padding: "6px 14px", borderRadius: 8,
+            background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.25)",
+            display: "flex", alignItems: "center", gap: 6,
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#60a5fa" }}>TIER</span>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#fff" }}>{tierNum}</span>
+          </div>
+          <div style={{
+            padding: "6px 14px", borderRadius: 8,
+            background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.25)",
+            display: "flex", alignItems: "center", gap: 6,
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#22d3ee" }}>{level.name === "Beginner" ? "BASE" : level.name === "AI Operator" ? "EARLY" : level.name === "Workflow Builder" ? "FLOW" : level.name === "Automation Builder" ? "AUTO" : "FINAL"} FORM</span>
+          </div>
+        </div>
+
+        {/* Modules */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#60a5fa", letterSpacing: "0.1em", marginBottom: 10 }}>MODULE REKOMENDASI</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", borderRadius: 10, background: "rgba(15,23,42,0.6)", border: "1px solid rgba(59,130,246,0.15)" }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#60a5fa" }}>01</span>
+              <span style={{ fontSize: 13, color: "#e2e8f0" }}>{level.module}</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", borderRadius: 10, background: "rgba(15,23,42,0.6)", border: "1px solid rgba(59,130,246,0.15)" }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#60a5fa" }}>02</span>
+              <span style={{ fontSize: 13, color: "#e2e8f0" }}>{level.project}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <button style={{
+          width: "100%", padding: "14px 24px", borderRadius: 12,
+          background: "linear-gradient(135deg, #3b82f6, #06b6d4)",
+          border: "none", color: "#fff", fontSize: 14, fontWeight: 700,
+          cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+        }}>
+          {level.name === "Beginner" ? "Mulai dari Dasar" : level.name === "AI Operator" ? "Rapihin Cara Pakai" : level.name === "Workflow Builder" ? "Bangun Workflow" : level.name === "Automation Builder" ? "Masuk ke Automation" : "Naik ke Agent"}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </button>
       </div>
     </div>
   );
