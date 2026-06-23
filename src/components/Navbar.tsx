@@ -5,7 +5,7 @@ import {useState} from "react";
 import {ArrowUpRight,BrainCircuit,Menu,X} from "lucide-react";
 
 const desktopLinks=[["Home","/"],["Roadmap","/roadmap"],["Course","/course"],["Tools","/tools"],["Prompts","/prompts"],["Workflows","/workflows"]];
-const moreLinks=[["Use Cases","/use-cases"],["Projects","/projects"],["Jual Skill","/monetize"],["Kamus","/glossary"],["Cek Level","/skill-check"]];
+const moreLinks=[["Use Cases","/use-cases"],["Projects","/projects"],["Jual Skill","/monetize"],["Kamus","/glossary"]];
 const allLinks=[...desktopLinks,...moreLinks];
 
 export function Navbar(){
