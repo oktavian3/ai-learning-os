@@ -28,8 +28,11 @@ export default async function LessonPage({params}:{params:Promise<{moduleSlug:st
     <section className="section"><div className="container prose">
       <div className="glass card"><div className="card-top"><span>KALAU LESSON INI BERES</span><span>{lessonIndex+1}/{module.lessons.length}</span></div><ul className="list">{lesson.objectives.map(item=><li key={item}>{item}</li>)}</ul></div>
 
+      <h2>Sebelum mulai</h2>
+      <div className="glass card"><ul className="list">{lesson.prerequisites.map(item=><li key={item}>{item}</li>)}</ul><div className="callout" style={{marginTop:18}}><strong>Target belajar:</strong> {lesson.learningObjective}</div></div>
+
       <h2>Yang perlu kamu tangkap</h2>
-      <div className="grid grid-2">{lesson.concepts.map((concept,index)=><div className="glass card" key={concept}><div className="card-top"><span>0{index+1}</span><span className="dot"/></div><p style={{color:"#e5edf8",fontSize:15,margin:0}}>{concept}</p></div>)}</div>
+      <div className="concept-accordion">{lesson.concepts.map((concept,index)=><details key={concept.title} open={index===0}><summary><span>{String(index+1).padStart(2,"0")}</span><strong>{concept.title}</strong></summary><div className="concept-body"><p>{concept.explanation}</p><p><strong>Kenapa penting:</strong> {concept.whyItMatters}</p><p><strong>Contoh:</strong> {concept.example}</p>{concept.commonMistake&&<p><strong>Kesalahan pemula:</strong> {concept.commonMistake}</p>}</div></details>)}</div>
 
       <h2>Oke, sekarang kita bongkar</h2>
       {lesson.content.map(paragraph=><p key={paragraph}>{paragraph}</p>)}
@@ -43,6 +46,12 @@ export default async function LessonPage({params}:{params:Promise<{moduleSlug:st
       {lesson.quiz.length>0&&<><h2>Beneran paham, atau cuma terasa familiar?</h2><p>Jawab pakai bahasamu sendiri. Kalau masih muter-muter, bagian atasnya perlu dibaca sekali lagi.</p><div className="glass card"><ol className="steps">{lesson.quiz.map((question,index)=><li key={question}><span>{index+1}</span><p>{question}</p></li>)}</ol></div></>}
 
       {lesson.assignments.length>0&&<><h2>Bikin sesuatu dari lesson ini</h2>{lesson.assignments.map(item=><div className="callout" key={item}>{item}</div>)}</>}
+
+      {lesson.notes.length>0&&<><h2>Catatan dan batasan</h2><div className="glass card"><ul className="list">{lesson.notes.map(item=><li key={item}>{item}</li>)}</ul></div></>}
+
+      <h2>Langkah berikutnya</h2>
+      <div className="callout">{lesson.nextStep}</div>
+      <div className="filters" style={{marginTop:18}}>{lesson.relatedGlossary.map(slug=><Link className="pill" key={slug} href={`/glossary/${slug}`}>{slug.replace(/-/g," ")}</Link>)}</div>
 
       <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",marginTop:54,flexWrap:"wrap"}}><CompleteLesson id={`${module.slug}/${lesson.slug}`}/><Link className="btn btn-primary" href={nextHref}>{nextLabel}<ArrowRight size={15}/></Link></div>
     </div></section>

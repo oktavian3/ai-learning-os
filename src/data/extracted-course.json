@@ -1203,7 +1203,7 @@
             "Apa saja metrik evaluasi RAG sederhana?"
           ],
           "assignments": [
-            "Buat metadata schema untuk semua materi course AI Learning OS."
+            "Buat metadata schema untuk semua materi course Nurai."
           ],
           "notes": [
             "CMS lesson harus sudah siap untuk RAG: slug, module, level, summary, source, tags, updated_at."
