@@ -5,7 +5,7 @@ export async function GET(
   { params }: { params: Promise<{ username: string }> }
 ) {
   const { username } = await params;
-  const clean = username.replace(/^@/, "").trim();
+  const clean = username.replace(/^@+/, "").replace(/[^a-zA-Z0-9_]/g, "").slice(0, 15);
 
   if (!clean) {
     return NextResponse.json({ error: "username required" }, { status: 400 });
