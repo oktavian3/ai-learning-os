@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import {prompts} from "@/data/library";import {findResource,resourceSlug} from "@/data/resources";import {ResourceDetail} from "@/components/ResourceDetail";
+export function generateStaticParams(){return prompts.map(item=>({slug:resourceSlug(item)}))}export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const item=findResource(prompts,slug);if(!item)notFound();return <ResourceDetail item={item} type="prompts" basePath="/prompts"/>}

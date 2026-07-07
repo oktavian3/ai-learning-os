@@ -1,0 +1,594 @@
+{
+  "useCases": [
+    {
+      "title": "Belajar topik baru dengan tutor AI",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Meringkas buku/artikel/PDF",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Membuat CV dan cover letter",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Latihan interview",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Membuat jadwal belajar",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Membuat personal budget plan",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Membuat email penting",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Menyusun travel plan",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Membuat checklist keputusan",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Membuat personal knowledge base",
+      "category": "Individu & Produktivitas"
+    },
+    {
+      "title": "Riset trend",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Membuat hook",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Membuat thread/post X",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Script short video",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Carousel outline",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Newsletter draft",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Content repurpose",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Analisis performa post",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Analisis kompetitor",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Membuat meme/visual brief",
+      "category": "Content Creator"
+    },
+    {
+      "title": "Customer support FAQ",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Katalog produk",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Copy iklan",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Landing page copy",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "WhatsApp response template",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Invoice reminder",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "SOP admin",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Analisis review customer",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Campaign promo",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Laporan mingguan",
+      "category": "Bisnis & UMKM"
+    },
+    {
+      "title": "Proposal client",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Cold email",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Service page",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Case study",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Pricing tier",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Client onboarding",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Monthly report",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Contract summary",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Project brief",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "Delivery checklist",
+      "category": "Freelancer & Agency"
+    },
+    {
+      "title": "PRD app",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Generate UI",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Debug error",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Code review",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Unit test",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "API integration",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Documentation",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "RAG chatbot",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Agent spec",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Deployment checklist",
+      "category": "Developer/Builder"
+    },
+    {
+      "title": "Protocol docs summary",
+      "category": "Web3"
+    },
+    {
+      "title": "Tokenomics breakdown",
+      "category": "Web3"
+    },
+    {
+      "title": "Governance proposal summary",
+      "category": "Web3"
+    },
+    {
+      "title": "Narrative mapping",
+      "category": "Web3"
+    },
+    {
+      "title": "KOL campaign plan",
+      "category": "Web3"
+    },
+    {
+      "title": "Community FAQ bot",
+      "category": "Web3"
+    },
+    {
+      "title": "Discord moderation SOP",
+      "category": "Web3"
+    },
+    {
+      "title": "Airdrop research",
+      "category": "Web3"
+    },
+    {
+      "title": "On-chain report simplification",
+      "category": "Web3"
+    },
+    {
+      "title": "Research-to-thread workflow",
+      "category": "Web3"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "AI Tutor",
+      "template": "Jelaskan [topik] dari nol untuk orang yang belum paham. Pakai analogi sederhana, contoh lokal Indonesia, kesalahan umum, dan latihan kecil di akhir."
+    },
+    {
+      "title": "Prompt Improver",
+      "template": "Ubah prompt mentah ini menjadi prompt yang lebih jelas. Susun dengan task, context, goal, audience, format, constraints, examples, dan evaluation criteria. Prompt: [prompt]."
+    },
+    {
+      "title": "Research Plan",
+      "template": "Buat research plan untuk topik [topik]. Beri research question, keyword pencarian, jenis sumber yang dibutuhkan, risiko bias, dan format report."
+    },
+    {
+      "title": "Source Audit",
+      "template": "Audit klaim berikut. Tandai klaim yang aman, perlu dicek, atau berisiko salah. Beri sumber yang harus dicari untuk verifikasi. Teks: [teks]."
+    },
+    {
+      "title": "Content Angle",
+      "template": "Buat 20 angle konten untuk topik [topik] bagi audience [audience]. Hindari angle generik. Format: hook, insight, why it matters, output format."
+    },
+    {
+      "title": "Hook Generator",
+      "template": "Buat 30 hook untuk post X tentang [topik]. Gaya pendek, tajam, natural, tidak formal, tanpa hashtag."
+    },
+    {
+      "title": "Rewrite Natural ID",
+      "template": "Rewrite teks ini agar natural Bahasa Indonesia, tidak kaku, tidak terasa terjemahan, dan cocok untuk [platform]. Teks: [teks]."
+    },
+    {
+      "title": "Thread Builder",
+      "template": "Ubah brief ini menjadi thread X 6-8 tweet. Hook kuat, flow jelas, no corporate tone, facts intact. Brief: [brief]."
+    },
+    {
+      "title": "Workflow Builder",
+      "template": "Ubah pekerjaan [pekerjaan] menjadi AI workflow: trigger, input, step, prompt tiap step, tools, review, output, dan metric."
+    },
+    {
+      "title": "Automation Blueprint",
+      "template": "Rancang automation untuk [proses]. Isi trigger, condition, AI step, action, log, fallback, approval, dan risiko."
+    },
+    {
+      "title": "RAG Design",
+      "template": "Rancang RAG chatbot untuk [dokumen/use case]. Isi data source, metadata, chunking, query examples, answer format, dan evaluation test."
+    },
+    {
+      "title": "Agent Spec",
+      "template": "Rancang AI agent untuk [tujuan]. Isi role, tools, memory, state, allowed actions, forbidden actions, approval, dan failure mode."
+    },
+    {
+      "title": "Tool Selection",
+      "template": "Pilih tools AI untuk task [task] dengan budget [budget]. Beri opsi terbaik, murah, aman, dan trade-off."
+    },
+    {
+      "title": "Offer Builder",
+      "template": "Ubah skill [skill] menjadi jasa AI. Buat problem, target client, offer, deliverables, price tier, process, dan pitch."
+    },
+    {
+      "title": "Case Study",
+      "template": "Ubah project [project] menjadi case study: problem, baseline, process, tools, result, before-after, metric, screenshot, dan pitch."
+    }
+  ],
+  "workflows": [
+    {
+      "title": "AI Content Machine",
+      "steps": "Riset trend -> angle -> hook -> draft -> edit voice -> visual brief -> publish -> analytics -> repurpose",
+      "audience": "Creator, marketer"
+    },
+    {
+      "title": "AI Research Report",
+      "steps": "Question -> source search -> claim extraction -> verification -> synthesis -> report -> content derivatives",
+      "audience": "Researcher, creator"
+    },
+    {
+      "title": "UMKM Support Bot",
+      "steps": "FAQ -> policy -> response template -> chatbot/no-code -> escalation -> log review",
+      "audience": "UMKM, agency"
+    },
+    {
+      "title": "Lead Qualification",
+      "steps": "Form -> classify lead -> score -> CRM update -> personalized follow-up -> sales notification",
+      "audience": "Freelancer, business"
+    },
+    {
+      "title": "Course Builder",
+      "steps": "Audience -> roadmap -> module -> lesson -> quiz -> project -> CMS upload -> AI assistant indexing",
+      "audience": "Educator"
+    },
+    {
+      "title": "Web3 Docs to Thread",
+      "steps": "Docs -> concept extraction -> risk -> tokenomics -> narrative -> hook -> thread -> fact-check",
+      "audience": "Web3 creator"
+    },
+    {
+      "title": "AI Design Pack",
+      "steps": "Brief -> moodboard -> image prompt -> generate -> layout -> export -> resize -> publish",
+      "audience": "Designer, creator"
+    },
+    {
+      "title": "Newsletter System",
+      "steps": "Source list -> summarize -> cluster topics -> choose angle -> draft -> edit -> subject lines -> schedule",
+      "audience": "Creator, business"
+    },
+    {
+      "title": "Internal Knowledge Base",
+      "steps": "Collect docs -> clean -> metadata -> chunk -> vector store -> chatbot -> evaluation -> update routine",
+      "audience": "Business, builder"
+    },
+    {
+      "title": "Client Delivery System",
+      "steps": "Brief -> scope -> workflow -> draft output -> review -> revision -> final delivery -> case study",
+      "audience": "Freelancer"
+    }
+  ],
+  "projects": [
+    {
+      "level": "Beginner",
+      "title": "Prompt Library Pribadi",
+      "description": "Kumpulkan 30 prompt untuk pekerjaan harian, uji, dan beri rating."
+    },
+    {
+      "level": "Beginner",
+      "title": "AI Glossary Bahasa Indonesia",
+      "description": "Buat 50 istilah AI dengan definisi pendek dan contoh."
+    },
+    {
+      "level": "Beginner",
+      "title": "Study Assistant",
+      "description": "Buat sistem belajar satu topik: roadmap, flashcard, quiz, dan latihan."
+    },
+    {
+      "level": "Intermediate",
+      "title": "Content Calendar 30 Hari",
+      "description": "Buat kalender, hook, draft, visual brief, dan repurpose plan."
+    },
+    {
+      "level": "Intermediate",
+      "title": "AI Newsletter System",
+      "description": "Buat workflow newsletter dari riset sumber sampai final draft."
+    },
+    {
+      "level": "Intermediate",
+      "title": "Client Proposal Generator",
+      "description": "Buat prompt dan template untuk proposal jasa."
+    },
+    {
+      "level": "Intermediate",
+      "title": "UMKM FAQ Bot Blueprint",
+      "description": "Buat FAQ, policy, response style, dan escalation flow."
+    },
+    {
+      "level": "Advanced",
+      "title": "RAG Chatbot dari PDF",
+      "description": "Rancang ingestion, metadata, retrieval, answer format, dan test cases."
+    },
+    {
+      "level": "Advanced",
+      "title": "AI Agent Researcher",
+      "description": "Buat spec agent riset dengan tools, source rules, dan evaluator."
+    },
+    {
+      "level": "Advanced",
+      "title": "Multi-Agent Content Team",
+      "description": "Rancang researcher, writer, editor, fact-checker, dan publisher assistant."
+    },
+    {
+      "level": "Advanced",
+      "title": "AI Automation for Leads",
+      "description": "Buat no-code automation lead scoring dengan AI summary dan follow-up."
+    },
+    {
+      "level": "Pro",
+      "title": "AI Microtool MVP",
+      "description": "PRD, user flow, data model, prompt/API, landing page, dan monetization plan."
+    }
+  ],
+  "glossary": [
+    {
+      "title": "AI",
+      "definition": "Teknologi yang membuat mesin melakukan tugas yang biasanya butuh kecerdasan manusia."
+    },
+    {
+      "title": "Machine Learning",
+      "definition": "Cabang AI yang belajar pola dari data."
+    },
+    {
+      "title": "Deep Learning",
+      "definition": "Machine learning yang memakai neural network berlapis."
+    },
+    {
+      "title": "Generative AI",
+      "definition": "AI yang menghasilkan konten baru dari prompt."
+    },
+    {
+      "title": "Foundation Model",
+      "definition": "Model besar yang bisa menjadi dasar banyak aplikasi AI."
+    },
+    {
+      "title": "LLM",
+      "definition": "Large Language Model, model AI besar untuk memproses dan menghasilkan bahasa."
+    },
+    {
+      "title": "Token",
+      "definition": "Potongan teks yang dibaca model."
+    },
+    {
+      "title": "Context Window",
+      "definition": "Batas informasi yang bisa diproses model dalam satu request/percakapan."
+    },
+    {
+      "title": "Prompt",
+      "definition": "Instruksi atau input yang diberikan ke AI."
+    },
+    {
+      "title": "System Prompt",
+      "definition": "Instruksi dasar yang mengatur perilaku model/aplikasi."
+    },
+    {
+      "title": "Few-shot Prompting",
+      "definition": "Memberi beberapa contoh agar model mengikuti pola output."
+    },
+    {
+      "title": "Context Engineering",
+      "definition": "Merancang konteks, dokumen, tools, dan memory agar AI bekerja lebih baik."
+    },
+    {
+      "title": "Hallucination",
+      "definition": "Output AI yang salah atau tidak berdasar tapi terdengar meyakinkan."
+    },
+    {
+      "title": "Embedding",
+      "definition": "Representasi numerik dari teks/gambar untuk pencarian kemiripan."
+    },
+    {
+      "title": "Vector Database",
+      "definition": "Database untuk menyimpan dan mencari embedding."
+    },
+    {
+      "title": "RAG",
+      "definition": "Teknik mengambil informasi dari knowledge base lalu memakai LLM untuk menjawab."
+    },
+    {
+      "title": "Chunking",
+      "definition": "Memecah dokumen menjadi potongan kecil untuk retrieval."
+    },
+    {
+      "title": "Retrieval",
+      "definition": "Proses mencari konteks/dokumen relevan."
+    },
+    {
+      "title": "Tool Calling",
+      "definition": "Kemampuan AI memanggil fungsi/tool eksternal."
+    },
+    {
+      "title": "Agent",
+      "definition": "Aplikasi AI yang bisa merencanakan, memakai tools, dan menyelesaikan task multi-step."
+    },
+    {
+      "title": "Orchestration",
+      "definition": "Pengaturan alur kerja agent, tools, state, dan handoff."
+    },
+    {
+      "title": "Guardrails",
+      "definition": "Batasan dan aturan keamanan untuk output/action AI."
+    },
+    {
+      "title": "Human-in-the-loop",
+      "definition": "Manusia tetap masuk dalam proses review/approval."
+    },
+    {
+      "title": "Webhook",
+      "definition": "Notifikasi otomatis dari satu aplikasi ke aplikasi lain saat event terjadi."
+    },
+    {
+      "title": "API",
+      "definition": "Jembatan agar aplikasi bisa saling bertukar data/fungsi."
+    },
+    {
+      "title": "Rate Limit",
+      "definition": "Batas jumlah request dalam periode tertentu."
+    },
+    {
+      "title": "Fine-tuning",
+      "definition": "Melatih ulang/menyesuaikan model pada data tertentu."
+    },
+    {
+      "title": "Inference",
+      "definition": "Proses model menghasilkan output dari input."
+    },
+    {
+      "title": "Multimodal",
+      "definition": "Kemampuan AI memproses lebih dari teks, misalnya gambar/audio/video."
+    },
+    {
+      "title": "Evaluation",
+      "definition": "Proses menilai kualitas output atau sistem AI."
+    }
+  ],
+  "quiz": [
+    {
+      "topic": "AI Fundamentals",
+      "question": "Jelaskan beda AI, ML, DL, dan GenAI dengan contoh.",
+      "answer": "AI payung besar; ML belajar dari data; DL neural network; GenAI membuat konten baru."
+    },
+    {
+      "topic": "GenAI",
+      "question": "Kenapa GenAI bisa hallucinate?",
+      "answer": "Model memprediksi pola bahasa, bukan selalu mengambil fakta dari database valid."
+    },
+    {
+      "topic": "Prompting",
+      "question": "Sebutkan komponen prompt yang bagus.",
+      "answer": "Task, context, goal, audience, format, constraints, examples, evaluation."
+    },
+    {
+      "topic": "Research",
+      "question": "Apa beda sumber primer dan sekunder?",
+      "answer": "Primer berasal dari pihak asal/data resmi; sekunder adalah interpretasi pihak lain."
+    },
+    {
+      "topic": "Workflow",
+      "question": "Apa beda prompt dan workflow?",
+      "answer": "Prompt instruksi tunggal; workflow rangkaian proses berulang."
+    },
+    {
+      "topic": "Automation",
+      "question": "Apa itu trigger dan action?",
+      "answer": "Trigger pemicu; action tindakan yang dijalankan."
+    },
+    {
+      "topic": "RAG",
+      "question": "Sebutkan pipeline RAG.",
+      "answer": "Dokumen -> chunk -> embedding -> vector store -> retrieval -> generation -> citation/evaluation."
+    },
+    {
+      "topic": "Agent",
+      "question": "Apa beda chatbot dan agent?",
+      "answer": "Chatbot menjawab; agent bisa menjalankan task multi-step dengan tools/state."
+    },
+    {
+      "topic": "Safety",
+      "question": "Apa itu prompt injection?",
+      "answer": "Input yang mencoba mengubah instruksi/perilaku model secara tidak sah."
+    },
+    {
+      "topic": "Monetization",
+      "question": "Sebutkan 5 cara monetize skill AI.",
+      "answer": "Jasa, template, automation, chatbot, training, microtool, consulting."
+    }
+  ]
+}

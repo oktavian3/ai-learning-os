@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import {workflows} from "@/data/library";import {findResource,resourceSlug} from "@/data/resources";import {ResourceDetail} from "@/components/ResourceDetail";
+export function generateStaticParams(){return workflows.map(item=>({slug:resourceSlug(item)}))}export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const item=findResource(workflows,slug);if(!item)notFound();return <ResourceDetail item={item} type="workflows" basePath="/workflows"/>}

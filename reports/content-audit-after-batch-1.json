@@ -1,0 +1,154 @@
+{
+  "generatedAt": "2026-07-06T13:46:12.121Z",
+  "counts": {
+    "sourceLessons": 39,
+    "renderedCourseLessons": 39,
+    "courseModules": 14,
+    "glossary": 112,
+    "useCases": 100,
+    "workflows": 28,
+    "tools": 53,
+    "prompts": 60,
+    "projects": 12,
+    "monetization": 8
+  },
+  "routes": {
+    "totalListed": 276,
+    "sample": [
+      "/",
+      "/course",
+      "/course/ai-fundamentals",
+      "/course/generative-ai-llm",
+      "/course/prompting",
+      "/course/daily-work",
+      "/course/tools-mastery",
+      "/course/research-content",
+      "/course/automation-basics",
+      "/course/api-webhook",
+      "/course/rag-knowledge-base",
+      "/course/ai-agents",
+      "/course/agent-orchestration",
+      "/course/safety-evaluation",
+      "/course/monetization",
+      "/course/portfolio-capstone",
+      "/course/ai-fundamentals/apa-itu-ai-dan-kenapa-sekarang-meledak",
+      "/course/ai-fundamentals/hallucination-bias-dan-batasan-ai",
+      "/course/generative-ai-llm/apa-itu-generative-ai",
+      "/course/generative-ai-llm/llm-token-context-window-dan-multimodal",
+      "/course/generative-ai-llm/jenis-model-dan-cara-memilih-model",
+      "/course/generative-ai-llm/ai-sebagai-copilot-bukan-autopilot",
+      "/course/generative-ai-llm/ai-untuk-bahasa-indonesia-natural-lokal-dan-tidak-kaku",
+      "/course/prompting/anatomi-prompt-yang-bagus",
+      "/course/prompting/few-shot-prompting-dan-contoh-output"
+    ],
+    "courseLessons": [
+      "/course/ai-fundamentals/apa-itu-ai-dan-kenapa-sekarang-meledak",
+      "/course/ai-fundamentals/hallucination-bias-dan-batasan-ai",
+      "/course/generative-ai-llm/apa-itu-generative-ai",
+      "/course/generative-ai-llm/llm-token-context-window-dan-multimodal",
+      "/course/generative-ai-llm/jenis-model-dan-cara-memilih-model",
+      "/course/generative-ai-llm/ai-sebagai-copilot-bukan-autopilot",
+      "/course/generative-ai-llm/ai-untuk-bahasa-indonesia-natural-lokal-dan-tidak-kaku",
+      "/course/prompting/anatomi-prompt-yang-bagus",
+      "/course/prompting/few-shot-prompting-dan-contoh-output",
+      "/course/prompting/context-engineering-naik-level-dari-prompt-engineering",
+      "/course/prompting/prompt-evaluation-dan-debugging",
+      "/course/daily-work/ai-untuk-riset-dari-browsing-sampai-report",
+      "/course/daily-work/ai-untuk-writing-artikel-email-dokumen-dan-laporan",
+      "/course/daily-work/ai-untuk-spreadsheet-data-ringan-dan-decision-support",
+      "/course/tools-mastery/ai-tools-directory-kategori-bukan-hafalan-tools",
+      "/course/tools-mastery/ai-untuk-design-image-video-dan-audio",
+      "/course/tools-mastery/ai-untuk-coding-dan-no-code-app-builder",
+      "/course/research-content/ai-content-system-dari-trend-sampai-publishing",
+      "/course/research-content/ai-untuk-marketing-persona-copy-funnel-dan-campaign",
+      "/course/research-content/ai-untuk-web3-research-dan-content",
+      "/course/automation-basics/dari-prompt-ke-workflow",
+      "/course/automation-basics/personal-ai-os-knowledge-prompt-tools-dan-review",
+      "/course/automation-basics/dasar-automation-trigger-action-condition",
+      "/course/api-webhook/api-dan-webhook-untuk-non-developer",
+      "/course/api-webhook/testing-api-dengan-postman",
+      "/course/api-webhook/membangun-integrasi-api-pertama",
+      "/course/rag-knowledge-base/apa-itu-rag-dan-kenapa-penting",
+      "/course/rag-knowledge-base/mendesain-knowledge-base-yang-bisa-dibaca-ai",
+      "/course/ai-agents/apa-itu-ai-agent",
+      "/course/ai-agents/tool-calling-dan-function-calling",
+      "/course/agent-orchestration/agent-orchestration-dan-multi-agent-system",
+      "/course/agent-orchestration/evaluasi-dan-monitoring-agent",
+      "/course/agent-orchestration/agent-di-production-safety-dan-deployment",
+      "/course/safety-evaluation/privacy-dan-data-yang-tidak-boleh-sembarang-masuk-ai",
+      "/course/safety-evaluation/risiko-llm-prompt-injection-data-leakage-dan-excessive-agency",
+      "/course/safety-evaluation/evaluasi-output-ai-dan-quality-assurance",
+      "/course/monetization/cara-monetize-skill-ai",
+      "/course/monetization/career-path-ai-non-coding-dan-coding",
+      "/course/portfolio-capstone/portfolio-dan-case-study-yang-bisa-dijual"
+    ]
+  },
+  "repeatedPhrases": [
+    {
+      "phrase": "Contoh paling gampang",
+      "count": 1
+    },
+    {
+      "phrase": "Output lolos checklist",
+      "count": 3
+    }
+  ],
+  "acronymErrors": [],
+  "duplicateContent": [],
+  "mixedLanguageFragments": [
+    {
+      "fragment": "Define",
+      "count": 17
+    },
+    {
+      "fragment": "Process",
+      "count": 25
+    },
+    {
+      "fragment": "Using",
+      "count": 3
+    },
+    {
+      "fragment": "Not utilizing",
+      "count": 1
+    },
+    {
+      "fragment": "Best for",
+      "count": 2
+    },
+    {
+      "fragment": "Choose model",
+      "count": 1
+    },
+    {
+      "fragment": "Setup",
+      "count": 44
+    },
+    {
+      "fragment": "Implement",
+      "count": 20
+    },
+    {
+      "fragment": "Monitor",
+      "count": 32
+    },
+    {
+      "fragment": "Optimize",
+      "count": 3
+    },
+    {
+      "fragment": "output final",
+      "count": 4
+    }
+  ],
+  "genericCopy": [
+    {
+      "fragment": "sesuai kebutuhan",
+      "count": 2
+    },
+    {
+      "fragment": "membantu pekerjaan",
+      "count": 2
+    }
+  ]
+}

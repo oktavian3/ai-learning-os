@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import {useCases} from "@/data/library";import {findResource,resourceSlug} from "@/data/resources";import {ResourceDetail} from "@/components/ResourceDetail";
+export function generateStaticParams(){return useCases.map(item=>({slug:resourceSlug(item)}))}export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const item=findResource(useCases,slug);if(!item)notFound();return <ResourceDetail item={item} type="use-cases" basePath="/use-cases"/>}
