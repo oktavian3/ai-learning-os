@@ -17,7 +17,7 @@
             "AI modern berguna karena interface-nya natural: teks, suara, gambar, video"
           ],
           "content": [
-            "Artificial Intelligence atau AI adalah bidang teknologi yang membuat mesin dapat melakukan tugas yang biasanya membutuhkan kemampuan manusia: memahami bahasa, mengenali pola, membuat prediksi, mengambil keputusan, atau menghasilkan konten. AI bukan satu produk. AI adalah payung besar yang mencakup banyak teknik dan aplikasi.",
+            "Artificial Intelligence atau AI adalah bidang teknologi yang membuat mesin bisa melakukan tugas yang biasanya membutuhkan kemampuan manusia: memahami bahasa, mengenali pola, membuat prediksi, mengambil keputusan, atau menghasilkan konten. AI bukan satu produk. AI adalah payung besar yang mencakup banyak teknik dan aplikasi.",
             "Machine learning adalah pendekatan di dalam AI yang membuat sistem belajar dari data. Deep learning adalah pendekatan machine learning yang memakai neural network berlapis. Generative AI adalah cabang AI yang fokus menghasilkan output baru, seperti teks, gambar, audio, video, kode, ringkasan, dan ide.",
             "Ledakan AI terjadi karena tiga hal bertemu sekaligus: model makin besar dan pintar, komputasi makin kuat, dan interface makin mudah. Dulu AI terasa jauh karena harus dipakai lewat software teknis. Sekarang orang cukup mengetik instruksi dalam bahasa biasa dan model bisa membantu membuat output."
           ],
@@ -56,7 +56,7 @@
             "GenAI kuat untuk draft, variasi, transformasi, dan simulasi"
           ],
           "content": [
-            "Generative AI adalah AI yang dapat membuat konten baru berdasarkan instruksi pengguna. Konten itu bisa berupa teks, gambar, suara, musik, video, kode, struktur data, rencana kerja, atau jawaban analitis. IBM mendefinisikan generative AI sebagai AI yang dapat membuat konten original sebagai respons terhadap prompt atau request pengguna.",
+            "Generative AI adalah AI yang bisa membuat konten baru berdasarkan instruksi pengguna. Konten itu bisa berupa teks, gambar, suara, musik, video, kode, struktur data, rencana kerja, atau jawaban analitis. IBM mendefinisikan generative AI sebagai AI yang bisa membuat konten original sebagai respons terhadap prompt atau request pengguna.",
             "GenAI bekerja dengan mempelajari pola dari data pelatihan lalu menghasilkan output yang probabilistik. Artinya outputnya bukan hasil copy-paste literal dari satu database, tapi prediksi pola yang dianggap paling cocok dengan konteks. Ini yang membuatnya fleksibel, tapi juga bisa salah.",
             "Cara berpikir yang benar: GenAI adalah mesin bantu produksi dan reasoning awal, bukan oracle. Pakai untuk membuat draft, membandingkan opsi, merapikan ide, membuat variasi, menyusun kerangka, membaca dokumen, dan mempercepat proses kerja. Untuk fakta penting, tetap lakukan verifikasi."
           ],
@@ -95,7 +95,7 @@
             "Model tidak benar-benar “ingat” kecuali diberi memori/sistem penyimpanan"
           ],
           "content": [
-            "Large Language Model atau LLM adalah model AI yang dilatih untuk memproses dan menghasilkan bahasa. Model seperti ini dapat menjawab pertanyaan, menulis, merangkum, menerjemahkan, membuat kode, dan membantu reasoning. LLM membaca input sebagai token, bukan huruf persis seperti manusia.",
+            "Large Language Model atau LLM adalah model AI yang dilatih untuk memproses dan menghasilkan bahasa. Model seperti ini bisa menjawab pertanyaan, menulis, merangkum, menerjemahkan, membuat kode, dan membantu reasoning. LLM membaca input sebagai token, bukan huruf persis seperti manusia.",
             "Token adalah potongan teks. Satu kata bisa menjadi satu token atau beberapa token tergantung bahasa dan model. Context window adalah kapasitas informasi yang bisa “dilihat” model dalam satu percakapan atau satu request. Semakin besar context window, semakin banyak dokumen atau instruksi yang bisa dimasukkan, tapi kualitas tetap bergantung pada struktur konteks.",
             "Multimodal berarti model bisa bekerja dengan lebih dari satu jenis input/output: teks, gambar, audio, video, file, layar komputer, atau kode. Ini penting karena pekerjaan nyata jarang hanya teks. Banyak task perlu membaca screenshot, memahami tabel, menilai desain, atau mengekstrak informasi dari PDF."
           ],
@@ -309,8 +309,7 @@
           ],
           "content": [
             "Prompt yang bagus bukan mantra. Prompt yang bagus adalah brief kerja. Kalau brief-nya jelas, output biasanya lebih relevan. Struktur dasar yang bisa dipakai: task, konteks, tujuan, audience, format output, batasan, contoh, dan kriteria kualitas.",
-            "Task menjelaskan apa yang harus dilakukan. Context menjelaskan situasi. Goal menjelaskan hasil akhir yang diinginkan. Audience menentukan bahasa dan kedalaman. Format membuat output mudah dipakai. Constraints membatasi hal yang tidak diinginkan. Examples memberi pola. Evaluation criteria memberi standar kualitas.",
-            "Untuk website course, jangan menjual prompt engineering sebagai skill mistis. Ajarkan sebagai kemampuan memberi instruksi dan konteks yang rapi."
+            "Task menjelaskan apa yang harus dilakukan. Context menjelaskan situasi. Goal menjelaskan hasil akhir yang diinginkan. Audience menentukan bahasa dan kedalaman. Format membuat output mudah dipakai. Constraints membatasi hal yang tidak diinginkan. Examples memberi pola. Evaluation criteria memberi standar kualitas."
           ],
           "examples": [
             "Prompt lemah: “buatkan konten AI”. Prompt kuat: “Buat 10 ide post X tentang AI untuk creator Indonesia yang sudah pernah pakai ChatGPT tapi belum punya workflow. Gaya: casual, pendek, no corporate tone. Format tabel: hook, angle, isi pendek, CTA. Hindari klaim tanpa sumber.”"
@@ -1230,7 +1229,7 @@
             "Guardrails"
           ],
           "content": [
-            "AI agent adalah aplikasi AI yang bisa menyelesaikan task multi-step dengan merencanakan, memakai tools, menyimpan state, dan melakukan action. OpenAI menjelaskan agent sebagai aplikasi yang dapat merencanakan, memanggil tools, berkolaborasi lintas spesialis, dan mempertahankan state yang cukup untuk menyelesaikan pekerjaan multi-step.",
+            "AI agent adalah aplikasi AI yang bisa menyelesaikan task multi-step dengan merencanakan, memakai tools, menyimpan state, dan melakukan action. OpenAI menjelaskan agent sebagai aplikasi yang bisa merencanakan, memanggil tools, berkolaborasi lintas spesialis, dan mempertahankan state yang cukup untuk menyelesaikan pekerjaan multi-step.",
             "Chatbot biasa menjawab. Automation menjalankan flow yang sudah ditentukan. Agent berada di tengah: bisa memilih langkah dan tools berdasarkan tujuan, tetapi tetap perlu batasan. Agent yang terlalu bebas berbahaya karena bisa mengambil action salah, bocor data, atau menghabiskan biaya.",
             "Komponen agent: instruction, model, tools, memory/state, planner, executor, evaluator, guardrails, dan human approval. Untuk pemula, ajarkan agent sebagai “assistant yang bisa memakai alat”, bukan robot otonom ajaib."
           ],
@@ -1453,8 +1452,7 @@
           ],
           "content": [
             "Data yang harus hati-hati: identitas pribadi, nomor dokumen, data kesehatan, data finansial, kontrak rahasia, API key, password, data customer, dan dokumen internal yang belum boleh publik. Prinsipnya: masukkan data seminimal mungkin untuk menyelesaikan task.",
-            "Sebelum memakai AI publik, redaksi data sensitif. Ganti nama dengan label, hapus nomor rekening, hapus email, dan jangan tempel API key. Untuk bisnis, cek policy vendor: apakah data dipakai untuk training, bagaimana retensi, siapa yang punya akses, dan apakah ada mode enterprise/privacy.",
-            "Untuk website course, safety harus diajarkan secara praktis: checklist, contoh data aman/tidak aman, cara redaction, dan approval flow."
+            "Sebelum memakai AI publik, redaksi data sensitif. Ganti nama dengan label, hapus nomor rekening, hapus email, dan jangan tempel API key. Untuk bisnis, cek policy vendor: apakah data dipakai untuk training, bagaimana retensi, siapa yang punya akses, dan apakah ada mode enterprise/privacy."
           ],
           "examples": [
             "Aman: “customer A komplain barang telat”. Tidak aman: tempel nama lengkap, nomor HP, alamat rumah, invoice, dan chat lengkap tanpa izin."

@@ -2,15 +2,15 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { toBlob } from "html-to-image";
-import { Copy, Download, RotateCcw, Share2 } from "lucide-react";
+import { ArrowLeft, Copy, Download, RotateCcw, Share2 } from "lucide-react";
 import { skillQuestions } from "@/data/library";
 
 const LEVELS = [
-  { min: 0, max: 6, name: "Beginner", focus: "Level 0-1", module: "AI Fundamentals", moduleHref: "/course/ai-fundamentals", project: "Prompt Library Pribadi", projectHref: "/projects/prompt-library-pribadi", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-1.png" },
-  { min: 7, max: 13, name: "AI Operator", focus: "Level 2-3", module: "Prompting That Actually Works", moduleHref: "/course/prompting", project: "Weekly Work Copilot", projectHref: "/projects/study-assistant", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-2.png" },
-  { min: 14, max: 19, name: "Workflow Builder", focus: "Level 4", module: "Research & Content Workflow", moduleHref: "/course/research-content", project: "AI Content Creation System", projectHref: "/projects/content-calendar-30-hari", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-3.png" },
-  { min: 20, max: 25, name: "Automation Builder", focus: "Level 5-6", module: "API, Webhook & Data Flow", moduleHref: "/course/api-webhook", project: "AI Lead Management", projectHref: "/projects/ai-automation-for-leads", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-4.png" },
-  { min: 26, max: 30, name: "Agentic Builder", focus: "Level 7-9", module: "AI Agents & Orchestration", moduleHref: "/course/ai-agents", project: "Research Agent Terukur", projectHref: "/projects/ai-agent-researcher", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-5.png" },
+  { min: 0, max: 6, name: "Beginner", focus: "Level 0-1", module: "Dasar AI", moduleHref: "/course/ai-fundamentals", project: "Prompt Library Pribadi", projectHref: "/projects/prompt-library-pribadi", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-1.png" },
+  { min: 7, max: 13, name: "AI Operator", focus: "Level 2-3", module: "Prompting", moduleHref: "/course/prompting", project: "Study Assistant", projectHref: "/projects/study-assistant", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-2.png" },
+  { min: 14, max: 19, name: "Workflow Builder", focus: "Level 4", module: "Riset, Content, dan Marketing", moduleHref: "/course/research-content", project: "Content Calendar 30 Hari", projectHref: "/projects/content-calendar-30-hari", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-3.png" },
+  { min: 20, max: 25, name: "Automation Builder", focus: "Level 5-6", module: "API & Webhook buat Non-Developer", moduleHref: "/course/api-webhook", project: "AI Automation for Leads", projectHref: "/projects/ai-automation-for-leads", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-4.png" },
+  { min: 26, max: 30, name: "Agentic Builder", focus: "Level 7-9", module: "AI Agent & Tool Calling", moduleHref: "/course/ai-agents", project: "AI Agent Researcher", projectHref: "/projects/ai-agent-researcher", roadmapHref: "/roadmap", image: "/images/publicimagescard-tier-5.png" },
 ];
 
 const configuredSiteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
@@ -104,8 +104,8 @@ export function SkillCheck() {
   const level = getLevel(score);
   const filename = `nurai-ai-level-${slugify(level.name)}.png`;
   const skillCheckUrl = typeof window === "undefined" ? `${configuredSiteUrl}/skill-check` : `${configuredSiteUrl || window.location.origin}/skill-check`;
-  const tweetLead = `Level AI gue: ${level.name} \u26A1\n\nSkor: ${score}/${maxScore}`;
-  const tweetText = `${tweetLead}\n\nCek level AI lu di:\n${skillCheckUrl}\n\n#Nurai #AISkillCheck`;
+  const tweetLead = `Level AI: ${level.name} \u26A1\n\nSkor: ${score}/${maxScore}`;
+  const tweetText = `${tweetLead}\n\nCek level AI kamu di:\n${skillCheckUrl}\n\n#Nurai #AISkillCheck`;
 
   const commitUsername = () => {
     const clean = sanitizeXUsername(usernameDraft);
@@ -156,7 +156,7 @@ export function SkillCheck() {
 
   const copyTweet = useCallback(async () => {
     await copyTextToClipboard(tweetText);
-    setShareMessage("Teks berhasil dicopy");
+    setShareMessage("Teks tersalin ke clipboard");
   }, [tweetText]);
 
   const handleDownload = useCallback(async () => {
@@ -247,10 +247,10 @@ export function SkillCheck() {
         <span className="eyebrow"><span className="dot" />Posisimu sekarang</span>
         <div className="metric blue" style={{ marginTop: 24 }}>{level.name}</div>
         <p>{level.focus}. Modul yang paling masuk akal buat dimulai: <strong style={{ color: "white" }}>{level.module}</strong>.</p>
-        <ul className="list"><li>Skor: {score} dari {maxScore}</li><li>Project pertama: {level.project}</li><li>Balik lagi setelah 2-3 project. Harusnya hasilnya beda.</li></ul>
+        <ul className="list"><li>Skor: {score} dari {maxScore}</li><li>Project pertama: {level.project}</li><li>Balik lagi setelah 2 sampai 3 project. Harusnya hasilnya beda.</li></ul>
         <div className="skill-card-stage"><div ref={cardRef} className="skill-card-render"><ResultCard level={level} username={username} score={score} maxScore={maxScore} /></div></div>
-        {!usernameSet && <div style={{ marginBottom: 20 }}><label style={{ fontSize: 13, color: "#94a3b8", display: "block", marginBottom: 6 }}>Masukkan X username buat personalisasi card:</label><div className="skill-username-row"><div className="skill-username-field"><span>@</span><input type="text" aria-label="X username" placeholder="username" value={usernameDraft} onChange={(event) => setUsernameDraft(event.target.value)} onKeyDown={(event) => event.key === "Enter" && commitUsername()} /></div><button className="btn" onClick={commitUsername}>Set</button></div></div>}
-        <div className="skill-share-actions"><button className="btn btn-primary" onClick={handleShare} disabled={busy || !cardBlob}><Share2 size={15} /> {busy ? "Menyiapkan..." : "Share ke X"}</button><button className="btn" onClick={handleDownload} disabled={busy || !cardBlob}><Download size={15} /> Download Card</button><button className="btn" onClick={copyTweet} disabled={busy}><Copy size={15} /> Copy Tweet</button></div>
+        {!usernameSet && <div style={{ marginBottom: 20 }}><label style={{ fontSize: 13, color: "#94a3b8", display: "block", marginBottom: 6 }}>Isi X username untuk personalisasi kartu (opsional):</label><div className="skill-username-row"><div className="skill-username-field"><span>@</span><input type="text" aria-label="X username" placeholder="username" value={usernameDraft} onChange={(event) => setUsernameDraft(event.target.value)} onKeyDown={(event) => event.key === "Enter" && commitUsername()} /></div><button className="btn" onClick={commitUsername}>Simpan</button></div></div>}
+        <div className="skill-share-actions"><button className="btn btn-primary" onClick={handleShare} disabled={busy || !cardBlob}><Share2 size={15} /> {busy ? "Menyiapkan..." : "Share ke X"}</button><button className="btn" onClick={handleDownload} disabled={busy || !cardBlob}><Download size={15} /> Download kartu</button><button className="btn" onClick={copyTweet} disabled={busy}><Copy size={15} /> Salin teks tweet</button></div>
         {shareMessage && <p className="muted skill-share-message" role="status">{shareMessage}</p>}
         <div className="skill-next-actions"><Link href={level.moduleHref} className="btn btn-primary">Buka modul rekomendasi</Link><Link href={level.projectHref} className="btn">Buka project pertama</Link><Link href={level.roadmapHref} className="btn">Lihat roadmap level ini</Link><button className="btn" onClick={reset}><RotateCcw size={14} /> Coba Lagi</button></div>
       </div>
@@ -260,11 +260,19 @@ export function SkillCheck() {
   const question = skillQuestions[idx];
   return (
     <div className="glass card skill-check-shell">
-      {idx === 0 && !usernameSet && <div className="skill-username-prompt"><div>Masukkan X username dulu biar card-nya personal</div><div className="skill-username-row"><div className="skill-username-field"><span>@</span><input type="text" aria-label="X username" placeholder="username" value={usernameDraft} onChange={(event) => setUsernameDraft(event.target.value)} onKeyDown={(event) => event.key === "Enter" && commitUsername()} /></div><button className="btn" onClick={commitUsername}>Set</button></div></div>}
+      {idx === 0 && !usernameSet && <div className="skill-username-prompt"><div>Isi X username untuk kartu hasil personal (opsional)</div><div className="skill-username-row"><div className="skill-username-field"><span>@</span><input type="text" aria-label="X username" placeholder="username" value={usernameDraft} onChange={(event) => setUsernameDraft(event.target.value)} onKeyDown={(event) => event.key === "Enter" && commitUsername()} /></div><button className="btn" onClick={commitUsername}>Simpan</button></div></div>}
       <div className="progress"><span style={{ width: `${idx / skillQuestions.length * 100}%` }} /></div>
-      <div className="card-top" style={{ marginTop: 24 }}><span>Pertanyaan {idx + 1}/{skillQuestions.length}</span><span>Jawab apa adanya</span></div>
-      <h2 style={{ fontSize: 32, margin: "24px 0" }}>{question.question}</h2>
-      {question.options.map(option => <button className="quiz-option" key={option.label} onClick={() => { setScores([...scores, option.score]); setIdx(idx + 1); }}>{option.label}</button>)}
+      <div className="skill-question" key={idx}>
+        <div className="card-top" style={{ marginTop: 24 }}><span>Pertanyaan {idx + 1} dari {skillQuestions.length}</span><span>Jawab apa adanya</span></div>
+        <h2 style={{ fontSize: "clamp(24px,3.4vw,32px)", margin: "24px 0", letterSpacing: "-0.03em" }}>{question.question}</h2>
+        {question.options.map(option => <button className="quiz-option" key={option.label} onClick={() => { setScores([...scores, option.score]); setIdx(idx + 1); }}>{option.label}</button>)}
+      </div>
+      <div className="skill-check-nav">
+        {idx > 0
+          ? <button className="btn btn-sm" onClick={() => { setScores(scores.slice(0, -1)); setIdx(idx - 1); }}><ArrowLeft size={14} /> Kembali</button>
+          : <span />}
+        <span className="muted" style={{ fontSize: 12 }}>Pilih salah satu opsi untuk lanjut</span>
+      </div>
     </div>
   );
 }

@@ -107,11 +107,11 @@ export const expandedPrompts:DirectoryItem[]=Object.entries(promptGroups).flatMa
   description:useCase,details:[`Use case: ${useCase}`,`Variabel: ${variables}`,`Output: ${output}`],
   action:`Tugas: ${instruction}\n\nInput yang harus tersedia: ${variables}.\n\nAturan kerja:\n${promptRules(category).map(rule=>`- ${rule}`).join("\n")}\n\nOutput yang diharapkan: ${output}.`,
   sections:[
-    {title:"Dipakai buat apa",content:useCase},{title:"Yang perlu kamu isi",content:variables.split(", ")},
-    {title:"Cara memakai",content:["Ganti semua teks dalam tanda kurung siku","Tambahkan contoh output atau batasan jika punya","Jalankan dengan satu input nyata","Review hasil memakai aturan kategori","Simpan versi yang sudah terbukti bekerja"]},
-    {title:"Aturan kategori",content:promptRules(category)},
+    {title:"Variabel",content:variables.split(", ")},
+    {title:"Cara pakai",content:["Ganti semua teks dalam tanda kurung siku","Tambahkan contoh output atau batasan jika punya","Jalankan dengan satu input nyata","Review hasil memakai tips kategori","Simpan versi yang sudah terbukti bekerja"]},
+    {title:"Tips untuk kategori ini",content:promptRules(category)},
     {title:"Contoh input",content:`Topik/konteks: contoh nyata dari pekerjaanmu. Target pembaca: orang yang akan memakai hasilnya. Batasan: waktu, panjang, data, dan tone.`},
-    {title:"Hasil yang diharapkan",content:output},{title:"Template prompt",content:instruction}
+    {title:"Output yang diharapkan",content:output}
   ]
 })));
 
@@ -259,10 +259,10 @@ function workflowMeta(w:WorkflowSpec){
 }
 
 export const expandedWorkflows:DirectoryItem[]=workflowSpecs.map(w=>{const meta=workflowMeta(w);return {title:w.title,category:w.category,industry:industryMap[w.category] || w.category,trigger:meta.trigger,inputs:meta.inputs,approvalPoints:meta.approvals,failureModes:meta.failures,outputs:[w.output],kpi:meta.kpi,estimatedSetup:meta.setup,level:"Menengah",tag:`${w.steps.length} langkah`,description:w.problem,details:[`Industri: ${industryMap[w.category] || w.category}`,`Pemicu: ${meta.trigger}`,`Output: ${w.output}`],sections:[
-  {title:"Masalah yang dibereskan",content:w.problem},{title:"Pas buat siapa",content:w.bestFor},{title:"Industry",content:industryMap[w.category] || w.category},{title:"Trigger",content:meta.trigger},{title:"Inputs",content:meta.inputs},{title:"Tools yang dibutuhkan",content:w.tools},{title:"Workflow langkah demi langkah",content:w.steps},
-  {title:"Titik persetujuan",content:meta.approvals},{title:"Mode kegagalan",content:meta.failures},{title:"Langkah cadangan",content:meta.fallbacks},{title:"KPI",content:meta.kpi},{title:"Estimasi setup",content:meta.setup},{title:"Perawatan",content:meta.maintenance},
-  {title:"Template prompt",content:[`Bantu saya menjalankan workflow ${w.title}. Konteks saya: [KONTEKS]. Mulai dari langkah pertama, tanyakan data yang kurang, dan jangan lanjut sebelum output lolos checklist.`,`Review output workflow ${w.title} berikut: [OUTPUT]. Nilai berdasarkan tujuan, akurasi, kelengkapan, risiko, dan checklist. Beri revisi prioritas.`]},
-  {title:"Hasil akhirnya",content:w.output},{title:"Checklist kualitas",content:w.checklist},{title:"Bisa dijual jadi apa",content:w.monetization}
+  {title:"Cocok untuk",content:w.bestFor},{title:"Kapan dipakai",content:meta.trigger},{title:"Input",content:meta.inputs},{title:"Tools yang dibutuhkan",content:w.tools},{title:"Langkah kerja",content:w.steps},
+  {title:"Titik approval",content:meta.approvals},{title:"Yang bisa salah",content:meta.failures},{title:"Langkah cadangan",content:meta.fallbacks},{title:"Cara ukur keberhasilan",content:meta.kpi},{title:"Estimasi setup",content:meta.setup},{title:"Perawatan",content:meta.maintenance},
+  {title:"Prompt template",content:[`Bantu saya menjalankan workflow ${w.title}. Konteks saya: [KONTEKS]. Mulai dari langkah pertama, tanyakan data yang kurang, dan jangan lanjut sebelum output lolos checklist.`,`Review output workflow ${w.title} berikut: [OUTPUT]. Nilai berdasarkan tujuan, akurasi, kelengkapan, risiko, dan checklist. Beri revisi prioritas.`]},
+  {title:"Hasil akhirnya",content:w.output},{title:"Checklist kualitas",content:w.checklist},{title:"Cara monetize workflow ini",content:w.monetization}
 ]}});
 
 type ProjectSpec={title:string;difficulty:Difficulty;time:string;goal:string;tools:string[];steps:string[];output:string;upgrades:string[];portfolio:string};
@@ -294,7 +294,7 @@ function smallStart(p:ProjectSpec){
 }
 
 export const expandedProjects:DirectoryItem[]=projectSpecs.map(p=>({title:p.title,category:p.difficulty,level:p.difficulty,tag:p.time,description:p.goal,details:[`Estimasi: ${p.time}`,`Tools: ${p.tools.join(", ")}`,`Output: ${p.output}`],sections:[
-  {title:"Tingkat kesulitan",content:p.difficulty},{title:"Estimasi waktu",content:p.time},{title:"Tujuan project",content:p.goal},{title:"Tools",content:p.tools},{title:"Langkah kerja",content:p.steps},{title:"Hasil akhirnya",content:p.output},{title:"Selesai kalau",content:completionCriteria(p)},{title:"Bukti yang bisa ditunjukkan",content:proofItems(p)},{title:"Versi kecil untuk mulai",content:smallStart(p)},{title:"Kalau mau dinaikkan levelnya",content:p.upgrades},{title:"Cara masukin ke portfolio",content:p.portfolio}
+  {title:"Tujuan project",content:p.goal},{title:"Tools",content:p.tools},{title:"Langkah kerja",content:p.steps},{title:"Hasil akhirnya",content:p.output},{title:"Selesai kalau",content:completionCriteria(p)},{title:"Bukti yang bisa ditunjukkan",content:proofItems(p)},{title:"Versi kecil untuk mulai",content:smallStart(p)},{title:"Kalau mau dinaikkan levelnya",content:p.upgrades},{title:"Cara masukin ke portfolio",content:p.portfolio}
 ]}));
 
 type ToolSpec={title:string;category:string;level:Difficulty;pricing:"Free"|"Freemium"|"Paid"|"Enterprise";url:string;docsUrl?:string;sourceUrls?:string[];platforms?:string[];privacyNote?:string;bestFor:string;when:string[];not:string[];mistakes:string[];workflow:string[];alternatives:string[]};
@@ -427,10 +427,6 @@ function toolIntro(t:ToolSpec){
   return naturalToolText(t.bestFor);
 }
 
-function toolOverview(t:ToolSpec){
-  return `${toolIntro(t)} Gunakan sebagai bagian dari workflow yang jelas, dengan batas data, biaya, dan review manusia yang disepakati sejak awal.`;
-}
-
 const seenToolUrls = new Set<string>();
 export const expandedTools:DirectoryItem[]=toolSpecs.filter(t=>{
   const key=t.url.toLowerCase();
@@ -438,7 +434,7 @@ export const expandedTools:DirectoryItem[]=toolSpecs.filter(t=>{
   seenToolUrls.add(key);
   return true;
 }).map(t=>({title:t.title,category:t.category,level:t.level,tag:t.pricing,description:toolIntro(t),officialUrl:t.url,docsUrl:t.docsUrl,lastVerified:"2026-06-24",sourceUrls:t.sourceUrls || [t.url],pricingLabel:t.pricing,platforms:t.platforms,bestFor:[toolIntro(t)],notFor:naturalToolList(t.not),privacyNote:t.privacyNote,details:[`Kategori: ${t.category}`,`Harga: ${t.pricing}`,`Terverifikasi: 2026-06-24`,`Alternatif: ${t.alternatives.join(", ")}`],sections:[
-  {title:"Apa tool ini",content:toolOverview(t)},{title:"Paling sering digunakan untuk",content:naturalToolList(t.when)},{title:"Pakai kalau",content:naturalToolList(t.when)},{title:"Jangan dipakai kalau",content:naturalToolList(t.not)},{title:"Kesalahan yang sering kejadian",content:naturalToolList(t.mistakes)},{title:"Contoh workflow",content:naturalToolList(t.workflow)},{title:"Alternatif",content:t.alternatives},{title:"Website resmi",content:t.url},{title:"Docs",content:t.docsUrl || t.url},{title:"Source URLs",content:t.sourceUrls || [t.url]},{title:"Catatan privacy",content:t.privacyNote || "Cek data policy dan akses workspace sebelum mengunggah data sensitif."},{title:"Label harga",content:t.pricing}
+  {title:"Kegunaan utama",content:naturalToolList(t.when)},{title:"Hindari untuk",content:naturalToolList(t.not)},{title:"Kesalahan yang sering muncul",content:naturalToolList(t.mistakes)},{title:"Contoh workflow",content:naturalToolList(t.workflow)},{title:"Alternatif",content:t.alternatives},{title:"Catatan privacy",content:t.privacyNote || "Cek data policy dan akses workspace sebelum mengunggah data sensitif."}
 ]}));
 
 type MonetizeSpec={title:string;level:Difficulty;sell:string;client:string;deliverables:string[];starter:string[];premium:string[];tools:string[];outreach:string;portfolio:string;mistakes:string[]};
@@ -462,5 +458,5 @@ function realisticLimit(m:MonetizeSpec){
 }
 
 export const expandedMonetization:DirectoryItem[]=monetizationSpecs.map(m=>({title:m.title,category:m.client.split(",")[0],level:m.level,tag:m.level,description:m.sell,details:[`Target: ${m.client}`,`Deliverables: ${m.deliverables.slice(0,3).join(", ")}`,`Portfolio: ${m.portfolio}`],sections:[
-  {title:"Yang dijual",content:m.sell},{title:"Siapa yang membayar",content:m.client},{title:"Yang diterima klien",content:m.deliverables},{title:"Paket starter",content:m.starter},{title:"Paket premium",content:m.premium},{title:"Tools yang dibutuhkan",content:m.tools},{title:"Bukti yang perlu disiapkan",content:proofRequired(m)},{title:"Cara mulai ngobrol",content:m.outreach},{title:"Project buat portfolio",content:m.portfolio},{title:"Kesalahan yang sering kejadian",content:m.mistakes},{title:"Batas realistis",content:realisticLimit(m)}
+  {title:"Yang dijual",content:m.sell},{title:"Siapa yang membayar",content:m.client},{title:"Yang diterima klien",content:m.deliverables},{title:"Paket starter",content:m.starter},{title:"Paket premium",content:m.premium},{title:"Tools yang dibutuhkan",content:m.tools},{title:"Bukti yang perlu disiapkan",content:proofRequired(m)},{title:"Cara mulai ngobrol",content:m.outreach},{title:"Project buat portfolio",content:m.portfolio},{title:"Kesalahan yang sering muncul",content:m.mistakes},{title:"Batas realistis",content:realisticLimit(m)}
 ]}));

@@ -11,33 +11,33 @@ const groups:Record<string,GlossaryGroup>={
     ["Neural Network","Struktur komputasi berlapis yang mengubah input menjadi output melalui bobot yang dipelajari.",["Deep Learning","Parameter","Model"]],
     ["Dataset","Kumpulan data terstruktur yang dipakai untuk melatih, menguji, atau mengevaluasi sistem.",["Training Data","Model","Benchmark"]],
     ["Training Data","Bagian dataset yang digunakan model untuk mempelajari pola.",["Dataset","Training","Bias"]],
-    ["Model","Hasil proses training yang dapat menerima input dan menghasilkan prediksi atau output.",["Training Data","Inference","Parameter"]],
+    ["Model","Hasil proses training yang menerima input lalu menghasilkan prediksi atau output.",["Training Data","Inference","Parameter"]],
     ["Prediction","Perkiraan output yang dibuat model berdasarkan pola yang telah dipelajari.",["Model","Classification","Regression"]],
     ["Classification","Tugas memilih kategori untuk sebuah input, misalnya spam atau bukan spam.",["Prediction","Dataset","Regression"]],
     ["Regression","Tugas memperkirakan nilai numerik, misalnya permintaan atau waktu pengiriman.",["Prediction","Machine Learning","Classification"]]
   ]},
   "GenAI & LLM":{terms:[
     ["Generative AI","AI yang menghasilkan konten baru seperti teks, gambar, audio, video, atau kode.",["Foundation Model","LLM","Multimodal"]],
-    ["Foundation Model","Model besar yang dilatih untuk banyak tugas dan dapat diadaptasi ke berbagai aplikasi.",["LLM","Fine-tuning","Generative AI"]],
+    ["Foundation Model","Model besar yang dilatih untuk banyak tugas dan bisa disesuaikan untuk beragam aplikasi.",["LLM","Fine-tuning","Generative AI"]],
     ["LLM","Model bahasa besar yang memprediksi token berikutnya berdasarkan konteks.",["Token","Context Window","Parameter"]],
     ["Token","Potongan teks yang dibaca dan dihasilkan model; satu kata bisa terdiri dari beberapa token.",["LLM","Context Window","Cost per Token"]],
-    ["Context Window","Batas jumlah token yang dapat diproses model dalam satu interaksi.",["Token","Context Engineering","LLM"]],
+    ["Context Window","Batas jumlah token yang bisa diproses model dalam satu interaksi.",["Token","Context Engineering","LLM"]],
     ["Parameter","Nilai internal model yang berubah selama training dan membentuk perilakunya.",["Model","Training Data","LoRA"]],
     ["Inference","Proses menjalankan model yang sudah dilatih untuk menghasilkan output.",["Model","Latency","Inference Server"]],
     ["Multimodal","Kemampuan model memahami atau menghasilkan lebih dari satu jenis media.",["Vision Model","Text-to-Speech","Generative AI"]],
     ["Text-to-Image","Teknologi yang menghasilkan gambar dari instruksi teks.",["Generative AI","Multimodal","Vision Model"]],
     ["Text-to-Speech","Teknologi yang mengubah teks tertulis menjadi suara sintetis.",["Speech-to-Text","Multimodal","Generative AI"]],
     ["Speech-to-Text","Teknologi yang mengubah ucapan menjadi teks atau transkrip.",["Text-to-Speech","Multimodal","Audio Model"]],
-    ["Vision Model","Model yang dapat memahami gambar atau video, misalnya objek, teks, dan hubungan visual.",["Multimodal","Text-to-Image","Foundation Model"]]
+    ["Vision Model","Model yang bisa memahami gambar atau video, termasuk objek, teks, dan hubungan visual.",["Multimodal","Text-to-Image","Foundation Model"]]
   ]},
   "Prompting":{terms:[
     ["Prompt","Instruksi atau input yang diberikan kepada model untuk menghasilkan respons.",["System Prompt","User Prompt","Prompt Template"]],
-    ["System Prompt","Instruksi tingkat sistem yang memengatur peran, aturan, dan batas perilaku model.",["User Prompt","Guardrails","Prompt Injection"]],
+    ["System Prompt","Instruksi tingkat sistem yang mengatur peran, aturan, dan batas perilaku model.",["User Prompt","Guardrails","Prompt Injection"]],
     ["User Prompt","Permintaan langsung dari pengguna dalam sebuah percakapan dengan model.",["System Prompt","Prompt","Context Window"]],
     ["Few-shot Prompting","Teknik memberi beberapa contoh input dan output agar model mengikuti pola.",["Zero-shot Prompting","Prompt Template","Structured Output"]],
     ["Zero-shot Prompting","Meminta model mengerjakan tugas tanpa memberikan contoh output.",["Few-shot Prompting","Prompt","LLM"]],
     ["Chain-of-Thought","Rangkaian langkah penalaran internal atau eksplisit untuk memecahkan tugas kompleks.",["Prompt","Planner Agent","Reasoning Model"]],
-    ["Prompt Template","Kerangka prompt yang dapat dipakai ulang dengan variabel yang diganti.",["Prompt Library","Structured Output","Few-shot Prompting"]],
+    ["Prompt Template","Kerangka prompt yang bisa dipakai ulang dengan mengganti variabelnya.",["Prompt Library","Structured Output","Few-shot Prompting"]],
     ["Context Engineering","Proses menyusun instruksi, sumber, memory, tools, dan state yang masuk ke model.",["Context Window","RAG","System Prompt"]],
     ["Structured Output","Output yang mengikuti schema atau struktur tetap agar mudah diproses aplikasi.",["JSON Output","Output Validation","Function Calling"]],
     ["JSON Output","Structured output dalam format JSON dengan key dan tipe data yang ditentukan.",["Structured Output","API","Output Validation"]],
@@ -47,7 +47,7 @@ const groups:Record<string,GlossaryGroup>={
     ["RAG","Teknik mengambil sumber relevan lalu memberikannya ke model sebelum jawaban dibuat.",["Retrieval","Embedding","Grounding"]],
     ["Embedding","Representasi angka yang menangkap kemiripan makna sebuah teks atau objek.",["Vector Database","Semantic Search","Retrieval"]],
     ["Vector Database","Database yang menyimpan dan mencari embedding berdasarkan kemiripan.",["Embedding","Semantic Search","Knowledge Base"]],
-    ["Chunking","Proses membagi dokumen menjadi bagian kecil yang dapat dicari dan dimasukkan ke konteks.",["Retrieval","Embedding","Context Window"]],
+    ["Chunking","Proses membagi dokumen menjadi potongan kecil agar mudah dicari dan dimasukkan ke konteks.",["Retrieval","Embedding","Context Window"]],
     ["Retrieval","Proses menemukan bagian sumber yang paling relevan dengan sebuah pertanyaan.",["RAG","Re-ranking","Semantic Search"]],
     ["Re-ranking","Tahap mengurutkan ulang hasil retrieval agar bagian terbaik berada di atas.",["Retrieval","RAG","Semantic Search"]],
     ["Semantic Search","Pencarian berdasarkan kemiripan makna, bukan hanya kata yang sama.",["Embedding","Vector Database","Retrieval"]],
@@ -65,11 +65,11 @@ const groups:Record<string,GlossaryGroup>={
     ["Planner Agent","Agent yang memecah tujuan menjadi rencana atau sub-tugas.",["Executor Agent","Chain-of-Thought","Agent Orchestration"]],
     ["Executor Agent","Agent yang menjalankan langkah atau tool berdasarkan rencana yang tersedia.",["Planner Agent","Tool Calling","AI Agent"]],
     ["Multi-Agent System","Sistem yang mengoordinasikan beberapa agent dengan peran berbeda.",["Agent Orchestration","Planner Agent","Executor Agent"]],
-    ["Agent Orchestration","Pemengaturan alur, state, handoff, dan evaluasi antar-agent atau tools.",["Multi-Agent System","LangGraph","Human-in-the-loop"]],
+    ["Agent Orchestration","Pengaturan alur, state, handoff, dan evaluasi antar-agent atau tools.",["Multi-Agent System","LangGraph","Human-in-the-loop"]],
     ["Human-in-the-loop","Titik kontrol yang meminta manusia meninjau atau menyetujui keputusan AI.",["Guardrails","AI Agent","Output Validation"]],
     ["MCP","Model Context Protocol, standar untuk menghubungkan aplikasi AI dengan tools dan sumber konteks.",["Tool Calling","API","AI Agent"]],
     ["LangGraph","Framework untuk membuat workflow agent berbasis graph dan state.",["Agent Orchestration","AI Agent","CrewAI"]],
-    ["CrewAI","Framework untuk memengatur beberapa agent berbasis peran dan tugas.",["Multi-Agent System","LangGraph","Agent Orchestration"]]
+    ["CrewAI","Framework untuk mengatur beberapa agent berbasis peran dan tugas.",["Multi-Agent System","LangGraph","Agent Orchestration"]]
   ]},
   "Automation & API":{terms:[
     ["API","Antarmuka terstruktur yang memungkinkan dua aplikasi meminta data atau tindakan.",["Webhook","Function Calling","Rate Limit"]],
@@ -77,11 +77,11 @@ const groups:Record<string,GlossaryGroup>={
     ["Trigger","Peristiwa yang memulai sebuah workflow otomatis.",["Action","Webhook","Scheduler"]],
     ["Action","Langkah yang dijalankan setelah trigger atau kondisi terpenuhi.",["Trigger","Workflow Automation","API"]],
     ["Scheduler","Komponen yang menjalankan proses pada waktu atau interval tertentu.",["Trigger","Workflow Automation","Cron"]],
-    ["Workflow Automation","Rangkaian langkah otomatis yang memindahkan atau mememroses data antar-sistem.",["Trigger","Action","n8n"]],
+    ["Workflow Automation","Rangkaian langkah otomatis yang memindahkan atau memproses data antar-sistem.",["Trigger","Action","n8n"]],
     ["n8n","Platform workflow automation visual dengan opsi self-host dan logic fleksibel.",["Make","Zapier","Webhook"]],
     ["Zapier","Platform automation untuk menghubungkan aplikasi melalui trigger dan action.",["Make","n8n","Workflow Automation"]],
     ["Make","Platform automation visual untuk membangun scenario dan memetakan aliran data.",["n8n","Zapier","API"]],
-    ["Database","Sistem penyimpanan data terstruktur yang dapat dibaca dan diperbarui aplikasi.",["API","CRM","Vector Database"]],
+    ["Database","Sistem penyimpanan data terstruktur yang bisa dibaca dan diperbarui oleh aplikasi.",["API","CRM","Vector Database"]],
     ["CRM","Sistem untuk menyimpan dan mengelola hubungan, aktivitas, serta data pelanggan.",["Database","Workflow Automation","Lead Scoring"]],
     ["Google Sheets Automation","Penggunaan script atau workflow untuk membaca dan memperbarui spreadsheet secara otomatis.",["Workflow Automation","API","Database"]]
   ]},
@@ -105,7 +105,7 @@ const groups:Record<string,GlossaryGroup>={
     ["Guardrails","Aturan dan kontrol yang membatasi input, output, tool, atau tindakan sistem AI.",["Moderation","Output Validation","Human-in-the-loop"]],
     ["Prompt Injection","Instruksi berbahaya yang mencoba mengubah aturan model atau menyalahgunakan akses tool.",["System Prompt","Guardrails","Tool Calling"]],
     ["Data Privacy","Praktik melindungi data pribadi atau rahasia sepanjang proses AI.",["PII","Data Retention","Access Control"]],
-    ["PII","Personally Identifiable Information, data yang dapat mengidentifikasi seseorang.",["Data Privacy","Moderation","Redaction"]],
+    ["PII","Singkatan dari Personally Identifiable Information, yaitu data yang bisa mengidentifikasi seseorang.",["Data Privacy","Moderation","Redaction"]],
     ["Eval","Pengujian sistematis terhadap kualitas, keamanan, atau perilaku sistem AI.",["Benchmark","Test Set","Output Validation"]],
     ["Benchmark","Kumpulan tugas standar untuk membandingkan performa model atau sistem.",["Eval","Dataset","Model"]],
     ["Red Teaming","Pengujian dengan mencoba menemukan cara sistem gagal atau disalahgunakan.",["Prompt Injection","Guardrails","Safety"]],
@@ -121,7 +121,7 @@ const groups:Record<string,GlossaryGroup>={
     ["Observability","Kemampuan melihat kondisi sistem melalui log, metric, dan trace.",["Tracing","Latency","Eval"]],
     ["Tracing","Rekaman langkah, input, output, dan tool call dalam workflow AI.",["Observability","AI Agent","Eval"]],
     ["Sandbox","Lingkungan terisolasi untuk menjalankan kode atau tool dengan risiko terbatas.",["Guardrails","Deployment","Security"]],
-    ["Deployment","Proses menempatkan aplikasi agar dapat digunakan di lingkungan target.",["Cloud Model","Inference Server","Observability"]],
+    ["Deployment","Proses menempatkan aplikasi di lingkungan target agar siap digunakan.",["Cloud Model","Inference Server","Observability"]],
     ["Playground","Antarmuka eksperimen untuk mencoba model, prompt, dan parameter sebelum integrasi.",["Prompt","API","Eval"]]
   ]},
   "Business & Monetization":{terms:[
@@ -193,7 +193,7 @@ function plainExplanation(term:string,definition:string,related:string[]){
 }
 
 function exampleFor(term:string,category:string,related:string[]){
-  return examples[term] || `Dalam praktik ${category.toLowerCase()}, ${term} biasanya muncul saat kamu bekerja dengan ${related[0]}, lalu perlu memastikan hasilnya tetap cocok dengan tujuan kerja.`;
+  return examples[term] || `Dalam praktik ${category}, ${term} biasanya muncul saat kamu bekerja dengan ${related[0]}, lalu perlu memastikan hasilnya tetap cocok dengan tujuan kerja.`;
 }
 
 function whyFor(term:string,category:string){
@@ -205,17 +205,14 @@ function mistakeFor(term:string,related:string[]){
 }
 
 export const glossary:DirectoryItem[]=Object.entries(groups).flatMap(([category,group])=>group.terms.map(([term,definition,related])=>{
-  const comparedWith=related[0];
   return {
-    title:term,category,level:category==="Dasar AI"||category==="GenAI & LLM"?"Pemula":"Menengah",tag:"Istilah AI",description:definition,
+    title:term,category,level:category==="Dasar AI"||category==="GenAI & LLM"?"Pemula":"Menengah",tag:category==="Dasar AI"||category==="GenAI & LLM"?"Pemula":"Menengah",description:definition,
     details:[`Kategori: ${category}`,`Terkait: ${related.join(", ")}`],sections:[
-      {title:"Definisi sederhana",content:definition},
-      {title:"Penjelasan natural",content:plainExplanation(term,definition,related)},
-      {title:"Contoh penggunaan",content:exampleFor(term,category,related)},
+      {title:`Apa itu ${term}`,content:plainExplanation(term,definition,related)},
+      {title:"Contoh",content:exampleFor(term,category,related)},
       {title:"Kenapa penting",content:whyFor(term,category)},
-      {title:`Bedanya dengan ${comparedWith}`,content:`${term} dan ${comparedWith} sering muncul berdekatan, tetapi jangan disamakan. Gunakan ${term} untuk memahami bagian ini, lalu lihat ${comparedWith} sebagai istilah pembanding saat membaca dokumentasi atau membuat workflow.`},
-      {title:"Istilah terkait",content:related},
-      {title:"Kesalahan pemula",content:mistakeFor(term,related)}
+      {title:"Terkait",content:related},
+      {title:"Yang sering keliru",content:mistakeFor(term,related)}
     ]
   };
 }));

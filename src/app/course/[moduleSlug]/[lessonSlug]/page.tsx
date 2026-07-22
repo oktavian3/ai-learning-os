@@ -1,59 +1,129 @@
 import Link from "next/link";
-import {notFound} from "next/navigation";
-import {ArrowLeft,ArrowRight} from "lucide-react";
-import {courseModules,getModule} from "@/data/course";
-import {CompleteLesson,CopyTextButton} from "@/components/LessonTools";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { courseModules, getModule } from "@/data/course";
+import { CompleteLesson, CopyTextButton } from "@/components/LessonTools";
+import { ScrollProgress } from "@/components/motion";
 
-export function generateStaticParams(){return courseModules.flatMap(module=>module.lessons.map(lesson=>({moduleSlug:module.slug,lessonSlug:lesson.slug})))}
+export function generateStaticParams() {
+  return courseModules.flatMap(module => module.lessons.map(lesson => ({ moduleSlug: module.slug, lessonSlug: lesson.slug })));
+}
 
-export default async function LessonPage({params}:{params:Promise<{moduleSlug:string;lessonSlug:string}>}){
-  const {moduleSlug,lessonSlug}=await params;
-  const module=getModule(moduleSlug);
-  const lesson=module?.lessons.find(item=>item.slug===lessonSlug);
-  if(!module||!lesson)notFound();
-  const lessonIndex=module.lessons.indexOf(lesson);
-  const nextLesson=module.lessons[lessonIndex+1];
-  const nextModule=courseModules[module.number];
-  const nextHref=nextLesson?`/course/${module.slug}/${nextLesson.slug}`:nextModule?`/course/${nextModule.slug}`:`/course`;
-  const nextLabel=nextLesson?nextLesson.title:nextModule?`Lanjut ke ${nextModule.title}`:"Kembali ke course";
+const titleCase = (slug: string) => slug.split("-").map(word => word === "ai" || word === "api" || word === "rag" || word === "llm" ? word.toUpperCase() : word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 
-  return <>
-    <header className="page-hero"><div className="container">
-      <Link href={`/course/${module.slug}`} className="muted" style={{display:"flex",gap:8,alignItems:"center",fontSize:13}}><ArrowLeft size={14}/>{module.title}</Link>
-      <div className="eyebrow" style={{marginTop:32}}><span className="dot"/>{lesson.code} · {lesson.difficulty} · {lesson.duration}</div>
-      <h1>{lesson.title}</h1><p>{lesson.summary}</p>
-      <CompleteLesson id={`${module.slug}/${lesson.slug}`}/>
-    </div></header>
+export default async function LessonPage({ params }: { params: Promise<{ moduleSlug: string; lessonSlug: string }> }) {
+  const { moduleSlug, lessonSlug } = await params;
+  const module = getModule(moduleSlug);
+  const lesson = module?.lessons.find(item => item.slug === lessonSlug);
+  if (!module || !lesson) notFound();
+  const lessonIndex = module.lessons.indexOf(lesson);
+  const nextLesson = module.lessons[lessonIndex + 1];
+  const nextModule = courseModules[module.number];
+  const nextHref = nextLesson ? `/course/${module.slug}/${nextLesson.slug}` : nextModule ? `/course/${nextModule.slug}` : `/course`;
+  const nextLabel = nextLesson ? `Lanjut: ${nextLesson.title}` : nextModule ? `Lanjut ke ${nextModule.title}` : "Kembali ke course";
 
-    <section className="section"><div className="container prose">
-      <div className="glass card"><div className="card-top"><span>SETELAH SELESAI, KAMU BISA</span><span>{lessonIndex+1}/{module.lessons.length}</span></div><ul className="list">{lesson.objectives.map(item=><li key={item}>{item}</li>)}</ul></div>
+  return (
+    <>
+      <ScrollProgress />
+      <header className="page-hero">
+        <div className="page-hero-glow" aria-hidden />
+        <div className="container">
+          <Link href={`/course/${module.slug}`} className="back-link"><ArrowLeft size={14} />{module.title}</Link>
+          <div className="eyebrow" style={{ marginTop: 26 }}><span className="dot" />Lesson {lessonIndex + 1} dari {module.lessons.length} · {lesson.difficulty} · {lesson.duration}</div>
+          <h1>{lesson.title}</h1>
+          <p>{lesson.summary}</p>
+          <CompleteLesson id={`${module.slug}/${lesson.slug}`} />
+        </div>
+      </header>
 
-      <h2>Sebelum mulai</h2>
-      <div className="glass card"><ul className="list">{lesson.prerequisites.map(item=><li key={item}>{item}</li>)}</ul><div className="callout" style={{marginTop:18}}><strong>Target belajar:</strong> {lesson.learningObjective}</div></div>
+      <section className="section-tight">
+        <div className="container prose">
+          <div className="glass card">
+            <div className="card-top"><span>Setelah selesai, kamu bisa</span><span>Lesson {lessonIndex + 1} dari {module.lessons.length}</span></div>
+            <ul className="list">{lesson.objectives.map(item => <li key={item}>{item}</li>)}</ul>
+          </div>
 
-      <h2>Konsep utama</h2>
-      <div className="concept-accordion">{lesson.concepts.map((concept,index)=><details key={concept.title} open={index===0}><summary><span>{String(index+1).padStart(2,"0")}</span><strong>{concept.title}</strong></summary><div className="concept-body"><p>{concept.explanation}</p><p><strong>Kenapa penting:</strong> {concept.whyItMatters}</p><p><strong>Contoh:</strong> {concept.example}</p>{concept.commonMistake&&<p><strong>Kesalahan pemula:</strong> {concept.commonMistake}</p>}</div></details>)}</div>
+          <h2>Sebelum mulai</h2>
+          <div className="glass card">
+            <ul className="list">{lesson.prerequisites.map(item => <li key={item}>{item}</li>)}</ul>
+            <div className="callout" style={{ marginTop: 18 }}><strong>Target belajar:</strong> {lesson.learningObjective}</div>
+          </div>
 
-      <h2>Cara kerjanya</h2>
-      {lesson.content.map(paragraph=><p key={paragraph}>{paragraph}</p>)}
+          <h2>Konsep utama</h2>
+          <div className="concept-accordion">
+            {lesson.concepts.map((concept, index) => (
+              <details key={concept.title} open={index === 0}>
+                <summary><span>{String(index + 1).padStart(2, "0")}</span><strong>{concept.title}</strong></summary>
+                <div className="concept-body">
+                  <p>{concept.explanation}</p>
+                  <p><strong>Kenapa penting:</strong> {concept.whyItMatters}</p>
+                  <p><strong>Contoh:</strong> {concept.example}</p>
+                  {concept.commonMistake && <p><strong>Yang sering keliru:</strong> {concept.commonMistake}</p>}
+                </div>
+              </details>
+            ))}
+          </div>
 
-      {lesson.examples.length>0&&<><h2>Contoh nyata</h2>{lesson.examples.map(example=><div className="callout" style={{marginBottom:12}} key={example}>{example}</div>)}</>}
+          <h2>Cara kerjanya</h2>
+          {lesson.content.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
 
-      {lesson.exercises.length>0&&<><h2>Coba sendiri</h2><div className="glass card"><ul className="list">{lesson.exercises.map(item=><li key={item}>{item.replace(/^\d+\.\s*/,"")}</li>)}</ul></div></>}
+          {lesson.examples.length > 0 && (
+            <>
+              <h2>Contoh nyata</h2>
+              {lesson.examples.map(example => <div className="callout" style={{ marginBottom: 12 }} key={example}>{example}</div>)}
+            </>
+          )}
 
-      {lesson.prompts.length>0&&<><h2>Prompt yang bisa kamu coba</h2>{lesson.prompts.map(prompt=><div key={prompt} style={{marginBottom:16}}><div className="copybox">{prompt}</div><div style={{marginTop:10}}><CopyTextButton text={prompt} label="Salin prompt"/></div></div>)}</>}
+          {lesson.exercises.length > 0 && (
+            <>
+              <h2>Coba sendiri</h2>
+              <div className="glass card">
+                <ol className="steps">{lesson.exercises.map((item, index) => <li key={item}><span>{index + 1}</span><p>{item.replace(/^\d+\.\s*/, "")}</p></li>)}</ol>
+              </div>
+            </>
+          )}
 
-      {lesson.quiz.length>0&&<><h2>Cek pemahaman</h2><p>Jawab pakai bahasamu sendiri. Kalau masih muter-muter, baca ulang bagian yang paling nyangkut.</p><div className="glass card"><ol className="steps">{lesson.quiz.map((question,index)=><li key={question}><span>{index+1}</span><p>{question}</p></li>)}</ol></div></>}
+          {lesson.prompts.length > 0 && (
+            <>
+              <h2>Prompt yang bisa dipakai</h2>
+              {lesson.prompts.map(prompt => (
+                <div key={prompt} style={{ marginBottom: 16 }}>
+                  <div className="copybox">{prompt}</div>
+                  <div style={{ marginTop: 10 }}><CopyTextButton text={prompt} label="Salin prompt" /></div>
+                </div>
+              ))}
+            </>
+          )}
 
-      {lesson.assignments.length>0&&<><h2>Tugas</h2>{lesson.assignments.map(item=><div className="callout" key={item}>{item}</div>)}</>}
+          {lesson.quiz.length > 0 && (
+            <>
+              <h2>Cek pemahaman</h2>
+              <p>Jawab dengan bahasa sendiri. Kalau masih muter-muter, baca ulang bagian yang paling nyangkut.</p>
+              <div className="glass card">
+                <ol className="steps">{lesson.quiz.map((question, index) => <li key={question}><span>{index + 1}</span><p>{question}</p></li>)}</ol>
+              </div>
+            </>
+          )}
 
-      {lesson.notes.length>0&&<><h2>Catatan penting</h2><div className="glass card"><ul className="list">{lesson.notes.map(item=><li key={item}>{item}</li>)}</ul></div></>}
+          {lesson.assignments.length > 0 && (
+            <>
+              <h2>Tugas</h2>
+              {lesson.assignments.map(item => <div className="callout" key={item} style={{ marginBottom: 12 }}>{item}</div>)}
+            </>
+          )}
 
-      <h2>Lanjut ke materi berikutnya</h2>
-      <div className="callout">{lesson.nextStep}</div>
-      <div className="filters" style={{marginTop:18}}>{lesson.relatedGlossary.map(slug=><Link className="pill" key={slug} href={`/glossary/${slug}`}>{slug.replace(/-/g," ")}</Link>)}</div>
+          <h2>Lanjut ke materi berikutnya</h2>
+          <div className="callout">{lesson.nextStep}</div>
+          <div className="filters" style={{ marginTop: 18 }}>
+            {lesson.relatedGlossary.map(slug => <Link className="pill" key={slug} href={`/glossary/${slug}`}>{titleCase(slug)}</Link>)}
+          </div>
 
-      <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",marginTop:54,flexWrap:"wrap"}}><CompleteLesson id={`${module.slug}/${lesson.slug}`}/><Link className="btn btn-primary" href={nextHref}>{nextLabel}<ArrowRight size={15}/></Link></div>
-    </div></section>
-  </>;
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", marginTop: 54, flexWrap: "wrap" }}>
+            <CompleteLesson id={`${module.slug}/${lesson.slug}`} />
+            <Link className="btn btn-primary" href={nextHref}>{nextLabel}<ArrowRight className="arrow-icon" size={15} /></Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
