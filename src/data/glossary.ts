@@ -5,7 +5,7 @@ type GlossaryGroup={terms:TermSpec[]};
 
 const groups:Record<string,GlossaryGroup>={
   "Dasar AI":{terms:[
-    ["AI","Teknologi yang membuat mesin melakukan tugas yang biasanya membutuhkan kemampuan manusia.",["Machine Learning","Model","Prediction"]],
+    ["AI","Bidang ilmu dan teknologi yang membuat mesin bisa belajar, bernalar, memahami, dan mengambil keputusan seperti manusia.",["Machine Learning","Deep Learning","Model"]],
     ["Machine Learning","Cabang AI yang mempelajari pola dari data untuk membuat prediksi atau keputusan.",["Dataset","Training Data","Model"]],
     ["Deep Learning","Jenis machine learning yang memakai neural network berlapis untuk mempelajari pola kompleks.",["Neural Network","Machine Learning","Training Data"]],
     ["Neural Network","Struktur komputasi berlapis yang mengubah input menjadi output melalui bobot yang dipelajari.",["Deep Learning","Parameter","Model"]],
@@ -139,7 +139,7 @@ const groups:Record<string,GlossaryGroup>={
 };
 
 const explanations:Record<string,string>={
-  AI:"AI adalah payung besar untuk sistem yang membantu mesin mengenali pola, memahami instruksi, membuat prediksi, atau menghasilkan konten. Chatbot hanya salah satu bentuknya.",
+  AI:"AI adalah payung besar yang mencakup machine learning, deep learning, NLP, computer vision, dan robotics. Kebanyakan AI modern belajar dari data, bukan dari aturan yang diketik manual. Chatbot hanya salah satu bentuknya.",
   LLM:"LLM bekerja dengan membaca konteks sebagai token lalu memprediksi kelanjutan yang paling masuk akal. Ia kuat untuk bahasa, tetapi tetap tidak otomatis benar secara fakta.",
   Token:"Token adalah potongan teks yang dihitung model saat membaca input dan membuat output. Biaya, batas konteks, dan panjang respons biasanya dihitung dari token.",
   "Context Window":"Context window adalah ruang kerja model dalam satu percakapan atau request. Informasi yang tidak masuk atau tersusun buruk bisa tidak dipakai dengan baik.",
@@ -152,7 +152,7 @@ const explanations:Record<string,string>={
 };
 
 const examples:Record<string,string>={
-  AI:"Rekomendasi video, filter spam, deteksi fraud, dan chatbot customer support semuanya memakai AI dengan cara yang berbeda.",
+  AI:"Rekomendasi video YouTube, filter spam Gmail, deteksi fraud bank, mobil self-driving, face unlock HP — semuanya AI dengan cabang yang berbeda-beda.",
   LLM:"Saat kamu meminta model merangkum kontrak, LLM membaca teks kontrak dalam konteks lalu menyusun ringkasan.",
   Token:"Kalimat panjang, tabel, dan dokumen PDF besar memakai banyak token sehingga bisa lebih mahal atau melewati batas konteks.",
   Embedding:"Pencarian 'cara refund pesanan' bisa menemukan dokumen berjudul 'prosedur pengembalian dana' karena maknanya mirip.",
@@ -164,7 +164,7 @@ const examples:Record<string,string>={
 };
 
 const mistakes:Record<string,string>={
-  AI:"Menganggap semua AI bekerja seperti chatbot. Banyak AI justru berjalan di belakang layar sebagai sistem prediksi, ranking, atau klasifikasi.",
+  AI:"Menganggap semua AI sama dan bekerja seperti chatbot. Computer vision, sistem rekomendasi, deteksi anomali, dan trading bot juga AI — dan bekerja dengan cara yang sangat berbeda dari LLM.",
   LLM:"Mengira LLM punya memori dan akses fakta terbaru secara otomatis. Model hanya memakai konteks, tool, dan data yang memang tersedia.",
   Token:"Mengira token sama persis dengan kata. Satu kata bisa menjadi beberapa token, terutama pada istilah teknis atau bahasa tertentu.",
   Embedding:"Menganggap embedding menyimpan arti secara sempurna. Hasilnya tetap bergantung pada model, bahasa, data, dan cara dokumen dipotong.",
