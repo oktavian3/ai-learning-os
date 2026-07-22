@@ -4,3 +4,9 @@ out
 *.log
 .env*
 !.env.example
+
+# Claude Code local settings (personal, not shared)
+.claude/settings.local.json
+
+# QA screenshot artifacts (local only)
+reports/screenshots/

@@ -1,2 +1,21 @@
-import { PageHero } from "@/components/Primitives";import { ResourceExplorer } from "@/components/ResourceExplorer";import { workflows } from "@/data/library";
-export const metadata={title:"Workflow Library"};export default function Page(){return <><PageHero label="10 workflow siap dipelajari" title="Workflow nyata, dari masalah sampai output." description="Jalankan manual dulu. Kalau hasilnya sudah konsisten, baru otomasi. Biar tidak membuat mesin error yang lebih cepat."/><section className="section glow-bg"><div className="container"><ResourceExplorer items={workflows} basePath="/workflows"/></div></section></>}
+import { PageHero } from "@/components/Primitives";
+import { ResourceExplorer } from "@/components/ResourceExplorer";
+import { workflows } from "@/data/library";
+
+export const metadata = { title: "Workflow Library" };
+
+export default function Page() {
+  const categories = new Set(workflows.map(workflow => workflow.category)).size;
+  return (
+    <>
+      <PageHero
+        label={`${workflows.length} workflow · ${categories} kategori`}
+        title="Workflow yang sudah diuji di kerja nyata."
+        description="Setiap workflow mulai dari masalah, langkah demi langkah, sampai output final. Aturan main: jalankan manual dulu sampai hasilnya konsisten. Otomasi datang setelah alurnya benar, tidak sebelum."
+      />
+      <section className="section-tight">
+        <div className="container"><ResourceExplorer items={workflows} basePath="/workflows" /></div>
+      </section>
+    </>
+  );
+}

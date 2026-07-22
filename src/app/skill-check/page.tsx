@@ -1,2 +1,19 @@
-import { PageHero } from "@/components/Primitives";import { SkillCheck } from "@/components/SkillCheck";
-export const metadata={title:"Cek Level AI"};export default function Page(){return <><PageHero label="10 pertanyaan · sekitar 3 menit" title="Kamu sekarang ada di level mana?" description="Bukan ujian. Cuma biar tidak mulai dari agent kalau workflow dasar aja belum pernah bikin."/><section className="section"><div className="container" style={{maxWidth:820}}><SkillCheck/></div></section></>}
+import { PageHero } from "@/components/Primitives";
+import { SkillCheck } from "@/components/SkillCheck";
+
+export const metadata = { title: "Cek Level AI" };
+
+export default function Page() {
+  return (
+    <>
+      <PageHero
+        label="10 pertanyaan · 3 menit"
+        title="Sekarang di level berapa?"
+        description="Bukan ujian, cuma cara ngasih rekomendasi mulai dari level mana. Kalau workflow dasar belum pernah dibikin, tidak masuk akal mulai dari agent orchestration."
+      />
+      <section className="section-tight">
+        <div className="container" style={{ maxWidth: 820 }}><SkillCheck /></div>
+      </section>
+    </>
+  );
+}
